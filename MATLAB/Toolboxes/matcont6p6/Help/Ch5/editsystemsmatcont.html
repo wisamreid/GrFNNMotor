@@ -1,0 +1,252 @@
+<HTML>
+<HEAD>
+<TITLE>System specification box</TITLE>
+<META NAME="description" CONTENT="System specification box">
+<META NAME="keywords" CONTENT="doc_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<b> Next</b>: <a href="archiveslistmatcont.html">Archives list</a><b> 
+Up:</b> <a name="tex2html691"
+  href="mainmatcont.html">Main window</a> <b> Previous:</b> <a href="systemslistmatcont.html">Dynamical 
+systems list</a>&nbsp <b> <a 
+  href="node1.html">Contents</a></b> <br>
+<p>The <b>system specification dialog box </b> is where you specify your dynamical 
+  system (<a href="odematcont.html">ODE</a>). You call it by the <b>
+Select|Systems|New</b> command in the <a href="mainmatcont.html">Main window</a> 
+(then it is still empty), or by clicking the <b>edit 
+  </b>button in the <a href="systemslistmatcont.html">system list dialog box</A>.</p>
+  <center>
+  <img src="editsystemmatcont.jpg" align="middle" width="589" height="647" > 
+  <p>&nbsp;</p>
+</center>
+<p>NOTES: </p>
+<ul>
+  <li>You must seperate names of variables and parameters by commas when filling in the 
+  corresponding fields.</li>
+  <li>You can NOT use spaces in the lists of variables and parameters.</li>
+  <li>You should NOT use &quot;c&quot; and &quot;I&quot; as names for variables or parameters: this 
+  causes problems in Matlab's specific namespace.</li>
+</ul>
+<p>&nbsp;</p>
+<p> 
+<table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290"> 
+      <p><b>Listbox</b></p>
+    </td>
+    <td> 
+      <p><b>What it is used for</b></p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <b>Name system</b></td>
+	<td>
+	  is where you type a name for your system.</td>
+   </tr>
+	<tr>
+	<td>
+	  <p><b>Coordinates</b></p>
+	</td>
+	<td>
+	  <p>is where you list names of phase (state) variables. </p>
+    </td>
+   </tr>
+   <tr>
+    <td> <b>Parameters </b> </td>
+    <td> is where you list names of <b>parameters</b> your system depends on. </td>
+  </tr>
+  <tr>
+    <td> <b>Time </b> </td>
+    <td> is where you type in the name of <b>time variable,</b> which must be a simple 
+      name. </td>
+  </tr>
+</table>
+&nbsp;<p>Other fields are: </p>
+<table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290"> 
+      <p><b>Component</b></p>
+      </td>
+    <td> 
+      <p><b>What it does</b></p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <p><b>Derivatives</b></p>
+	</td>
+	<td>
+	  <p>is where you specify how the <b>derivatives</b> of the right-hand sides 
+        will be calculated. The choices made here are shown in the <b>Derivatives 
+        information field</b> in the <a href="mainmatcont.html">Main</a> window where i-th letter reflects your choice 
+        made for the derivatives of order i (i=1,2,3,4,5):</p>
+    </td>
+	</tr>
+	
+  <tr> 
+    <td> 
+      <blockquote> 
+        <blockquote>
+          <p><b>numerically</b></p>
+        </blockquote>
+      </blockquote>
+    </td>
+	<td> approximate derivatives by appropriate finite differences. This method 
+      will always work (as far as you functions can be differentiated at all). 
+      This choice is indicated by the letter <b>'N'</b> in the Derivatives information 
+      field. </td>	  
+   </tr>
+   
+  <tr> 
+    <td> 
+      <blockquote> 
+        <blockquote>
+          <p><b>symbolically</b> </p>
+        </blockquote>
+      </blockquote>
+    </td>
+    <td> this option is only possible when the symbolic toolbox of Matlab is 
+    present in your version. It 
+      automatically computes exact values of derivatives symbolically. This may 
+    take quite a while for large systems, but this is only upon system 
+    definition, and provides considerable 
+      acceleration and increased precision when computing curves. This choice is indicated by the letter 
+      <b>'S'</b> in the Derivatives information field. </td>
+	  </tr>
+	  
+  <tr> 
+    <td> 
+      <blockquote> 
+        <blockquote>
+          <p><b>from a file</b> </p>
+        </blockquote>
+      </blockquote>
+    </td>
+	   
+    <td> this option is only present if Matlab's symbolic toolbox is not available. 
+      When selecting this option a dialog box appears where you must enter the 
+      name of the file that contains the exact values of the derivatives in a 
+      specific format. </td>
+	  </tr>
+	  
+  <tr> 
+    <td> 
+      <blockquote> 
+        <blockquote>
+          <p><b>from window</b> </p>
+        </blockquote>
+      </blockquote>
+    </td>
+	  <td>
+	  This option is only available for derivatives of first or second order. You enter the exact values of the derivates in the corresponding editor space.
+	  </td>
+	  </tr>
+	  <tr>
+	  
+    <td> <b>Editor area</b> </td>
+	  
+    <td> is where you specify your dynamical system. This component consists of 
+      one or three parts depending whether you have selected 'from window' to 
+    specify derivatives or not.
+	  </td>
+	  
+  <tr> 
+    <td valign="top">
+      <blockquote>
+        <p> <b>RHS </b></p>
+      </blockquote>
+    </td>
+	  <td>
+	  <p>The first part is where you type in statements wich computes the values 
+        of right-hand sides. For example:<br>
+        phi=3^((T-6.3)/10)<br>
+        psialphaM=(25-V)/10<br>
+        psialphaN=(10-V)/10 <br>
+        alphaM=psialphaM/(exp(psialphaM)-1)<br>
+        alphaN=0.1*psialphaN/(exp(psialphaN)-1)<br>
+        alphaH=0.07*exp(-V/20)<br>
+        betaM=4*exp(-V/18)<br>
+        betaN=0.125*exp(-V/80)<br>
+        betaH=1/(1+exp((30-V)/10))<br>
+        GTOT=gNa*M^3*H*(V-VNa)+gK*N^4*(V-VK)+gl*(V-Vl)<br>
+        V'=(I-GTOT)/C<br>
+        M'=phi*((1-M)*alphaM-M*betaM)<br>
+        N'=phi*((1-N)*alphaN-N*betaN)<br>
+        H'=phi*((1-H)*alphaH-H*betaH)<br>
+        Be aware of the fact that you first have to declare your variables. There 
+        is just one equation per line.  </p>
+      </td>
+	  </tr>
+	  
+  <tr> 
+    <td valign="top">
+      <blockquote>
+        <p> <b>derivates(1st or 2nd order) </b></p>
+      </blockquote>
+    </td>
+	  
+    <td> Enter the exact values of the derivatives. You have to fill out everything 
+      otherwise the jacobian matrix will not be formed correctly. There will be 
+      an 'index exceeds dimension' error while doing computations using this 
+    system. </td>
+	  </tr>
+	  
+    <td>
+      <blockquote>
+        <p> <b>enter the jacobianp(hessianp) </b></p>
+      </blockquote>
+    </td>
+	  
+    <td> Enter the exact values of the derivatives with respect to the parameters. 
+      Again you have to fill out everything or an error will be produced while 
+      doing computations using this system. </td>
+	  </tr>
+  </table>
+  &nbsp;<p>There are the following buttons at the bottom of the dialog box: </p>
+  
+  <table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290"> 
+      <p><b>Button</b></p>
+    </td>
+    <td> 
+      <p><b>What it does</b></p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <p><b>OK</b></p>
+	</td>
+	<td>
+	  <p>closes the dialog box, stores all the changes you have made in <a href="archivesmatcont.html">archives</a>, 
+        constructs Matlab source text for the system, and makes the system the current system. 
+      </p>
+    </td>
+   </tr>
+   <tr>
+    <td> <b>Cancel</b> </td>
+    <td> closes the dialog box without changing the specification of your system. 
+      All modifications you have made are lost.</td>
+  </tr>
+ 
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

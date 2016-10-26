@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bifurcations</TITLE>
+<META NAME="description" CONTENT="Bifurcations">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node48.html">
+<LINK REL="previous" HREF="node45.html">
+<LINK REL="up" HREF="node44.html">
+<LINK REL="next" HREF="node47.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;} td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html748"
+  HREF="node47.html">Branching Point Locator</A>
+<B> Up:</B> <A NAME="tex2html744"
+  HREF="node44.html">Continuation of limit cycles</A>
+<B> Previous:</B> <A NAME="tex2html738"
+  HREF="node45.html">Mathematical definition</A>
+ &nbsp <B>  <A NAME="tex2html746"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00092000000000000000">
+Bifurcations</A>
+</H2>
+<p>On a limit cycle curve the following bifurcations can occur </p>
+
+<ul>
+<li> <em>Branch Point of Cycles</em>, this will be denoted as <tt>BPC</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Period Doubling</em>, denoted as <tt>PD</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Fold</em>, also known as <em>Limit Point of Cycles</em>, this will be denoted as <tt>LPC</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Neimark-Sacker</em>, this will be denoted as <tt>NS</tt>
+<div class="p"><!----></div>
+</li>
+</ul>
+<p>The test function for the Period Doubling bifurcation is defined by 
+the following system
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table><tr><td nowrap="nowrap" align="right" colspan="1"></td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />ï<br />í<br />
+ï<br />ï<br />î
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">v<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+(<font face="symbol">t</font
+>) <font face="symbol">-</font
+> T f<sub>u</sub>(u,<font face="symbol">a</font
+>)v(<font face="symbol">t</font
+>) + G<font face="symbol">j</font
+>(<font face="symbol">t</font
+>) </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+ = 0 </td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+v(0) + v(1) </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+ = 0 </td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+ó<br />õ
+</font></td><td nowrap="nowrap" align="center">
+<small>1</small><!--sup
+--><br /><br />
+<small>0</small>&nbsp;<br /></td><td nowrap="nowrap" align="center">
+<font face="symbol">áy</font
+>(<font face="symbol">t</font
+>),v(<font face="symbol">t</font
+>)<font face="symbol">ñ</font
+>d<font face="symbol">t</font
+></td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+ = 1</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table></td><td width="50%"></td><td width="1" align="right">(51)</td></tr></table>
+</td></tr></table>
+
+
+   <p>here <font face="symbol">j</font
+> and <font face="symbol">y</font
+> are so-called bordering vector-functions [<A
+ HREF="../node89.html#yuri">10</A>], 
+see [<A
+ HREF="../node89.html#report">7</A>] for details on the implementation. The system is discretized using 
+orthogonal collocation and solved using the standard MATLAB sparse system solver. 
+The solution component G  <font face="symbol">Î</font
+> <b>R</b> of this system is the test function and equals zero 
+when there is a Period Doubling bifurcation. </p>
+
+<div class="p"><!----></div>
+   <p>The Fold bifurcation is detected in the same way as the Fold bifurcation of equilibria, 
+the last component of the tangent vector (the <font face="symbol">a</font
+> component) is used as 
+the test function. </p>
+
+<div class="p"><!----></div>
+   <p>The Neimark-Sacker bifurcation is detected by monitoring the eigenvalues of the monodromy matrix for the cycle. The monodromy matrix is computed like in  auto by a block elimination in the discretized form of the Jacobian of (<a href="node45.html#completelc">50</a>).
+   </p>
+
+<div class="p"><!----></div>
+   <p>BPC cycles are not generic in families of limit cycles, but they are common in the case of symmetries, if the
+branching parameter is also the continuation parameter.  CL_MatCont uses a strategy that requires only the solution of linear systems;
+it is based on the fact that in a symmetry-breaking BPC cycle M<sub>D</sub> has rank defect two, where M<sub>D</sub> is the square matrix M<sub>D</sub>,
+obtained from the discretized form of the Jacobian of (<a href="node45.html#completelc">50</a>). 
+To be precise, if h  <font face="symbol">Î</font
+> <font face="helvetica"><i>C</i></font><sup>1</sup>([0,1],<span class="roman">IR</span><sup>n</sup>), then 
+
+<br clear="all" /></p>
+   <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+Mh = </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />ê<br />
+ê<br />ë
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">h<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+>Tf<sub>x</sub>(x(t),<font face="symbol">a</font
+>)h </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+h(0)<font face="symbol">-</font
+>h(1)</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+,</td></tr></table>
+</td></tr></table>
+
+
+  <p>and
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+M<sub>D</sub>(h)<sub>dm</sub> = </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />ê<br />
+ê<br />ë
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">h<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+>Tf<sub>x</sub>(x(t),<font face="symbol">a</font
+>)h)<sub>dc</sub> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+h(0)<font face="symbol">-</font
+>h(1)</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+,</td></tr></table>
+</td></tr></table>
+
+
+  <p>where ()<sub>dm</sub> and ()<sub>dc</sub> denote discretization in mesh points 
+and in collocation points, respectively.
+Therefore we border M<sub>D</sub> with two additional rows and columns to obtain
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+M<sub>Dbb</sub> = </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />ê<br />
+ê<br />ë
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+M<sub>D</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+w<sub>1</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+w<sub>2</sub> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+v<sub>1</sub><sup>*</sup> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+v<sub>2</sub><sup>*</sup> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+,</td></tr></table>
+</td></tr></table>
+
+  
+  <p>so that M<sub>Dbb</sub> is nonsingular in the BPC cycle. Then we solve the systems
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+M<sub>Dbb</sub></td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />ê<br />
+ê<br />ë
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+><sub>11</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+><sub>12</sub> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+g<sub>BPC11</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+g<sub>BPC12</sub> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+g<sub>BPC21</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+g<sub>BPC22</sub></td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+ = </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />ê<br />
+ê<br />ë
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0<sub>(Nm+1)n</sub> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0<sub>(Nm+1)n</sub> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+,</td></tr></table>
+</td></tr></table>
+
+
+  <p>where
+<font face="symbol">y</font
+><sub>11</sub>,<font face="symbol">y</font
+><sub>12</sub> have (Nm+1)n components, 
+and g<sub>BPC11</sub>, g<sub>BPC12</sub>, g<sub>BPC21</sub>, and g<sub>BPC22</sub>,
+are scalar test functions for the BPC. In the BPC cycle they all vanish. </p>
+
+<div class="p"><!----></div>
+  <p>The singularity matrix is 
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table><tr><td nowrap="nowrap" align="right" colspan="1">S = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />ç<br />ç<br />
+ç<br />ç<br />è
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0  </td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />÷<br />÷<br />
+÷<br />÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+</td></tr></table></td><td width="50%"></td><td width="1" align="right">(52)</td></tr></table>
+</td></tr></table>
+
+
+   <p>The first row corresponds to the BPC. It contains 4 zeros which indicates that g<sub>BPC11</sub>, g<sub>BPC12</sub>, g<sub>BPC21</sub>, and g<sub>BPC22</sub> should vanish.
+The last row corresponds to the NS. Because we have to exclude that all four testfunctions of the BPC are zeros, we introduce an extra testfunction which corresponds to the norm of these four testfunctions. A NS is detected if this norm is nonzero,the testfunction for the fold is nonzero and the testfunction for the NS is equal to zero.
+   </p>
+<P><BR>
+<HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+  <LI><A NAME="tex2html735"
+  HREF="node47.html">Branching Point Locator</A>
+  <LI><A NAME="tex2html736"
+  HREF="node48.html">Processing</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+</BODY>
+</HTML>

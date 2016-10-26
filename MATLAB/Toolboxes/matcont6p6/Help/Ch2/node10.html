@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Pseudo-arclength continuation</TITLE>
+<META NAME="description" CONTENT="Pseudo-arclength continuation">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node11.html">
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html286"
+  HREF="node11.html">Moore-Penrose continuation</A>
+<B> Up:</B> <A NAME="tex2html282"
+  HREF="node9.html">Correction</A>
+<B> Previous:</B> <A NAME="tex2html276"
+  HREF="node9.html">Correction</A>
+ &nbsp <B>  <A NAME="tex2html284"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00032100000000000000">
+Pseudo-arclength continuation</A>
+</H3>
+<p>One option for choosing g(x) is to select a hyperplane passing through X<sup>0</sup> that is
+orthogonal to the vector v<sub>i</sub>:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+g(x) = <font face="symbol">á</font
+>x<font face="symbol">-</font
+>X<sup>0</sup>,v<sub>i</sub> <font face="symbol">ñ</font
+>&nbsp;.</td></tr></table>
+</td><td width="1%">(3)</td></tr></table>
+
+
+<p>So, the Newton iteration becomes:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+X<sup>k+1</sup> = X<sup>k</sup> <font face="symbol">-</font
+> H<sup><font face="symbol">-</font
+>1</sup><sub>x</sub>(X<sup>k</sup>)H(X<sup>k</sup>)</td></tr></table>
+</td><td width="1%">(4)</td></tr></table>
+
+
+		
+<p>
+
+
+		
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+H(X) = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F(X)</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+,&nbsp;&nbsp;H<sub>x</sub>(X) = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F<sub>x</sub>(X)</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+v<sub>i</sub><sup>T</sup></td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+&nbsp;.</td></tr></table>
+</td><td width="1%">(5)</td></tr></table>
+
+
+  <p>Then one can prove that the Newton iteration for (<a href="node9.html#eq:corr">2</a>) will converge to a point x<sub>i+1</sub> 
+on the curve from X<sup>0</sup> provided that the stepsize h is sufficiently small and that the 
+curve is regular (rank F<sub>x</sub>(x)=n).
+Having found the new point x<sub>i+1</sub> on the curve we need to compute the tangent vector at 
+that point:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+F<sub>x</sub>(x<sub>i+1</sub>)v<sub>i+1</sub> = 0&nbsp;.</td></tr></table>
+</td><td width="1%">(6)</td></tr></table>
+
+
+  <p>Furthermore the direction along the curve must be preserved: <font face="symbol">á</font
+>v<sub>i</sub>,v<sub>i+1</sub> <font face="symbol">ñ</font
+> = 1, so we get the (n+1)-dimensional appended system
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F<sub>x</sub>(x<sub>i+1</sub>)</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+v<sub>i</sub><sup>T</sup> </td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+v<sub>i+1</sub> = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+.</td></tr></table>
+</td><td width="1%">(7)</td></tr></table>
+
+
+  <p>Upon solving this system, v<sub>i+1</sub> must be normalized. </p>
+
+<P>
+<HR>
+</BODY>
+</HTML>

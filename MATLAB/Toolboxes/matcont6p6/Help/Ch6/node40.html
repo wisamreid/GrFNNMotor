@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Branching point locator</TITLE>
+<META NAME="description" CONTENT="Branching point locator">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node39.html">
+<LINK REL="up" HREF="node39.html">
+<LINK REL="next" HREF="node41.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html707"
+  HREF="../Ch7/node44.html">Continuation of limit cycles</A> <B> Up:</B> <A NAME="tex2html665"
+  HREF="node39.html">Bifurcations</A> <B> Previous:</B> <A NAME="tex2html665"
+  HREF="../Ch6/node39.html">Bifurcations</A> &nbsp <B> <A NAME="tex2html671"
+  HREF="../node1.html">Contents</A></B> <BR>
+<BR>
+<H3><A NAME="SECTION00072100000000000000"></A><A NAME="s:bploc"></A>
+<BR>
+Branching point locator
+</H3>
+
+<p>The location of Hopf and limit points usually does not cause problems. However, 
+the location of branching points can give problems. The region of attraction of the 
+Newton type continuation method which is used, has the shape of a cone (see [<A
+ HREF="../node89.html#allgower">1</A>]). 
+In the localisation process we cannot assume to stay in this cone.
+This difficulty can be avoided by introducing p <font face="symbol">Î</font
+> <b>R</b><sup>n</sup> and <font face="symbol">b</font
+> <font face="symbol">Î</font
+> <b>R</b> and 
+considering the <em>extended system</em>:
+<a name="brloc">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />ï<br />í<br />
+ï<br />ï<br />î
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+f(u,<font face="symbol">a</font
+>) + <font face="symbol">b</font
+>p </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+f<sub>u</sub><sup>T</sup>(u,<font face="symbol">a</font
+>)p </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+p<sup>T</sup>f<sub><font face="symbol">a</font
+></sub>(u,<font face="symbol">a</font
+>) </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+p<sup>T</sup>p<font face="symbol">-</font
+>1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(41)</td></tr></table>
+
+
+  <p>We solve this system by Newton's method with initial data <font face="symbol">b</font
+> = 0 and 
+p: f<sub>u</sub><sup>T</sup>p=<font face="symbol">m</font
+>p 
+where <font face="symbol">m</font
+> is the real eigenvalue with smallest norm. 
+A branching point (u,<font face="symbol">a</font
+>) 
+corresponds to a regular solution (u,<font face="symbol">a</font
+>,0,p) of system (<a href="#brloc">41</a>) 
+(see [<A
+ HREF="../node89.html#preprint">2</A>],p. 165). We note that the second order partial 
+derivatives 
+(Hessian) of f with respect to u and <font face="symbol">a</font
+> are required. </p>
+
+<div class="p"><!----></div>
+  <p>The tangent vector at the singularity 
+is also computed here. This is related to 
+the processing of the branching point (computing the direction of the 
+secondary branch). </p>
+
+<P>
+<HR>
+</BODY>
+</HTML>

@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Moore-Penrose continuation</TITLE>
+<META NAME="description" CONTENT="Moore-Penrose continuation">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node12.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html296"
+  HREF="node12.html">Stepsize control</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="node9.html">Correction</A>
+<B> Previous:</B> <A NAME="tex2html288"
+  HREF="node10.html">Pseudo-arclength continuation</A>
+ &nbsp <B>  <A NAME="tex2html294"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00032200000000000000">
+Moore-Penrose continuation</A>
+</H3>
+
+<p>CL_MatCont implements a continuation method that is slightly different from
+the pseudo-arclength continuation. </p>
+
+<div class="p"><!----></div>
+<a name="tth_fIg3">
+</a> 
+<div class="p"><!----></div>
+
+  <p>
+
+  <b>Definition 1</b> <em>
+Let A be an N&times;(N+1) matrix with maximal rank. Then the Moore-Penrose inverse of A is defined by A<sup>+</sup> = A<sup>T</sup>(AA<sup>T</sup>)<sup><font face="symbol">-</font
+>1</sup>. </p>
+
+<div class="p"><!----></div>
+</em>
+<p>Let A be an N&times;(N+1) matrix with maximal rank. Consider the following linear system with x,v <font face="symbol">Î</font
+> <b>R</b><sup>N+1</sup>,b <font face="symbol">Î</font
+> <b>R</b><sup>N</sup>:
+<a name="mp1">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+Ax </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+b</td></tr></table></td><td width="50%"></td><td width="1" align="right">(8)</td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+v<sup>T</sup>x </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">0</td></tr></table></td><td width="50%"></td><td width="1" align="right">(9)</td></tr></table>
+</td></tr></table>
+
+
+<p>where x is a point on the curve and v its tangent vector with respect to A, i.e. Av=0.
+Since AA<sup>+</sup>b = b and v<sup>T</sup>A<sup>+</sup>b = <font face="symbol">á</font
+>Av,(AA<sup>T</sup>)<sup><font face="symbol">-</font
+>1</sup>b<font face="symbol">ñ</font
+> =  0, a solution of this system is
+<a name="mp2">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+x = A<sup>+</sup>b.</td></tr></table>
+</td><td width="1%">(10)</td></tr></table>
+
+
+<p>Suppose we have a predicted point X<sup>0</sup> using (<a href="node8.html#eq:prediction">1</a>). We want to find the point x on the curve which is nearest to X<sup>0</sup>, i.e. we are trying to solve the optimization problem:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<!--sup
+--><br />min<br />
+<small>x</small>&nbsp;<br /></td><td nowrap="nowrap" align="center">
+{ <font face="symbol">||</font
+>x<font face="symbol">-</font
+>X<sup>0</sup><font face="symbol">||</font
+>&nbsp;<font face="symbol">|</font
+>&nbsp;F(x)=0 }</td></tr></table>
+</td><td width="1%">(11)</td></tr></table>
+
+
+  <p>So, the system we need to solve is:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+F(x) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+0 </td></tr></table></td><td width="50%"></td><td width="1" align="right">(12)</td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+w<sup>T</sup>(x<font face="symbol">-</font
+>X<sup>0</sup>) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">0</td></tr></table></td><td width="50%"></td><td width="1" align="right">(13)</td></tr></table>
+</td></tr></table>
+
+
+  <p>where w is the tangent vector at point x. In Newton's method this system is solved using a linearization about X<sup>0</sup>. Taylor expansion about X<sup>0</sup> gives:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+F(x) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+F(X<sup>0</sup>) + F<sub>x</sub>(X<sup>0</sup>)(x<font face="symbol">-</font
+>X<sup>0</sup>) + <i>O</i>(<font face="symbol">||</font
+>x<font face="symbol">-</font
+>X<sup>0</sup><font face="symbol">||</font
+><sup>2</sup>)</td></tr></table></td><td width="50%"></td><td width="1" align="right">(14)</td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+w<sup>T</sup>(x<font face="symbol">-</font
+>X<sup>0</sup>) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">v<sup>T</sup>(x<font face="symbol">-</font
+>X<sup>0</sup>) + <i>O</i>(<font face="symbol">||</font
+>x<font face="symbol">-</font
+>X<sup>0</sup><font face="symbol">||</font
+><sup>2</sup>)&nbsp;.</td></tr></table></td><td width="50%"></td><td width="1" align="right">(15)</td></tr></table>
+</td></tr></table>
+
+
+  <p>So when we discard the higher order terms we can see using (<a href="#mp1">8</a>) and (<a href="#mp2">10</a>) that the solution of this system is:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+x = X<sup>0</sup> <font face="symbol">-</font
+> F<sub>x</sub><sup>+</sup>(X<sup>0</sup>)F(X<sup>0</sup>)&nbsp;.</td></tr></table>
+</td><td width="1%">(16)</td></tr></table>
+
+
+  <p>However, the null vector of F<sub>x</sub>(X<sup>0</sup>) is not known, therefore we approximate it by V<sup>0</sup> = v<sub>i</sub>, the tangent vector at x<sub>i</sub>. Geometrically this means
+we are solving F(x)=0 in a hyperplane perpendicular to the previous tangent vector. In other words, the extra function g(x) in (<a href="node9.html#eq:corr">2</a>) becomes:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+g<sub>k</sub>(x) = <font face="symbol">á</font
+>x<font face="symbol">-</font
+>X<sup>k</sup>,V<sup>k</sup> <font face="symbol">ñ</font
+>,</td></tr></table>
+</td><td width="1%">(17)</td></tr></table>
+
+
+  <p>where F<sub>x</sub>(X<sup>k<font face="symbol">-</font
+>1</sup>)V<sup>k</sup>=0 for k=1,2,<font face="symbol">¼</font
+>.
+Thus, the Newton iteration we are doing is:
+<a name="eq:mp1">
+</a><a name="eq:mp2">
+</a>
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+X<sup>k+1</sup> </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+X<sup>k</sup> <font face="symbol">-</font
+> H<sup><font face="symbol">-</font
+>1</sup><sub>x</sub>(X<sup>k</sup>,V<sup>k</sup>)H(X<sup>k</sup>,V<sup>k</sup>)</td></tr></table></td><td width="50%"></td><td width="1" align="right">(18)</td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+V<sup>k+1</sup> </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">V<sup>k</sup> <font face="symbol">-</font
+> H<sup><font face="symbol">-</font
+>1</sup><sub>x</sub>(X<sup>k</sup>,V<sup>k</sup>)R(X<sup>k</sup>,V<sup>k</sup>)</td></tr></table></td><td width="50%"></td><td width="1" align="right">(19)</td></tr></table>
+</td></tr></table>
+
+
+		
+  <p>
+
+
+		
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+H(X,V) = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F(X)</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+,&nbsp;&nbsp;H<sub>x</sub>(X,V) = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F<sub>x</sub>(X)</td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+V<sup>T</sup></td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(20)</td></tr></table>
+
+
+	
+  <p>
+
+
+	
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ R(X,V) = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />
+ç<br />è
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+F<sub>x</sub>(X)V </td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+&nbsp;.</td></tr></table>
+</td><td width="1%">(21)</td></tr></table>
+
+
+  <p>One can prove that under the same conditions as for the pseudo-arclength continuation, 
+the Newton iterations (<a href="#eq:mp1">18</a>) and (<a href="#eq:mp2">19</a>) converge to a point on the 
+curve x<sub>i+1</sub> and the corresponding tangent vector v<sub>i+1</sub>, respectively.
+In the pseudo-arclength continuation, we had to compute a tangent vector when a new point 
+was found. In this case however, we already compute the tangent vectors V<sup>k</sup> at each 
+iterate (<a href="#eq:mp2">19</a>), so we only need to normalize the computed 
+tangent vectors. </p>
+
+<P>
+<HR>
+</BODY>
+</HTML>

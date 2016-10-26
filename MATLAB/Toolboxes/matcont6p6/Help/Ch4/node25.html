@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Singularities and test functions</TITLE>
+<META NAME="description" CONTENT="Singularities and test functions">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node26.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html493"
+  HREF="node26.html">Locators</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <a href="node24.html" name="tex2html481">Derivatives of the 
+ODE-file</a>
+ &nbsp <B>  <A NAME="tex2html491"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00052500000000000000">
+Singularities and test functions</A>
+</H3>
+
+<p>To detect singularities on the curve one must set the option <em>Singularities</em> on.
+Singularities are defined using the singularity matrix, as described in section <a href="#s:singmat">3.3</a>. The continuer has stored the handles to the singularities, the testfunctions and the processing of the singularities respectively in the variables <tt>cds.curve_singmat</tt>,<tt>cds.curve_testf</tt> and <tt>cds.curve_process</tt>.
+</p>
+
+<div class="p"><!----></div>
+<p>A call to <tt>[S,L] = feval(cds.curve_singmat)</tt> gets the singularity matrix S 
+and a vector of 2-character strings which are abbreviations of the singularities.
+</p>
+
+<div class="p"><!----></div>
+<p>A call to <tt>feval(cds.curve_testf, ids, x, v)</tt> then must return the evaluation of all 
+testfunctions, whose indices are in the integer vector <tt>ids</tt>, 
+at <tt>x</tt> (<tt>v</tt> is the tangent vector at <tt>x</tt>). 
+As a second return argument it should return an array of all testfunction id's which could 
+not be evaluated, if this array is not empty the stepsize will be decreased. </p>
+
+<div class="p"><!----></div>
+<p>When a singularity is found, a call to <tt>[failed,s] = feval(cds.curve_process,i,x,v,s)</tt> will be made to process singularity <tt>i</tt> at
+<tt>x</tt>. This is the point where computations can be done, like computing normal 
+forms, eigenvalues, etc. of the singularity. These results can then be saved in the 
+structure <tt>s.data</tt> which can be reused for further analysis. Note that 
+the first and last point of the curve are also treated as singular. </p>
+
+<P>
+
+<P>
+<HR>
+</BODY>
+</HTML>

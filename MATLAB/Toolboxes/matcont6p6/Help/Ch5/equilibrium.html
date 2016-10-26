@@ -1,0 +1,48 @@
+<html>
+<head><title>Equilibrium (MATCONT Reference)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- DOCNAME: MATCONT Reference -->
+<!-- CHUNKNAME: Equilibrium -->
+<!-- CHAPNAME:  -->
+<!-- HEADSTUFF -->
+
+<style>
+<!--
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p>Given a system of ODEs,</p>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+du
+<div class="hrcomp"><hr noshade="noshade" size="1"/></div>
+  <p>dt<br /></td><td nowrap="nowrap" align="center">
+ = F(u,<font face="symbol">a</font
+>), &nbsp;&nbsp;&nbsp; u <font face="symbol">Î</font
+> <b>R</b><sup>n</sup>,<font face="symbol">a</font
+> <font face="symbol">Î</font
+> <b>R</b>&nbsp;&nbsp;&nbsp; F: <b>R</b><sup>n+1</sup><font face="symbol">®</font
+> <b>R</b><sup>n</sup>&nbsp;.</td></tr></table>
+<p>an <b>equilibrium</b> is a point such that F(u,<font face="symbol">a</font
+>)=0.</p>
+
+<p><b>Eigenvalues </b>of an equilibrium are 
+  roots of the <b>characteristic equation</b></p>
+<div align="center"><img src="fmc_10.gif" align=middle> </div>
+<p>where</p>
+<div align="center"><img src="fmc_11.gif" align=middle> </div>
+<p>is the<b> Jacobian matrix</b> and<img src="fmc_12.gif" align=middle>is the 
+  n x n unit matrix. The equilibrium is <b>hyperbolic</b> if there is no eigenvalue with zero real 
+  part. A hyperbolic<br>
+equilibrium has invariant <b>stable</b> and <b>unstable manifolds</b> 
+  of dimension equal to the number of eigenvalues with negative and positive real 
+  part, respectively. If there is an eigenvalue with zero real part, the equilibrium 
+  is called <b>nonhyperbolic</b>. A nonhyperbolic equilibrium has a <b>center 
+  manifold</b> of dimension equal to the number of eigenvalues of the imaginary 
+  axis. The invariant manifolds are tangent to the corresponding generalized eigenspaces 
+  at<img src="fmc_13.gif" align=middle>.</p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+<head><title>Ordinary differential equations(MATCONT Reference)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- DOCNAME: MATCONT Reference -->
+<!-- CHUNKNAME: ordinary differential equations -->
+<!-- CHAPNAME:  -->
+<!-- HEADSTUFF -->
+
+<style>
+<!--
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p>The <b>generic parameterized autonomous ODEs</b> comprises systems of the first 
+  order differential equations wich can be written in the following form:</p>
+<div align="center">
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+du
+<div class="hrcomp"><hr noshade="noshade" size="1"/></div>
+  <p>dt<br /></td><td nowrap="nowrap" align="center">
+ = f(u,<font face="symbol">a</font
+>), &nbsp;&nbsp;&nbsp; u <font face="symbol">Î</font
+> <b>R</b><sup>n</sup>,<font face="symbol">a</font
+> <font face="symbol">Î</font
+> <b>R</b>&nbsp;&nbsp;&nbsp; f: <b>R</b><sup>n+1</sup><font face="symbol">®</font
+> <b>R</b><sup>n</sup>&nbsp;.</td></tr></table>
+  , </div>
+<p>f is assumed to be suffiently smooth but has no other special properties 
+  (like symmetry, etc.). A system of ODEs is specified or edited in the <a href="editsystemsmatcont.html">System specification</a> dialog 
+  box which is opened by the <b>Select|System</b> command from the <a href="mainmatcont.html">Main 
+  window</a>.</p>
+<p><b>Example :</b> For the scalar ODE</p>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+du
+<div class="hrcomp"><hr noshade="noshade" size="1"/></div>
+  <p>dt<br /></td><td nowrap="nowrap" align="center">
+ = f(u,<font face="symbol">a</font
+>)=<font face="symbol">a</font
+> e<sup>u</sup>, &nbsp;&nbsp;&nbsp; u <font face="symbol">Î</font
+> <b>R</b>,<font face="symbol">a</font
+> <font face="symbol">Î</font
+> <b>R</b>&nbsp;&nbsp;&nbsp; f: <b>R</b><sup>2</sup><font face="symbol">®</font
+> <b>R</b><sup>1</sup>&nbsp;.</td></tr></table>
+<p>&nbsp;</p>
+<p>the following specification in the System specification dialog box would be valid:</p>
+<table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290"> 
+      <p><b>Coordinates</b></p>
+    </td>
+    <td> 
+      <p>u</p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <p><b>Parameters</b></p>
+	</td>
+	<td>
+	  <p>alpha</p>
+    </td>
+   </tr>
+   <tr>
+    <td> <b>Time</b> </td>
+   <td>
+   t
+   </td>
+     </tr>
+  <tr>
+    <td> <b>RHS </b> </td>
+  <td>
+  u'=alpha*exp(u)
+   </td></tr>
+</table>
+</body>
+</html>

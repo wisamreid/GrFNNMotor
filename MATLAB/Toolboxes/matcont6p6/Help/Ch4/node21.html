@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Primary function</TITLE>
+<META NAME="description" CONTENT="Primary function">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node22.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<p>
+<BR>
+<B> Next:</B> <A NAME="tex2html421"
+  HREF="node22.html">Options</A>
+<B> Up:</B> <A NAME="tex2html417"
+  HREF="node18.html">Software</A>
+<B> Previous:</B> <A NAME="tex2html411"
+  HREF="node20.html">Continuation and output</A>
+ &nbsp <B>  <A NAME="tex2html419"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+</p>
+<H2><A NAME="SECTION00052000000000000000"></A><A NAME="s:curvedef"></A>
+<BR>
+Curve file
+</H2>
+<p><a name="s:curvedef">
+</a>
+The continuer uses a special m-file where the type of solution branch is defined. 
+This file, further referred to as <tt>curve.m</tt>, contains the following 
+sections: </p>
+
+<ul>
+<li> <tt>curve_func</tt>: contains the evaluation of the right-hand side of that 
+type of solution branch.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>defaultprocessor</tt>: is called and executed after each point computed 
+during a continuation experiment.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>options</tt>: sets the default setting for the options-structure for 
+this type of solution branch (more details are given in section .
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>jacobian</tt>: contains the evaluation of the jacobian of that type of 
+solution branch.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>hessians</tt>: contains the evaluation of the hessians of that type of 
+solution branch.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>testf</tt>: contains the test functions for detecting bifurcations 
+along the branch.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>userf</tt>: calls the user-defined functions if there are any.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>process</tt>: is called when a bifurcation point is detected, to handle 
+any necessary output messages and storage.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>singmat</tt>: defines the singularity matrix of the solution branch (cf. 
+section <a href="../Ch3/node16.html#s:singmat">3.3</a>).
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>locate</tt>: here specific localisation functions can be defined for 
+bifurcations (cf. section <a href="../Ch3/node17.html#s:locator">3.4</a>)
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>init</tt>: handles any special initialisations needed in the parameters 
+or workspace.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>done</tt>: handles any special actions needed at the end of continuing 
+the solution branch.
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>adapt</tt>: this is called after every n steps, where n is user-defined. 
+It handles any adaptation of parameters, subspaces, etc.
+</li>
+</ul>
+
+<p>
+<BR></p>
+<HR>
+</BODY>
+</HTML>

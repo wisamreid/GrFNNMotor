@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Test functions</TITLE>
+<META NAME="description" CONTENT="Test functions">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node15.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html334"
+  HREF="node15.html">More test functions</A>
+<B> Up:</B> <A NAME="tex2html330"
+  HREF="node13.html">Singularities</A>
+<B> Previous:</B> <A NAME="tex2html324"
+  HREF="node13.html">Singularities</A>
+ &nbsp <B>  <A NAME="tex2html332"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00041000000000000000">
+Test functions</A>
+</H2>
+
+<p>The idea to detect singularities is to define smooth scalar functions which have regular 
+zeros at the singularity points. These functions are called <em>test functions</em>. Suppose we 
+have a singularity S which is detectable by a test function <font face="symbol">f</font
+>:<b>R</b><sup>n+1</sup><font face="symbol">®</font
+><b>R</b>. 
+Also assume we have found two consecutive points x<sub>i</sub> and x<sub>i+1</sub> on the curve
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+F(x)=0,&nbsp;&nbsp;&nbsp; F: <b>R</b><sup>n+1</sup><font face="symbol">®</font
+> <b>R</b><sup>n</sup>&nbsp;.</td></tr></table>
+</td><td width="1%">(23)</td></tr></table>
+
+
+<p>The singularity S will then be detected if
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">f</font
+>(x<sub>i</sub>)<font face="symbol">f</font
+>(x<sub>i+1</sub>)  &lt;  0&nbsp;.</td></tr></table>
+</td><td width="1%">(24)</td></tr></table>
+
+
+
+<div class="p"><!----></div>
+<p>Having found two points x<sub>i</sub> and x<sub>i+1</sub> one may want to locate the point x<sup>*</sup> where 
+<font face="symbol">f</font
+>(x) vanishes. A logical solution is to solve the following system
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+F(x) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+0 </td></tr></table></td><td width="50%"></td><td width="1" align="right">(25)</td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+<font face="symbol">f</font
+>(x) </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+=</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">0</td></tr></table></td><td width="50%"></td><td width="1" align="right">(26)</td></tr></table>
+</td></tr></table>
+
+
+<p>using Newton iterations starting at x<sub>i</sub>. However, to use this method, one should be able 
+to compute the derivatives of <font face="symbol">f</font
+>(x) with respect to x, which is not always easy. 
+To avoid this difficulty we implemented by default a one-dimensional secant method 
+to locate <font face="symbol">f</font
+>(x)=0 along the curve. Notice that this involves Newton corrections at 
+each intermediate point. </p>
+<p>&nbsp;</p>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

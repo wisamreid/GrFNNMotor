@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Adaptation</TITLE>
+<META NAME="description" CONTENT="Adaptation">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node32.html">
+<LINK REL="previous" HREF="node30.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node32.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html565"
+  HREF="node32.html">Summary</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html555"
+  HREF="node30.html">Workspace</A>
+ &nbsp <B>  <A NAME="tex2html563"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION000521100000000000000">
+Adaptation</A>
+</H3>
+<p>It is possible to adapt the problem while generating the curve. If <em>Adapt</em> has a value, say 5, then after 5 computed points a call to <tt>[reeval,x,v]=feval(cds.curve_adapt,x,v)</tt> will be made where the user can program to change the system.
+</p>
+
+<div class="p"><!----></div>
+<p>For some applications it is useful to change or modify the used test functions while computing the curve (like in bordering techniques). In order to preserve the correct signs of the test functions it is sometimes necessary to reevaluate the test functions after adaptation. To do this <tt>reeval</tt> should be one otherwise zero. The return variables <tt>x</tt> and <tt>v</tt> should be the updated <tt>x</tt> and <tt>v</tt> which may have changed because of the changes made to the system.
+</p>
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<TITLE>Userfunction specification box</TITLE>
+<META NAME="description" CONTENT="Userfunction specification box">
+<META NAME="keywords" CONTENT="doc_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<b> Next</b>: <a href="computemenumatcont.html">Compute menu</a><b> 
+Up:</b> <a href="selectmenumatcont.html">Select menu</a> 
+            <b> Previous:</b> <a href="pointslistmatcont.html">Initial point list</a>&nbsp <b> <a 
+  href="../node1.html">Contents</a></b> <br>
+<p>The <b>user functions dialog box </b>allows you to specify and manipulate <a href="userfunction.html">user 
+  functions</a>. You display the dialog box by <a href="selectmenumatcont.html">Select|User 
+  functions</a> command in the <a href="mainmatcont.html">Main window</a>.</p>
+  <center>
+  <img src="userfunctionsbox.jpg" align="middle" width="530" height="474" > </center>
+<p>The dialog box has the following components :</p>
+<p> 
+<table border=0 cellspacing=0 height="300" >
+  <tr> 
+    <td width="290" height="23"> 
+      <p><b>Command</b></p>
+    </td>
+    <td height="23"> 
+      <p><b>What it does</b></p>
+    </td>
+	<td height="23">
+	</tr>
+	<tr>
+	<td valign="top" height="49">
+	  <p><b>Functions list</b></p>
+	</td>
+	<td height="49">
+	  <p>is in the upper right corner of the dialog box. It lists all the functions 
+        you have previously defined for the current system. Each line describes one function. 
+        To select a function, double-click its name in the list. The selected function 
+        is the one you can operate on with <b>Control buttons</b> and <b>Editor 
+        area</b>.<br>
+&nbsp;</p>
+    </td>
+   </tr>
+  <tr>
+    <td valign="top" height="1"> <b>Control buttons</b> </td>
+    <td height="1"> 
+      <p> </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" height="1"> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add</b></td>
+    <td height="1"> 
+      <p>defines a new function with label and name taken from the <b>Input fields</b> , 
+        the function itself taken from<b> </b>the<b> Editor area</b>. <br>
+&nbsp;</p>
+    </td>
+ </tr>
+ <tr>
+    <td valign="top" height="1"> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Update</b></td>
+    <td height="1"> 
+      <p>update the current selected function with label taken from the<b>Input fields</b>,<b> 
+        </b>the function itself taken from<b> </b>the <b>Editor area</b>.<br>
+&nbsp;</p>
+    </td>
+ </tr>
+ <tr>
+    <td valign="top" height="7"> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete</b> </td>
+    <td height="7"> 
+      <p>deletes the selected function.<br>
+&nbsp;</p>
+    </td>
+ 
+  </tr>
+  <tr>
+    <td valign="top" height="13"><b>Input fields</b></td>
+  <td height="13"> 
+      <p></p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="46">
+      <blockquote>
+        <p><b>Label</b></p>
+      </blockquote>
+    </td>
+  <td height="46"> 
+      <p>is where you enter the Label of a function before clicking <b>Add</b> or <b>Update</b> 
+        commands. <a href="userfunctionlabel.html">Labels</a> should be unique and 
+      should differ from the labels of standard/existing <a href="specialpoint.html">special 
+        points</a>. <br>
+&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" height="34">
+      <blockquote>
+        <p><b>Name</b></p>
+      </blockquote>
+    </td>
+  <td height="34"> 
+      <p>is where you enter the name of a function before an <b>Add</b> command. 
+        Names must be unique.<br>
+&nbsp;</p>
+    </td>
+ </tr>
+ <tr> 
+    <td valign="top" height="79"> <b>Editor area</b></td>
+ <td height="79"> 
+      <p>is in the middle part of the dialog box. You use it to enter or modify 
+        the body of the selected or new user function. The text may use all features 
+        of the Matlab language allowed in a function body. Name of state variables 
+        and parameters of the system are also allowed. The result of the function must be assigned 
+        to the variable <b>res</b>. The command must end by ';' otherwise this 
+        function will generate output during continuation runs.<br>
+&nbsp;</p>
+    </td>
+ </tr>
+ <tr>
+    <td valign="top" height="9"><b>Terminal buttons</b></td>
+ <td height="9">
+      </td>
+ </tr>
+ <tr>
+    <td valign="top" height="15">
+      <blockquote>
+        <p><b>OK</b></p>
+      </blockquote>
+    </td>
+ <td height="15"> 
+      <p>saves all user functions. This command closes the dialog box.<br>
+&nbsp;</p>
+    </td>
+ </tr><tr>
+    <td valign="top" height="43">
+      <blockquote>
+        <p><b>Cancel</b></p>
+      </blockquote>
+    </td>
+    <td height="43"> 
+      <p>closes the dialog box and cancels all modifications you have made since 
+        the moment the box was displayed. <br>
+&nbsp;</p>
+		</td>
+		</tr>
+      
+  </table>
+<p>&nbsp;</p>
+</body>
+</html>

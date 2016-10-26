@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Software requirements</TITLE>
+<META NAME="description" CONTENT="Software requirements">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node5.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+
+<B> Next:</B> <A NAME="tex2html209"
+  HREF="node5.html">Availability</A>
+<B> Up:</B> <A NAME="tex2html205"
+  HREF="node2.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html199"
+  HREF="node3.html">Features</A>
+ &nbsp <B>  <A NAME="tex2html207"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00022000000000000000">
+Software requirements</A>
+</H2>
+<p>The Continuation Toolbox requires  matlab 6.5 or higher to be installed on your 
+computer. No special  matlab packages or toolboxes are necessary. </p>
+
+<div class="p"><!----></div>
+<p>To improve performance in  MatCont and  CL_MatCont, there is C-code included, which will be compiled by  matlab at the start-up of the package. If this is the first time  matlab needs to compile C-code, it will ask the user which compiler het intends to use for this.
+The message might look somewhat like the following: </p>
+
+<pre>Select&nbsp;a&nbsp;compiler:&nbsp;
+[1]&nbsp;Lcc&nbsp;C&nbsp;version&nbsp;2.4.1&nbsp;in&nbsp;C:\PROGRAM&nbsp;FILES\MATLAB\R2006A\sys\lcc&nbsp;
+[2]&nbsp;Microsoft&nbsp;Visual&nbsp;C/C++&nbsp;version&nbsp;7.1&nbsp;in&nbsp;c:\Program&nbsp;Files\Microsoft...
+[3]&nbsp;Microsoft&nbsp;Visual&nbsp;C/C++&nbsp;version&nbsp;6.0&nbsp;in&nbsp;C:\Program&nbsp;Files\Microsoft...
+&nbsp;
+[0]&nbsp;None&nbsp;
+
+Compiler:&nbsp;
+
+</pre>
+<p>It is recommended to use the </p>
+<pre>Lcc&nbsp;C
+</pre>
+<p>-compiler. This is the built-in compiler in  matlab, and it is with this compiler that the software is tested. So e.g. in this case, type 1 and enter. Confirmation will be asked, and after that another message may appear, which should be disregarded.
+</p>
+
+<div class="p"><!----></div>
+<p>Should you want to change the compiler that is used by   matlab, then type
+</p>
+<pre>mex&nbsp;-setup
+</pre> 
+<p>at the command-line, and the same options will be given again. </p>
+<HR>
+</BODY>
+</HTML>

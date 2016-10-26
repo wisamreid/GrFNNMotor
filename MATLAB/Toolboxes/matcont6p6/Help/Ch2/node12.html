@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Stepsize control</TITLE>
+<META NAME="description" CONTENT="Stepsize control">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="node7.html">
+<LINK REL="next" HREF="../Ch3/node13.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;} span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html306"
+  HREF="../Ch3/node13.html">Singularities</A>
+<B> Up:</B> <A NAME="tex2html302"
+  HREF="node7.html">Numerical continuation</A>
+<B> Previous:</B> <A NAME="tex2html298"
+  HREF="node11.html">Moore-Penrose continuation</A>
+ &nbsp <B>  <A NAME="tex2html304"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00033000000000000000"></A><A NAME="s:stepsize"></A>
+<BR>
+Stepsize control
+</H2>
+
+<p>Stepsize control is an important issue in these algorithms. Too small 
+stepsizes lead to unnecessary work being done, while too big stepsizes can lead 
+to losing details of the curve. An easily implementable and proven to be reliable method is 
+convergence-dependent control. </p>
+
+<div class="p"><!----></div>
+<p>Consider the computation of a next point using step size h<sub>i</sub>. If the computation converged, 
+let n denote the number of Newton iterations needed. Then the new step size h<sub>i+1</sub> 
+will be selected as follows:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+h<sub>i+1</sub> = </td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />í<br />
+ï<br />î
+</font>  </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+h<sub>i</sub>&#183;h<sub>dec</sub> </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<span class="roman">if</span> <span class="roman">not</span> <span class="roman">converged</span> </td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+h<sub>i</sub>&#183;h<sub>inc</sub> </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<span class="roman">if</span> <span class="roman">converged</span> <span class="roman">and</span>  n  &lt;  n<sub>thr</sub> </td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+h<sub>i</sub> </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<span class="roman">otherwise</span> </td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table>
+</td><td width="1%">(22)</td></tr></table>
+
+
+<p>where h<sub>dec</sub> &lt; 1, h<sub>inc</sub> &gt; 1 and n<sub>thr</sub> are constants which are experimentally determined.
+</p>
+
+<P>
+
+<BR><HR>
+</BODY>
+</HTML>

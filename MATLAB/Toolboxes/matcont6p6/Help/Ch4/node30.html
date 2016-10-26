@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Workspace</TITLE>
+<META NAME="description" CONTENT="Workspace">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node31.html">
+<LINK REL="previous" HREF="node29.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node31.html">
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html553"
+  HREF="node31.html">Adaptation</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html543"
+  HREF="node29.html">Special processors</A>
+ &nbsp <B>  <A NAME="tex2html551"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION000521000000000000000">
+Workspace</A>
+</H3>
+<p>During the computation of a curve it is sometimes necessary to 
+introduce variables and do additional computations that are common to all points of the
+curve. The continuer has stored the handle to the initialization and cleaning of the workspace in the variables <tt>cds.curve_init</tt> and <tt>cds.curve_done</tt>.
+These can be relegated to a call of the type </p>
+
+<pre>feval(cds.curve_init,x,v).
+
+</pre>
+<p>This option has to be provided only
+if the variable <tt>WorkSpace</tt> in <tt>cds.options</tt> is switched on. In this case a call
+</p>
+
+<pre>feval(cds.curve_done,x,v)
+
+</pre>
+<p>must clear the workspace. Variables in the workspace must be set global. </p>
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

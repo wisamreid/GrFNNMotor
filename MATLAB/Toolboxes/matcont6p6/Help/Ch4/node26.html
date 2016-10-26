@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Locators</TITLE>
+<META NAME="description" CONTENT="Locators">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node27.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html505"
+  HREF="node27.html">User functions</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html495"
+  HREF="node25.html">Singularities and test functions</A>
+ &nbsp <B>  <A NAME="tex2html503"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00052600000000000000">
+Locators</A>
+</H3>
+It may be useful to have a specific locator code for locating certain singularities (section <a href="../Ch3/node17.html#s:locator">3.4</a>). To use a specific locator you must set the option <em>Locators</em>. This is a vector in which the index of an element corresponds to the index of a singularity. Setting the entry to 1 means the presence of a user-defined locator.
+The continuer has stored the handles to the locators in the variable <tt>cds.curve_locator</tt> and will then make a call to <tt>[x,v]=feval(cds.curve_locate,i,x1,v1,x2,v2)</tt> to locate singularity i which was detected between <tt>x1</tt> and <tt>x2</tt> with their corresponding tangent vectors <tt>v1</tt> and <tt>v2</tt>. It must return the located point and the tangent vector at that point. If the locator was unable to find a point it should return <tt>x = []</tt>.
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

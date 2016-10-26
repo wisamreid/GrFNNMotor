@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bifurcations</TITLE>
+<META NAME="description" CONTENT="Bifurcations">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node54.html">
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="up" HREF="node51.html">
+<LINK REL="next" HREF="node54.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html873"
+  HREF="node55.html">Adaptation</A>
+<B> Up:</B> <A NAME="tex2html869"
+  HREF="node51.html">Fold Continuation</A>
+<B> Previous:</B> <A NAME="tex2html851"
+  HREF="node52.html">Mathematical definition</A>
+ &nbsp&nbsp; <B>  <A NAME="tex2html693"
+  HREF="../node1.html">Contents</A></B><BR>
+<BR>
+<H3><A NAME="SECTION000101200000000000000">
+Bifurcations</A>
+</H3>
+<p>In continuous-time systems there are four generic codim 2 bifurcations that can be detected along
+the fold curve: </p>
+
+<ul>
+<li> <em>Bogdanov - Takens</em>. We will denote this bifurcation by <tt>BT</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Zero - Hopf</em> point, denoted by <tt>ZH</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Cusp</em> point, denoted by <tt>CP</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Branch</em> point, denoted by <tt>BP</tt>
+<div class="p"><!----></div>
+</li>
+</ul>
+<p>To detect these singularities, we first define bp+3 test functions, where bp is the number of branch parameters:
+</p>
+
+<ul>
+<li><font face="symbol">f</font
+><sub>1</sub>=w<sup>T</sup>v&nbsp;
+<div class="p"><!----></div>
+</li>
+
+<li>
+<font face="symbol">f</font
+><sub>2</sub>=det(2f<sub>u</sub>\odot I<sub>n</sub>)
+<div class="p"><!----></div>
+</li>
+
+<li>
+<font face="symbol">f</font
+><sub>3</sub>=w<sup>T</sup>f<sub>uu</sub>[v,v]
+<div class="p"><!----></div>
+</li>
+
+<li>
+<font face="symbol">f</font
+><sub>i</sub>=w<sup>T</sup>f<sub><font face="symbol">b</font
+><sub>i</sub></sub>(u,<font face="symbol">a</font
+>)
+<div class="p"><!----></div>
+</li>
+</ul>
+<p>In these expressions v,w are the vectors computed in (<a href="node52.html#fe2">59</a>) and(<a href="node52.html#fe3">60</a>) respectively, and 
+<font face="symbol">b</font
+><sub>i</sub> (branch parameters) are components of <font face="symbol">a</font
+>.
+The singularity matrix for bp=0 is:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+S = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />ç<br />
+ç<br />è
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />÷<br />
+÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(61)</td></tr></table>
+
+
+  <p>The number of branch parameters is not fixed. If the number of branch parameters is 2 then this matrix has two more rows and columns. This singularity matrix is automatically extended:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+S = </td><td align="left" class="cl"><font face="symbol">
+æ<br />ç<br />ç<br />ç<br />
+ç<br />ç<br />ç<br />è
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+1 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0 </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+> </td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+0</td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ö<br />÷<br />÷<br />÷<br />
+÷<br />÷<br />÷<br />ø
+</font></td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td></tr></table>
+
+ 
+
+      <BR CLEAR="ALL">
+<P></P>
+<BR><HR>
+</BODY>
+</HTML>

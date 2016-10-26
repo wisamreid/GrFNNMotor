@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Features</TITLE>
+<META NAME="description" CONTENT="Features">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node4.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+
+<B> Next:</B> <A NAME="tex2html197"
+  HREF="node4.html">Software requirements</A>
+<B> Up:</B> <A NAME="tex2html193"
+  HREF="node2.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html187"
+  HREF="node2.html">Introduction</A>
+ &nbsp <B>  <A NAME="tex2html195"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00021000000000000000">
+Features</A>
+</H2>
+A discussion of features of continuation packages can be found in [<A
+ HREF="../node89.html#aspects">16</A>]. This 
+toolbox is developed with the following targets in mind:
+
+<p>Upon the development of  MatCont and  CL_MatCont, there were multiple objectives:
+</p>
+
+<ul>
+<li> Cover as many bifurcations in ODEs as possible (e.g. now all bifurcations with two control parameters are covered).
+<div class="p"><!----></div>
+</li>
+
+<li> Allow easier data exchange between programs and with   matlab's standard ODE solvers.
+<div class="p"><!----></div>
+</li>
+
+<li> Implement robust and efficient numerical methods for all computations, using minimally extended systems where possible.
+<div class="p"><!----></div>
+</li>
+
+<li> Represent results in a form suitable for standard control, identification, and visualization.
+<div class="p"><!----></div>
+</li>
+
+<li> Allow for easy extendibility.
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+<p>A general comparison of the available features during computations for ODEs currently supported by the most widely used
+software packages  auto97/2000 [<A
+ HREF="../node89.html">6</A>],
+ content 1.5 [<A
+ HREF="../node89.html">11</A>] and MatCont/ CL_MatCont are indicated in Table . </p>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_tAb1">
+</a>  <center>
+<p>Table 1: Supported functionalities for ODEs in  <font size="-2">AUTO</font>&nbsp;(<font size="-2">A</font>),  <font size="-2">CONTENT</font>&nbsp;(<font size="-2">C</font>) and
+ M<font size="-2">AT</font>C<font size="-2">ONT</font>&nbsp;(<font size="-2">M</font>).</p>
+</center>
+
+<center> 
+
+<table border="2" width="716" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0"><tr>
+  <td width="540"></td></tr>
+<tr><td width="540"></td><td align="center" width="51"> <b>a </b> </td>
+  <td align="center" width="48"> <b>c </b> </td><td align="center" width="49"> 
+  <b>m </b> </td></tr><tr><td width="540"></td></tr>
+<tr><td width="540"> time-integration </td><td align="center" width="51"></td>
+  <td align="center" width="48">+ </td><td align="center" width="49">+ </td></tr>
+<tr><td width="540"> Poincar&#233; maps </td><td align="center" width="51"></td>
+  <td align="center" width="48"></td><td align="center" width="49">+ </td></tr>
+<tr><td width="540"> monitoring user functions along curves computed by continuation </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of equilibria </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> detection of branch points and codim 1 bifurcations (limit 
+  and Hopf points) of equilibria </td><td align="center" width="51">+ </td>
+  <td align="center" width="48">+ </td><td align="center" width="49">+ </td></tr>
+<tr><td width="540"> computation of normal forms for codim 1 bifurcations of equilibria </td>
+  <td align="center" width="51"></td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of codim 1 bifurcations of equilibria </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> detection of codim 2 equilibrium bifurcations (cusp, Bogdanov-Takens,
+fold-Hopf, generalized and double Hopf) </td><td align="center" width="51"></td>
+  <td align="center" width="48">+ </td><td align="center" width="49">+ </td></tr>
+<tr><td width="540"> computation of normal forms for codim 2 bifurcations of equilibria </td>
+  <td align="center" width="51"></td><td align="center" width="48">  </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of codim 2 equilibrium bifurcations in three parameters </td>
+  <td align="center" width="51"></td><td align="center" width="48">+ </td>
+  <td align="center" width="49"> </td></tr>
+<tr><td width="540"> continuation of limit cycles </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> computation of phase response curves and their derivatives </td>
+  <td align="center" width="51"></td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> detection of branch points and codim 1 bifurcations (limit points, flip and Neimark-Sacker (torus)) of cycles </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of codim 1 bifurcations of cycles </td>
+  <td align="center" width="51">+ </td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> branch switching at equilibrium and cycle bifurcations </td>
+  <td align="center" width="51">+ </td><td align="center" width="48">+ </td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of branch points of equilibria and cycles </td>
+  <td align="center" width="51"></td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> computation of normal forms for codim 1 bifurcations of cycles </td>
+  <td align="center" width="51"></td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> detection of codim 2 bifurcations of cycles </td>
+  <td align="center" width="51"></td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr>
+<tr><td width="540"> continuation of orbits homoclinic to equilibria </td>
+  <td align="center" width="51">+ </td><td align="center" width="48"></td>
+  <td align="center" width="49">+ </td></tr><tr><td width="540"></td></tr></table>
+
+</center> 
+<a name="Tab:features">
+</a>
+
+<div class="p"><!----></div>
+ <p>Relationships between objects of codimension 0, 1 and 2 computed by  MatCont and   CL_MatCont 
+are presented in Figures <a href="#bifdiagram">1</a>  and 
+<a href="#bifdiagramhom">2</a>, while the
+symbols and their meaning are summarized in Tables 2  and 3, where the standard terminology is used, see [<A
+ HREF="../node89.html">10</A>]. </p>
+
+ <p>&nbsp;</p>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg1">
+</a> 
+<center>
+<p><img border="0" src="diagloc.jpg" width="944" height="471"></p>
+</center>
+
+<center>
+<p>Figure 1: <a name="bifdiagram">
+</a> The graph of adjacency for equilibrium and limit cycle bifurcations
+in  MatCont</p>
+<p>&nbsp;</p>
+<p><img border="0" src="diaghom.jpg" width="541" height="343"></p>
+</center>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg2">
+</a> 
+
+<center>
+<p>Figure 2: <a name="bifdiagramhom">
+</a> The graph of adjacency for homoclinic bifurcations
+in  MatCont; here  * stands for   S or  U.</p>
+</center>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_tAb2">
+</a> 
+<div align="center">
+  <center> 
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+<tr><td align="center"><b>Type of object </b> </td><td align="center"><b>Label
+  </b> </td></tr>
+<tr><td align="center">Point </td><td align="center"> P</td></tr>
+<tr><td align="center">Orbit </td><td align="center"> O</td></tr>
+<tr><td align="center">Equilibrium </td><td align="center"> EP</td></tr>
+<tr><td align="center">Limit cycle </td><td align="center"> LC</td></tr>
+<tr><td align="center">Limit Point (fold) bifurcation</td><td align="center"> LP</td></tr>
+<tr><td align="center">Hopf bifurcation </td><td align="center"> H</td></tr>
+<tr><td align="center">Limit Point bifurcation of cycles </td><td align="center"> LPC</td></tr>
+<tr><td align="center">Neimark-Sacker (torus) bifurcation </td><td align="center"> NS</td></tr>
+<tr><td align="center">Period Doubling (flip) bifurcation </td><td align="center"> PD</td></tr>
+<tr><td align="center">Branch Point </td><td align="center"> BP</td></tr>
+<tr><td align="center">Cusp bifurcation </td><td align="center"> CP</td></tr>
+<tr><td align="center">Bogdanov-Takens bifurcation </td><td align="center"> BT</td></tr>
+<tr><td align="center">Zero-Hopf bifurcation </td><td align="center"> ZH</td></tr>
+<tr><td align="center">Double Hopf bifurcation </td><td align="center"> HH</td></tr>
+<tr><td align="center">Generalized Hopf (Bautin) bifurcation </td><td align="center"> GH</td></tr>
+<tr><td align="center">Branch Point of Cycles </td><td align="center"> BPC</td></tr>
+<tr><td align="center">Cusp bifurcation of Cycles </td><td align="center">CPC</td></tr>
+<tr><td align="center">1:1 Resonance </td><td align="center"> R1</td></tr>
+<tr><td align="center">1:2 Resonance </td><td align="center"> R2</td></tr>
+<tr><td align="center">1:3 Resonance </td><td align="center"> R3</td></tr>
+<tr><td align="center">1:4 Resonance </td><td align="center"> R4</td></tr>
+<tr><td align="center">Chenciner (generalized Neimark-Sacker) bifurcation </td><td align="center"> CH</td></tr>
+<tr><td align="center">Fold-Neimark-Sacker bifurcation </td><td align="center"> LPNS</td></tr>
+<tr><td align="center">Flip-Neimark-Sacker bifurcation </td><td align="center"> PDNS</td></tr>
+<tr><td align="center">Fold-flip </td><td align="center"> LPPD</td></tr>
+<tr><td align="center">Double Neimark-Sacker </td><td align="center"> NSNS</td></tr>
+<tr><td align="center">Generalized Period Doubling </td><td align="center"> GPD</td></tr></table>
+
+
+  </center>
+</div>
+
+
+<center>
+<p>Table 2: <a name="Labels">
+</a>Equilibrium- and cycle-related objects and their labels within the GUI</p>
+</center>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_tAb3">
+</a> 
+<div align="center">
+  <center> 
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+<tr><td align="center"><b>Type of object </b> </td><td align="center"><b>Label
+  </b> </td></tr>
+<tr><td align="center">Limit cycle </td><td align="center"> LC</td></tr>
+<tr><td align="center">Homoclinic to Hyperbolic Saddle </td><td align="center"> HHS</td></tr>
+<tr><td align="center">Homoclinic to Saddle-Node </td><td align="center"> HSN</td></tr>
+<tr><td align="center">Neutral saddle </td><td align="center"> NSS</td></tr>
+<tr><td align="center">Neutral saddle-focus </td><td align="center"> NSF</td></tr>
+<tr><td align="center">Neutral Bi-Focus </td><td align="center"> NFF</td></tr>
+<tr><td align="center">Shilnikov-Hopf </td><td align="center"> SH</td></tr>
+<tr><td align="center">Double Real Stable leading eigenvalue </td><td align="center"> DRS</td></tr>
+<tr><td align="center">Double Real Unstable leading eigenvalue </td><td align="center"> DRU</td></tr>
+<tr><td align="center">Neutrally-Divergent saddle-focus (Stable) </td><td align="center"> NDS</td></tr>
+<tr><td align="center">Neutrally-Divergent saddle-focus (Unstable) </td><td align="center"> NDU</td></tr>
+<tr><td align="center">Three Leading eigenvalues (Stable) </td><td align="center"> TLS</td></tr>
+<tr><td align="center">Three Leading eigenvalues (Unstable) </td><td align="center"> TLU</td></tr>
+<tr><td align="center">Orbit-Flip with respect to the Stable manifold </td><td align="center"> OFS</td></tr>
+<tr><td align="center">Orbit-Flip with respect to the Unstable manifold </td><td align="center"> OFU</td></tr>
+<tr><td align="center">Inclination-Flip with respect to the Stable manifold </td><td align="center"> IFS</td></tr>
+<tr><td align="center">Inclination-Flip with respect to the Unstable manifold </td><td align="center"> IFU</td></tr>
+<tr><td align="center">Non-Central Homoclinic to saddle-node </td><td align="center"> NCH</td></tr></table>
+
+
+  </center>
+</div>
+
+
+<center>
+<p>Table 3: <a name="Labelshom">
+</a> Objects related to homoclinics to equilibria and their  
+labels within the GUI</p>
+</center>
+
+<div class="p"><!----></div>
+<p>An arrow in Figure <a href="#bifdiagram">1</a> from O to  EP or  LC means that by starting time 
+integration from a given point we can converge to a stable equilibrium or a stable limit cycle, 
+respectively. In general, an arrow from an object of type  A to an object of type 
+means that that object of type  B  can be detected (either automatically or by inspecting
+the output) during the computation of a curve 
+of objects of type  A. For example, the arrows from  EP to  H,  LP, and 
+ BP mean that we 
+can detect  H,  LP and  BP during the equilibrium continuation. 
+Moreover, for each arrow
+traced in the reversed direction, i.e. from  B to  A, there is a possibility
+to start the computation of the solution of type  A starting from a given object  B.
+For example, starting from a  BT point, one can initialize the continuation of both
+ LP and  H curves. Of course, each object of codim 0 and 1 can be continued in one or two
+system parameters, respectively. </p>
+
+<div class="p"><!----></div>
+<p>The same interpretation applies to the arrows in Figure
+<a href="#bifdiagramhom">2</a>, where * stands for either  S or  U, depending on 
+whether a stable or an unstable invariant manifold is involved. </p>
+
+<div class="p"><!----></div>
+<p>In principle, the graphs presented in Figures <a href="#bifdiagram">1</a> and <a href="#bifdiagramhom">2</a>
+are connected. Indeed, it is known that curves of codim 1 homoclinic bifurcations emanate from the  BT,  ZH, and 
+ HH codim 2 points. The current version of  MatCont fully supports, however, 
+only one such connection:  BT <font face="symbol">®</font
+>  HHS. </p>
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

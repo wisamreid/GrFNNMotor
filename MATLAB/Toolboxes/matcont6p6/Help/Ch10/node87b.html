@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mathematical definition</TITLE>
+<META NAME="description" CONTENT="Mathematical definition">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node81.html">
+<LINK REL="previous" HREF="node79.html">
+<LINK REL="up" HREF="node79.html">
+<LINK REL="next" HREF="node81.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;} td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html1190"
+  HREF="node87c.html">Bifurcations</A>
+<B> Up:</B> <A NAME="tex2html165"
+  HREF="node87a.html">Continuation of homoclinic orbits</A>
+<B> Previous:</B> <A NAME="tex2html165"
+  HREF="node87a.html">Continuation of homoclinic orbits</A>
+ &nbsp <B>  <A NAME="tex2html693"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION000111100000000000000">
+Mathematical definition</A>
+</H3>
+<p>In dynamical systems theory, an orbit corresponding to a solution u(t) is 
+called homoclinic to the equilibrium point u<sup>0</sup> of the dynamical system if u(t) <font face="symbol">®</font
+> u<sup>0</sup> as t <font face="symbol">®</font
+> <font face="symbol">±¥</font
+>.
+There are two types of homoclinic orbits with codimension 1, namely 
+homoclinic-to-hyperbolic-saddle ( HHS), if u<sup>0</sup> is a saddle (saddle-focus or bi-focus), and 
+homoclinic-to-saddle-node ( HSN), if u<sup>0</sup> is a saddle-node (i.e., exhibits a limit point
+bifurcation). We recall that
+ auto has a toolbox for homoclinic continuation, named  HomCont [<a href="../node89.html#Champneys1">22</a>], [<a href="../node89.html#Champneys2">23</a>]. </p>
+
+<div class="p"><!----></div>
+<p>During the continuation, it is necessary to keep track of several eigenspaces 
+of the equilibrium in each step. To do this in an efficient way,  MatCont 
+incorporates the continuation of invariant subspaces [<a href="../node89.html#Demmel">24</a>]
+into the defining system. For some details on the implementation of the homoclinic 
+continuation we refer to [<a href="../node89.html#Doedel">25</a>]. </p>
+
+<div class="p"><!----></div>
+      <h4><a name="tth_sEc12.1.1">
+12.1.1</a>&nbsp;&nbsp;Homoclinic-to-Hyperbolic-Saddle Orbits</h4>
+<p>To continue HHS orbits in two free parameters, we use an extended defining system
+that consists of several parts.<br />
+<br />
+First, the infinite time interval is truncated, so that instead of [<font face="symbol">-¥</font
+>,+<font face="symbol">¥</font
+>] 
+we use [<font face="symbol">-</font
+>T,+T], which is scaled to [0,1] and divided into mesh-intervals. 
+The mesh is nonuniform and adaptive. Each mesh interval is further subdivided by 
+equidistant fine mesh points. Also, each mesh interval contains a number of collocation 
+points. (This discretization is the same as that in  auto for boundary value problems.) 
+The equation
+<a name="Homoclinic">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">x<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+(t) <font face="symbol">-</font
+> 2 T f(x(t),<font face="symbol">a</font
+>) = 0,</td></tr></table>
+</td><td width="1%">(90)</td></tr></table>
+
+
+  <p>must be satisfied in each collocation point.<br />
+<br />
+The second part is the equilibrium condition
+<a name="Equilibrium">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ f(x<sub>0</sub>,<font face="symbol">a</font
+>) = 0.</td></tr></table>
+</td><td width="1%">(91)</td></tr></table>
+
+
+<p>Third, there is a so-called phase condition needed for the homoclinic solution, similar to 
+periodic solutions
+<a name="Phase">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td align="left" class="cl"><font face="symbol">
+ó<br />õ
+</font></td><td nowrap="nowrap" align="center">
+<small>1</small><!--sup
+--><br /><br />
+<small>0</small>&nbsp;<br /></td><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<div class="comp">~<br /></div>
+<div class="norm">x<br /></div>                                </td></tr></table></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+<small>*</small><!--sup
+--><br /><br />
+&nbsp;<br /></td><td nowrap="nowrap" align="center">
+(t)[x(t) <font face="symbol">-</font
+></td><td nowrap="nowrap" align="center">
+<div class="comp">~<br /></div>
+<div class="norm">x<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+(t)]dt = 0.</td></tr></table>
+</td><td width="1%">(92)</td></tr></table>
+
+
+<p>Here [x\tilde](t) is some initial guess for the solution, 
+typically obtained from the previous continuation step.
+We note that in the literature another phase condition
+is also used, see, for example [<a href="../node89.html#Friedman">26</a>]. However, in the present implementation we employ 
+the condition (<a href="#Phase">92</a>).<br />
+<br />
+Fourth, there are the homoclinic-specific constraints to the solution. 
+For these we need access to the stable and unstable eigenspaces of the system in the 
+equilibrium point after each step. It is not efficient to recompute the spaces from 
+scratch in each continuation-step. Instead, we use the algorithm for continuing 
+invariant subspaces, as described in [<a href="../node89.html#Demmel">24</a>]. This method adds two small-sized 
+vectors (Y<sub>S</sub> and Y<sub>U</sub>) to the system variables, from which the necessary eigenspaces 
+(stable and unstable, respectively) can easily be computed in each step.<br />
+<br />
+If Q(0) is an orthogonal matrix whose first m columns form a basis for the invariant 
+subspace under consideration in the previous step, and A=f<sub>x</sub>(x<sub>0</sub>,<font face="symbol">a</font
+>) is the Jacobian 
+at the new 
+equilibrium point, then we first compute the so-called Ricatti-blocks, T<sub>ij</sub>, by the formula
+<a name="Ricattiblocks">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />
+ê<br />ë
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+T<sub>11</sub>&nbsp;&nbsp;T<sub>12</sub></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+T<sub>21</sub>&nbsp;&nbsp;T<sub>22</sub></td></tr></table></td></tr></table>
+</td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+=&nbsp;Q(0)<sup>T</sup>&nbsp;A&nbsp;Q(0).</td></tr></table>
+</td><td width="1%">(93)</td></tr></table>
+
+
+  <p>If n is the number of state variables, then T<sub>11</sub> is of size m &times;m and T<sub>22</sub> 
+is (n<font face="symbol">-</font
+>m) &times;(n<font face="symbol">-</font
+>m). This is done for the stable and unstable eigenspaces separately. 
+Now Y<sub>S</sub> and Y<sub>U</sub> are obtained from the Ricatti equations
+<a name="Ricatti">
+</a>
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+T<sub>22U</sub> Y<sub>U</sub>&nbsp;<font face="symbol">-</font
+>&nbsp;Y<sub>U</sub> T<sub>11U</sub>&nbsp;+&nbsp;T<sub>21U</sub>&nbsp;<font face="symbol">-</font
+>&nbsp;Y<sub>U</sub> T<sub>12U</sub> Y<sub>U</sub>&nbsp; = &nbsp;0,</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+T<sub>22S</sub>&nbsp;Y<sub>S</sub>&nbsp;<font face="symbol">-</font
+>&nbsp;Y<sub>S</sub>&nbsp;T<sub>11S</sub>&nbsp;+&nbsp;T<sub>21S</sub>&nbsp;<font face="symbol">-</font
+>&nbsp;Y<sub>S</sub> &nbsp;T<sub>12S</sub>&nbsp;Y<sub>S</sub>&nbsp; = &nbsp;0.</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(94)</td></tr></table>
+
+
+  <p>Now we can formulate constraints on the behavior of the solution close to the 
+equilibrium x<sub>0</sub>. The initial vector of the orbit, (x(0) <font face="symbol">-</font
+> x<sub>0</sub>), is placed in the unstable 
+eigenspace of the system in the equilibrium. We express that by the requirement that it is 
+orthogonal to the orthogonal complement of the unstable eigenspace. Using Y<sub>U</sub>, we can 
+compute the orthogonal complement of the unstable eigenspace. If Q<sub>U</sub>(0) is the
+orthogonal matrix from the previous step, related to the unstable invariant subspace, 
+then a basis for the orthogonal complement in the new step Q<sub>U</sub><sup><font face="symbol">^</font
+></sup>(s) is
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+Q<sub>U</sub><sup><font face="symbol">^</font
+></sup>(s) = Q<sub>U</sub>(0) </td><td align="left" class="cl"><font face="symbol">
+é<br />ê<br />
+ê<br />ë
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+>Y<sub>U</sub><sup>T</sup></td></tr></table></td></tr>
+<tr><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+I </td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td><td align="left" class="cl"><font face="symbol">
+ù<br />ú<br />
+ú<br />û
+</font></td><td nowrap="nowrap" align="center">
+.</td></tr></table>
+</td></tr></table>
+
+
+  <p>Note that Q<sub>U</sub><sup><font face="symbol">^</font
+></sup>(s) is not orthogonal. The full orthogonal matrix Q<sub>1U</sub> needed for the 
+next step, is computed separately after each step. The equations to be added 
+to the system are (after analogous preparatory computations for the stable eigenspace)
+<a name="Project">
+</a>
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+Q<sub>U</sub><sup><font face="symbol">^</font
+></sup>(s)<sup>T</sup>(x(0) <font face="symbol">-</font
+> x<sub>0</sub>) = 0,</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+Q<sub>S</sub><sup><font face="symbol">^</font
+></sup>(s)<sup>T</sup>(x(1) <font face="symbol">-</font
+> x<sub>0</sub>) = 0.</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(95)</td></tr></table>
+
+
+  <p>Finally, the distances between x(0) (resp., x(1)) and x<sub>0</sub> must be small enough,
+so that
+<a name="Dist">
+</a>
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">||</font
+> x(0) <font face="symbol">-</font
+> x<sub>0</sub> <font face="symbol">||</font
+> <font face="symbol">-</font
+> <font face="symbol">e</font
+><sub>0</sub> = 0,</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">||</font
+> x(1) <font face="symbol">-</font
+> x<sub>0</sub> <font face="symbol">||</font
+> <font face="symbol">-</font
+> <font face="symbol">e</font
+><sub>1</sub> = 0.</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(96)</td></tr></table>
+
+
+  <p>A system consisting of all equations (<a href="#Homoclinic">90</a>), (<a href="#Equilibrium">91</a>), 
+(<a href="#Phase">92</a>), (<a href="#Ricatti">94</a>), (<a href="#Project">95</a>) and (<a href="#Dist">96</a>), is overdetermined.
+The basic defining system for the continuation of a HHS orbit in two free parameters
+consists of (<a href="#Homoclinic">90</a>), (<a href="#Equilibrium">91</a>), (<a href="#Ricatti">94</a>), (<a href="#Project">95</a>), and 
+(<a href="#Dist">96</a>) with fixed <font face="symbol">e</font
+><sub>0,1</sub>, so that the phase condition (<a href="#Phase">92</a>) is 
+not used. The variables in this system are stored in one vector. It contains 
+the values of x(t) in the fine mesh points including x(0) and x(1), 
+the truncation time T, two free system parameters, the coordinates 
+of the saddle x<sub>0</sub>, and the elements of the matrices Y<sub>S</sub> and Y<sub>U</sub>.
+Alternatively, the phase condition (<a href="#Phase">92</a>) can be added if T is kept fixed
+but <font face="symbol">e</font
+><sub>0</sub> and <font face="symbol">e</font
+><sub>1</sub> are allowed to vary.
+It is also possible to fix T and <font face="symbol">e</font
+><sub>0</sub>, say, and allow <font face="symbol">e</font
+><sub>1</sub> to vary, 
+again with no phase condition. Other combinations are also possible, in particular, when
+the homotopy method [<a href="../node89.html#Demmel">24</a>] is used to compute a starting homoclinic solution. </p>
+
+      <h4><a name="tth_sEc12.1.2">
+12.1.2</a>&nbsp;&nbsp;Homoclinic-to-Saddle-Node Orbits</h4>
+  <p>For a homoclinic orbit to a saddle-node equilibrium, the extended defining system undergoes some 
+small changes. Now (x(0) <font face="symbol">-</font
+> x<sub>0</sub>) has to be placed in the center-unstable subspace. Analogously, 
+(x(1) <font face="symbol">-</font
+> x<sub>0</sub>) must be in the center-stable subspace.
+This again is implemented by requiring that the vector is orthogonal to the orthogonal 
+complement of the corresponding space. So the equations (<a href="#Project">95</a>) themselves do not really 
+change; the changes happen in the computation of the matrices Q.
+The defining system now has one equation less than in the HHS case (n<sub>s</sub> + n<sub>u</sub>  &lt;  n, with n<sub>s</sub> 
+the dimension of the stable, and n<sub>u</sub> of the unstable eigenspace);
+the number of equations is restored however, by adding the constraint that the equilibrium 
+must be a saddle-node. For this we use the bordering technique, as described in section 4.2.1 
+of [<a href="../node89.html#Govaerts">27</a>].</p>
+  <p>
+<BR></p>
+  <HR>
+</BODY>
+</HTML>

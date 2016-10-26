@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Structure</TITLE>
+<META NAME="description" CONTENT="Structure">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node35.html">
+<LINK REL="previous" HREF="node33.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node35.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html599"
+  HREF="node35.html">Directories</A>
+<B> Up:</B> <A NAME="tex2html595"
+  HREF="node18.html">Software</A>
+<B> Previous:</B> <A NAME="tex2html589"
+  HREF="node33.html">Error handling</A>
+ &nbsp <B>  <A NAME="tex2html597"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00054000000000000000"></A>
+<A NAME="s:structure"></A>
+<BR>
+Structure
+</H2>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:layers"></A><A NAME="1511"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1:</STRONG>
+Structure of continuation process</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="545" HEIGHT="409" ALIGN="BOTTOM" BORDER="0"
+ SRC="img121.gif"
+ ALT="\begin{picture}(0,0)%
+\includegraphics{cmlayer.pstex}%
+\end{picture}">
+<BR>
+        </DIV>
+      </TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<p>At this point we have discussed several components and options of a continuation process.
+In Figure <a href="#fig:layers">1</a> the complete structure is visualized. The arrows show 
+the flow of information between the objects. As one can see, two extra 
+components are included: the <em>curve initializer</em> and some external ODE file.
+</p>
+
+<div class="p"><!----></div>
+<p>More complicated curve definitions may have the need to be initialized. 
+Since the continuer is called only with the start point x<sub>0</sub> there must be some way 
+to initialize other parameters. Calling an initializer from a GUI or command prompt 
+solves this problem. </p>
+
+<div class="p"><!----></div>
+<p>The standard MATLAB <tt>odeget</tt> and <tt>odeset</tt> only support Jacobian matrices coded in the ode-file. However, we do need the 
+derivatives with respect to the parameters.
+It is also useful to have higher-order symbolic derivatives available. </p>
+
+<div class="p"><!----></div>
+<p>To overcome this problem, the package contains new versions of <tt>odeget</tt> 
+and <tt>odeset</tt> which support Jacobians with respect to parameters and higher-order 
+derivatives. The new routines are compatible with the ones provided by MATLAB.
+</p>
+
+<div class="p"><!----></div>
+<p>To include the Jacobian with respect to parameters, the option <em>JacobianP</em> should contain the handle of the subfunction jacobianp <em>@jacobianp</em>. A call to <tt>feval(@jacobianp, 0, x, p1, p2, ...)</tt> should then return the Jacobian with respect to to parameter p<sub>1</sub>, p<sub>2</sub>, ....
+</p>
+
+<div class="p"><!----></div>
+<p>To include Hessians in the ode-file the option  <em>Hessians</em> should contain the handle of the subfunction hessians <em>@hessians</em>. The software then assumes that a call to  <tt>feval(@hessians, 0, x,  p1, p2, ...)</tt> will return all Hessians in the same way as mentioned above. Setting the option to <em>[]</em> indicates that there are no Hessians available from the ode-file (default behaviour).
+</p>
+
+<div class="p"><!----></div>
+<p>To include Hessians with respect to parameters in your ode-file the option <em>HessiansP</em> should contain the handle of the subfunction hessiansp <em>@hessiansp</em>. The software then assumes that a call to  <tt>feval(@hessiansp, 0, x, p1, p2, ...)</tt> will return all Hessians with respect to parameters in the same way as mentioned above. Setting the option to <em>[]</em> indicates that there are no Hessians with respect to parameters available from the ode-file (default behaviour).
+</p>
+
+<div class="p"><!----></div>
+<p>To include the third order derivatives in your ode-file the option <em>Der3</em> should contain the handle of the subfunction der3 <em>@der3</em>. The software then assumes that a call to  <tt>feval(@der3, 0, x, p1, p2, ...)</tt> will return all third order derivatives in the same way as mentioned above. Setting the option to <em>[]</em> indicates that they are not available from the ode-file (default behaviour)
+</p>
+
+<div class="p"><!----></div>
+<p>
+<em>Der4</em> and <em>Der5</em> are values indicating the 4th and 5th order symbolic derivative, available in the
+ode-file. </p>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

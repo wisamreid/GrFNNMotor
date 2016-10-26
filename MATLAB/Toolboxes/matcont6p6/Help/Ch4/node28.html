@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Defaultprocessor</TITLE>
+<META NAME="description" CONTENT="Defaultprocessor">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node29.html">
+<LINK REL="previous" HREF="node27.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node29.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html529"
+  HREF="node29.html">Special processors</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html519"
+  HREF="node27.html">User functions</A>
+ &nbsp <B>  <A NAME="tex2html527"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00052800000000000000">
+Defaultprocessor</A>
+</H3>
+<p>In many cases it is useful to do some general computations for every calculated point on the curve. The results of these computations can then be used by for example the testfunctions. The continuer has stored the handle to the defaultprocessor in the variable <tt>cds.curve_defaultprocessor</tt>.
+</p>
+
+<div class="p"><!----></div>
+<p>The defaultprocessor is called as <tt>[failed,f,s] = feval(cds.curve_defaultprocressor,x,v,s)</tt>. <tt>x</tt> and <tt>v</tt> are the point on the curve and it's tangent vector. The argument <tt>s</tt> is only supplied if the point is a singular point, in that case the defaultprocessor may also add some data to the <tt>s.data</tt> field. If for some reason the default processor fails it should set <tt>failed</tt> to 1. This will result in a reduction of the stepsize and a retry which should solve the problem. Any information that is to be preserved, should be put in <tt>f</tt>. <tt>f</tt> must be a column vector and must be of equal size for every call to the default processor.
+</p>
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

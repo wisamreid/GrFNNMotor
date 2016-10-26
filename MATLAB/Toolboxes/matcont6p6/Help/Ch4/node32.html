@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Summary</TITLE>
+<META NAME="description" CONTENT="Summary">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node31.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node33.html">
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html575"
+  HREF="node33.html">Error handling</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html567"
+  HREF="node31.html">Adaptation</A>
+ &nbsp <B>  <A NAME="tex2html573"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION000521200000000000000">
+Summary</A>
+</H3>
+<p>In the following table one can see what calls can be made to the problem file and which options are involved.
+</p>
+
+<center>
+
+<table>
+<tr><td><b>Syntax of call </b> </td><td><b>What it should do (options involved)</b></td></tr>
+<tr><td><tt>feval(cds.curve_func,x)</tt> </td><td>return F(x) </td></tr>
+<tr><td><tt>feval(cds.curve_options)</tt> </td><td>return option vector </td></tr>
+<tr><td><tt>feval(cds.curve_jacobian,x)</tt> </td><td>return Jacobian at <tt>x</tt> (<em>SymDerivative</em> <font face="symbol">³</font
+> 1) </td></tr>
+<tr><td><tt>feval(cds.curve_hessians,x)</tt> </td><td>return Hessians at <tt>x</tt> (<em>SymDerivative</em> <font face="symbol">³</font
+> 2) </td></tr>
+<tr><td><tt>feval(cds.curve_init,x,v)</tt> </td><td>initialize user variable space (<em>WorkSpace</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_done)</tt> </td><td>destroy user variable space (<em>WorkSpace</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_defaultprocessor,x,v,s)</tt> </td><td>initialize data for testfunctions and </td></tr>
+<tr><td></td><td>set some general singularity data </td></tr>
+<tr><td><tt>feval(cds.curve_testf,ids,x,v)</tt> </td><td>return evaluation of testfunctions <tt>ids</tt> at <tt>x</tt></td></tr>
+<tr><td></td><td>(<em>Singularities</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_locate,i,x1,x2,v1,v2)</tt> </td><td>return located singularity and tangent</td></tr>
+<tr><td></td><td>vector(<em>Locators</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_userf,UserInfo,ids,x,v)</tt> </td><td>return evaluation of userfunctions ids with </td></tr>
+<tr><td></td><td><tt>UserInfo</tt> at <tt>x</tt> (<em>Userfunctions</em>)</td></tr>
+<tr><td><tt>feval(cds.curve_singmat)</tt> </td><td>return singularity matrix (<em>Singularities</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_process,i,x)</tt> </td><td>run processor code of singularity <tt>i</tt></td></tr>
+<tr><td></td><td>at <tt>x</tt>(<em>Singularities</em>) </td></tr>
+<tr><td><tt>feval(cds.curve_adapt,x,v)</tt> </td><td>run adaptation code of problem (<em>Adapt</em>) </td></tr></table>
+
+</center>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

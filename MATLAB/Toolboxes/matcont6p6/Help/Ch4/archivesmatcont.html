@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>System specification box</TITLE>
+<META NAME="description" CONTENT="System specification box">
+<META NAME="keywords" CONTENT="doc_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<b> Next</b>: <A NAME="tex2html621"
+  HREF="../Ch5/guicomponents.html">Gui components</A><b> 
+Up: </b> <A NAME="tex2html617"
+  HREF="node18.html">Software</A>&nbsp; <b> Previous:</b> <A NAME="tex2html370"
+  HREF="../Ch4/node35.html">Directories</A>&nbsp <b> <a 
+  href="node1.html">Contents</a></b> <br>
+<p><b>Archives</b> are a set of files where MATCONT stores your dynamical systems 
+  with all data specified for their analysis as well as the results of the analysis. 
+  It contains the <b>database of Computed Objects and Curves</b> and the<b> database 
+  of System Descriptions</b>. Logically, archives consist of a number of independent 
+  units each of which contains all information related to one dynamical system.</p>
+<p>The description of the dynamical system provided by the user includes the list 
+  of the names of state variables, parameters, time and functions computing values 
+  of the RHS. </p>
+  
+<p>MATCONT creates a corresponding <a href="../Ch5/odefile.html">ODEfile</a> that defines 
+  the dynamical system and a MAT-file 
+  which contains some <a href="#global">global variables</a>. Both files are saved in the <b>Systems</b> 
+  directory (which is a subdirectory of the <a href="#matcontroot">matcontroot</a>) as &lt;name of the system&gt;.m 
+  and &lt;name of the system&gt;.mat file.</p>
+  
+<p>This directory contains also a MAT-file <i>session.mat</i> in 
+  which the GUI-information is stored as it was left when exiting MATCONT in the 
+  previous session. When restarting MATCONT this file is loaded and the exit situation 
+  of the previous session is restored.</p>
+<p>Information on computed objects and curves is stored as MAT-files by MATCONT 
+  in a subdirectory &lt;name of the diagram (default: 'diagram')&gt; in a directory &lt;name of the system&gt; 
+of the <b>Systems </b>directory. A <a href="../Ch5/curve.html">curve</a> contains coordinates 
+  of points and additional data required to redraw and recompute the curve.<br>
+<a name="global">The</a><b> fundamental global variables</b> saved in that 
+  MAT-file are the MATLAB structures <i>gds</i> and <i>cds</i>. The structure 
+  <i>gds</i> contains the information concerning all windows open at a certain 
+  time and collects the information fed into the system by the GUI. <i>cds</i> 
+  is needed in the GUI to store a computed curve from whose points a new curve 
+  is to be started. Both <i>gds</i> and <i>cds</i> contain fields in which computational 
+  options are stored. The other global variables are specific to certain types 
+  of computed curves. They are used to collect information from the computational 
+  routines so that it can be stored in the database. For example,<i> eds</i>, 
+  <i>lpds, bpds </i>and <i>hds</i> contain global information specific to the continuation 
+  of equilibria, limit points, branch points and Hopf points, respectively. These 
+  global variables also allow computational routines to share information.</p>
+<p>MATCONT creates all necessary files automatically. The user does not deal
+  with  them directly.</p>
+</body>
+</html>

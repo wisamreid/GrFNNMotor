@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Numerical continuation</TITLE>
+<META NAME="description" CONTENT="Numerical continuation">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="../Ch3/node13.html">
+<LINK REL="previous" HREF="../Ch1/node2.html">
+<LINK REL="up" HREF="../doc_cl_matcont.html">
+<LINK REL="next" HREF="node8.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html243"
+  HREF="node8.html">Prediction</A> <B> Up:</B> <A NAME="tex2html239"
+  HREF="doc_matcont.html">doc_matcont</A> <B> Previous:</B> <A NAME="tex2html233"
+  HREF="node6.html">Disclaimer</A> &nbsp <B> <A NAME="tex2html241"
+  HREF="node1.html">Contents</A></B> <BR>
+<BR>
+<H1><A NAME="SECTION00030000000000000000"></A><A NAME="s:numcont"></A>
+<BR>
+Numerical continuation
+</H1>
+
+<p>Consider a smooth function F: <b>R</b><sup>n+1</sup> <font face="symbol">®</font
+> <b>R</b><sup>n</sup>. We want to compute a solution curve of the equation F(x)=0. 
+Numerical continuation is a technique to compute a consecutive sequence of 
+points which approximate the desired branch. Most continuation algorithms 
+implement a predictor-corrector method. The idea behind this method is to 
+generate a sequence of points x<sub>i</sub>, i=1,2,... along the curve, 
+satisfying a chosen tolerance criterion: <font face="symbol">||</font
+>F(x<sub>i</sub>)<font face="symbol">||</font
+> <font face="symbol">£</font
+> <font face="symbol">e</font
+> for some <font face="symbol">e</font
+> &gt; 0 and an additional accuracy condition <font face="symbol">||d</font
+>x<sub>i</sub><font face="symbol">||</font
+> <font face="symbol">£</font
+> <font face="symbol">e¢</font
+> where <font face="symbol">e¢</font
+> &gt; 0 and <font face="symbol">d</font
+>x<sub>i</sub> is the last Newton correction. </p>
+
+<div class="p"><!----></div>
+<p>To show how the points are generated, suppose we have found a point x<sub>i</sub> 
+on the curve. Also suppose we have a normalized tangent vector v<sub>i</sub> at 
+x<sub>i</sub>, i.e. F<sub>x</sub>(x<sub>i</sub>)v<sub>i</sub> = 0,&nbsp;<font face="symbol">á</font
+>v<sub>i</sub>,v<sub>i</sub> <font face="symbol">ñ</font
+>=1. </p>
+
+<div class="p"><!----></div>
+<p>The computation of the next point x<sub>i+1</sub> consists of 2 steps: </p>
+
+<ul>
+<li> prediction of a new point
+<div class="p"><!----></div>
+</li>
+
+<li> correction of the predicted point
+</li>
+</ul>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html244"
+  HREF="node8.html">Prediction</A>
+<LI><A NAME="tex2html245"
+  HREF="node9.html">Correction</A>
+<UL>
+<LI><A NAME="tex2html246"
+  HREF="node10.html">Pseudo-arclength continuation</A>
+<LI><A NAME="tex2html247"
+  HREF="node11.html">Moore-Penrose continuation</A>
+</UL>
+<LI><A NAME="tex2html248"
+  HREF="node12.html">Stepsize control</A>
+</UL>
+<p>&nbsp;</p>
+<HR>
+</BODY>
+</HTML>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>System Definition</TITLE>
+<META NAME="description" CONTENT="System Definition">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node18.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node20.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <a href="node20.html" name="tex2html409">Continuation and output</a>
+<B> Up:</B> <A NAME="tex2html405"
+  HREF="node18.html">Software</A>
+<B> Previous:</B> <A NAME="tex2html399"
+  HREF="node18.html">Software</A>
+ &nbsp <B>  <A NAME="tex2html407"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="s:sysdef"></A>
+<BR>
+System definition
+</H2>
+
+<p><a name="s:sysdef">
+</a>The user defines his dynamical system in a systemfile, using the framework 
+as in the file <font face="Courier New" size="2">standard.m</font> in the 
+Systems subdirectory.</p>
+<p>In the function <font face="Courier New" size="2">fun_eval</font>, the 
+dynamical system is to be given, where the parameters should be listed 
+individually. Under <font face="Courier New" size="2">init</font>, the user can 
+define some initialization parameters, as the phase variable values, the 
+timespan, etc. In the further functions, it is possible to supply the symbolic 
+derivatives of the system to various orders to increase the speed and/or improve 
+accuracy of the algorithm. Note that for the hessians or higher order 
+derivatives, no mixed derivatives are supplied through the system definition 
+file, since they are never used in (CL_)MatCont. The option
+<font face="Courier New" size="2">SymDerivative</font> indicates to which order 
+the derivatives are provided.</p>
+<p>Finally, it can contain the description of any number of user functions, i.e. 
+functions that can be monitored along computed curves and whose zeros can be 
+detected and located. The system m-file can either be written by the user or 
+generated automatically by the GUI of MatCont. The latter is strongly encouraged 
+if the matlab symbolic toolbox is available and symbolic derivatives are 
+desirable.</p>
+<p>&nbsp;</p>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

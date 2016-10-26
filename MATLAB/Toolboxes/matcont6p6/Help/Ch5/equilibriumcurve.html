@@ -1,0 +1,57 @@
+<html>
+<head><title>Equilibrium curve(MATCONT Reference)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- DOCNAME: MATCONT Reference -->
+<!-- CHUNKNAME: Equilibrium curve -->
+<!-- CHAPNAME:  -->
+<!-- HEADSTUFF -->
+
+<style>
+<!--
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p>Given a <a href="odematcont.html">system of ODEs</a>,</p>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+du
+<div class="hrcomp"><hr noshade="noshade" size="1"/></div>
+  <p>dt<br /></td><td nowrap="nowrap" align="center">
+ = f(u,<font face="symbol">a</font
+>), &nbsp;&nbsp;&nbsp; u <font face="symbol">Î</font
+> <b>R</b><sup>n</sup>,<font face="symbol">a</font
+> <font face="symbol">Î</font
+> <b>R</b>&nbsp;&nbsp;&nbsp; f: <b>R</b><sup>n+1</sup><font face="symbol">®</font
+> <b>R</b><sup>n</sup>&nbsp;. <i>(1)</i></td></tr></table>
+<p>an <b>equilibrium curve</b> is a one-dimensional manifold endowed with coordinates 
+(u,<font face="symbol">a</font
+>) 
+  defined by </p>
+<p align="center">F(x) = f(u,<font face="symbol">a</font
+>) = 0, <i>(2)</i></p>
+<p align="left"> where F: <b>R</b><sup>n+1</sup><font face="symbol">®</font
+> <b>R</b><sup>n</sup> are the <a href="definingfunctions.html">defining functions</a>. 
+  The Jacobian matrix of <i>(2) </i>involved in the continuation has the form 
+</p>
+<p align="center">F<sub>x</sub> = [ f<sub>u</sub>(u,<font face="symbol">a</font
+>)&nbsp; |&nbsp;&nbsp; f<sub><font face="Symbol">a</font
+></sub>(u,<font face="symbol">a</font
+>)&nbsp;&nbsp; ] <i>(4)</i></p>
+<p align="left">No special properties of this matrix are assumed and the <b>generic 
+  lineair algebra library</b> is used to solve appearing lineair system of equations.</p>
+<p align="left">Several <a href="testEP.html">test functions</a> can be computed along the equilibrium curve 
+  to detect and process <a href="testEP.html">equilibrium singularities</a>.</p>
+<p align="left">An equilibrium curve can be continued from a user-supplied <a href="point.html">point</a>, 
+  an <a href="equilibrium.html">equilibrium point</a> (including limit point and Hopf point) or a branching point 
+  on the computed equilibrium curve. To continue of the equilibrium curve, one 
+  needs to set relevant <b>parameters to start from</b></p>
+<p align="left">a point</p>
+<p align="left">an equilibrium</p>
+<p align="left">a branching point</p>
+<p align="left">via the  <a href="starterwindowmatcont.html">Starter window</a>.</p>
+<p align="left">&nbsp;</p>
+</body>
+</html>

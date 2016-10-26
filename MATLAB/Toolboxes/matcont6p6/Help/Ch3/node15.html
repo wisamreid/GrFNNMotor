@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>More test functions</TITLE>
+<META NAME="description" CONTENT="More test functions">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node16.html">
+<LINK REL="previous" HREF="node14.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node16.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;} span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html346"
+  HREF="node16.html">Singularity matrix</A>
+<B> Up:</B> <A NAME="tex2html342"
+  HREF="node13.html">Singularities</A>
+<B> Previous:</B> <A NAME="tex2html336"
+  HREF="node14.html">Test functions</A>
+ &nbsp <B>  <A NAME="tex2html344"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00042000000000000000">
+More test functions</A>
+</H2>
+<p>The above is a general way to detect and locate singularities depending on one test function.  
+However, it may happen that it is not possible to represent a singularity with only one test 
+function. </p>
+
+<div class="p"><!----></div>
+<p>Suppose we have a singularity S which depends on n<sub>t</sub> test functions. 
+Also assume we have found two consecutive points x<sub>i</sub> and x<sub>i+1</sub> and all n<sub>t</sub> 
+test functions change sign:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">"</font
+>j <font face="symbol">Î</font
+> [1,n<sub>t</sub>]: <font face="symbol">f</font
+><sub>j</sub>(x<sub>i</sub>)<font face="symbol">f</font
+><sub>j</sub>(x<sub>i+1</sub>)  &lt;  0</td></tr></table>
+</td><td width="1%">(27)</td></tr></table>
+
+
+<p>Also assume we have found, using a one-dimensional secant method, all zeros x<sup>*</sup><sub>j</sub> 
+of the test functions. In the ideal (exact) case all these zeros will 
+coincide:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">"</font
+>j <font face="symbol">Î</font
+> [1,n<sub>t</sub>]: x<sup>*</sup>=x<sup>*</sup><sub>j</sub> &nbsp;&nbsp;&nbsp;<span class="roman">and</span>&nbsp;&nbsp;&nbsp; <font face="symbol">f</font
+><sub>j</sub>(x<sup>*</sup><sub>j</sub>) = 0</td></tr></table>
+</td><td width="1%">(28)</td></tr></table>
+
+
+<p>Since the continuation is not exact but numerical, we cannot assume this. 
+However, the locations of x<sup>*</sup><sub>j</sub> probably will be clustered around some center point x<sup>c</sup>. 
+In this case we will <em>glue</em> the points x<sup>*</sup><sub>j</sub> to x<sup>*</sup> = x<sup>c</sup>.
+</p>
+
+<div class="p"><!----></div>
+<p>A cluster will be detected if <font face="symbol">"</font
+>i,j <font face="symbol">Î</font
+> [1,n<sub>t</sub>]: <font face="symbol">||</font
+>x<sup>*</sup><sub>i</sub><font face="symbol">-</font
+>x<sup>*</sup><sub>j</sub><font face="symbol">||</font
+>  <font face="symbol">£</font
+> <font face="symbol">e</font
+> for some 
+small value <font face="symbol">e</font
+>. In this case we define x<sup>*</sup> as the mean of all located zeroes:
+
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+x<sup>*</sup> = </td><td nowrap="nowrap" align="center">
+1
+<div class="hrcomp"><hr noshade="noshade" size="1"/></div>
+  <p>n<sub>t</sub><br /></td><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<small>n<sub>t</sub></small><!--sup
+--><br /><font face="symbol" size="+3">å<br />
+</font><small>j=1</small>&nbsp;<br /></td><td nowrap="nowrap" align="center">
+x<sup>*</sup><sub>j</sub></td></tr></table>
+</td><td width="1%">(29)</td></tr></table>
+
+
+
+<DIV ALIGN="RIGHT">
+
+<BR CLEAR="ALL"></DIV><P></P>
+
+<P>
+<HR>
+</BODY>
+</HTML>

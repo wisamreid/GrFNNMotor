@@ -1,0 +1,721 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bifurcations</TITLE>
+<META NAME="description" CONTENT="Bifurcations">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node82.html">
+<LINK REL="previous" HREF="node80.html">
+<LINK REL="up" HREF="node79.html">
+<LINK REL="next" HREF="node82.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;} td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html168"
+  HREF="../node89.html">Bibliography</A><B> Up:</B>
+<A NAME="tex2html165"
+  HREF="node87a.html">Continuation of homoclinic orbits</A> <B> Previous:</B> <A NAME="tex2html1188"
+  HREF="node87b.html">Mathematical definition</A> &nbsp <B>  <A NAME="tex2html693"
+  HREF="../node1.html">Contents</A></B> <BR>
+<BR>
+<H3><A NAME="SECTION000111200000000000000">
+Bifurcations</A>
+</H3>
+<p>During HSN continuation, only one bifurcation is tested for, namely the non-central 
+homoclinic-to-saddle-node orbit or NCH. This orbit forms the transition between HHS 
+and HSN curves. The strategy 
+used for detection is taken from HomCont [<a href="../node89.html#Champneys2">23</a>].<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>During HHS continuation, all bifurcations detected in HomCont are also detected 
+in our implementation. For this, mostly test functions from [<a href="../node89.html#Champneys2">23</a>] are used. </p>
+
+<div class="p"><!----></div>
+<p>Suppose that the eigenvalues of f<sub>x</sub>(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>) can be ordered according to
+<a name="homorder">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>ns</sub>)  <font face="symbol">£</font
+> ...  <font face="symbol">£</font
+> <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>)  &lt;  0  &lt;  <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>)  <font face="symbol">£</font
+> ...  <font face="symbol">£</font
+> <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>nu</sub>),</td></tr></table>
+</td><td width="1%">(97)</td></tr></table>
+
+
+<p>where <font face="symbol">Â</font
+>() stands for 'real part of', ns is the number of stable, and nu the number of unstable eigenvalues.
+The test functions for the bifurcations are </p>
+
+<ul>
+<li> Neutral saddle, saddle-focus or bi-focus
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>)</td></tr></table>
+</td></tr></table>
+
+	
+				<p>If both <font face="symbol">m</font
+><sub>1</sub> and <font face="symbol">l</font
+><sub>1</sub> are real, then it is a neutral saddle, if one is real and one consists of a pair of complex conjugates, the bifurcation is a saddle-focus, and it is a bi-focus when both eigenvalues consist of a pair of complex conjugates.
+</p>
+<div class="p"><!----></div>
+</li>
+
+<li> Double real stable leading eigenvalue
+	  	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  </td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />í<br />
+ï<br />î
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(<font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>) <font face="symbol">-</font
+> <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>2</sub>))<sup>2</sup>, </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+&nbsp;&nbsp;&nbsp;<font face="symbol">Á</font
+>(<font face="symbol">m</font
+><sub>1</sub>) = 0</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+>(<font face="symbol">Á</font
+>(<font face="symbol">m</font
+><sub>1</sub>) <font face="symbol">-</font
+> <font face="symbol">Á</font
+>(<font face="symbol">m</font
+><sub>2</sub>))<sup>2</sup>, </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+&nbsp;&nbsp;&nbsp;<font face="symbol">Á</font
+>(<font face="symbol">m</font
+><sub>1</sub>)  <font face="symbol">¹</font
+> 0 </td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Double real unstable leading eigenvalue
+	  	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  </td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />í<br />
+ï<br />î
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(<font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>) <font face="symbol">-</font
+> <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>2</sub>))<sup>2</sup>, </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+&nbsp;&nbsp;&nbsp;<font face="symbol">Á</font
+>(<font face="symbol">l</font
+><sub>1</sub>) = 0</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">-</font
+>(<font face="symbol">Á</font
+>(<font face="symbol">l</font
+><sub>1</sub>) <font face="symbol">-</font
+> <font face="symbol">Á</font
+>(<font face="symbol">l</font
+><sub>2</sub>))<sup>2</sup>, </td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+&nbsp;&nbsp;&nbsp;<font face="symbol">Á</font
+>(<font face="symbol">l</font
+><sub>1</sub>)  <font face="symbol">¹</font
+> 0 </td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Neutrally-divergent saddle-focus (stable)
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>2</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Neutrally-divergent saddle-focus (unstable)
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>2</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Three leading eigenvalues (stable)
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>) <font face="symbol">-</font
+> <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>3</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Three leading eigenvalues (unstable)
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>) + <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>3</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Non-central homoclinic-to-saddle-node 
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Shil'nikov-Hopf
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>)</td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Bogdanov-Takens point
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  </td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />í<br />
+ï<br />î
+</font> </td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>1</sub>)</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>1</sub>) </td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+</ul> 
+
+<div class="p"><!----></div>
+  <p>For orbit- and inclination-flip bifurcations, we assume the same ordering of the eigenvalues of f<sub>x</sub>(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>) = A(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>) as shown in (<a href="#homorder">97</a>), but also that the leading eigenvalues <font face="symbol">m</font
+><sub>1</sub> and <font face="symbol">l</font
+><sub>1</sub> are unique and real:
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+ <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>ns</sub>)  <font face="symbol">£</font
+> ...  <font face="symbol">£</font
+> <font face="symbol">Â</font
+>(<font face="symbol">m</font
+><sub>2</sub>)  &lt;  <font face="symbol">m</font
+><sub>1</sub>  &lt;  0  &lt;  <font face="symbol">l</font
+><sub>1</sub>  &lt;  <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>2</sub>)  <font face="symbol">£</font
+> ...  <font face="symbol">£</font
+> <font face="symbol">Â</font
+>(<font face="symbol">l</font
+><sub>nu</sub>)&nbsp;.</td></tr></table>
+</td></tr></table>
+
+
+  <p>Then it is possible to choose normalised eigenvectors p<sub>1</sub><sup>s</sup> and p<sub>1</sub><sup>u</sup> of A<sup>T</sup>(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>) and q<sub>1</sub><sup>s</sup> and q<sub>1</sub><sup>u</sup> of A(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>) depending smoothly on (x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>), which satisfy
+
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+A<sup>T</sup>(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>)&nbsp;p<sub>1</sub><sup>s</sup> = <font face="symbol">m</font
+><sub>1</sub>&nbsp;p<sub>1</sub><sup>s</sup> </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+A<sup>T</sup>(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>)&nbsp;p<sub>1</sub><sup>u</sup> = <font face="symbol">l</font
+><sub>1</sub>&nbsp;p<sub>1</sub><sup>u</sup> </td></tr></table></td><td width="50%"></td></tr>
+ <tr><td width="50%"></td><td nowrap="nowrap" align="right" colspan="1"><table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+A(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>)&nbsp;q<sub>1</sub><sup>s</sup> = <font face="symbol">m</font
+><sub>1</sub>&nbsp;q<sub>1</sub><sup>s</sup> </td></tr></table></td><td nowrap="nowrap" align="left">
+<table border="0" cellspacing="0" cellpadding="2"><tr><td nowrap="nowrap" align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td><td nowrap="nowrap" align="left">
+<table><tr><td nowrap="nowrap" align="right" colspan="1">A(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>)&nbsp;q<sub>1</sub><sup>u</sup> = <font face="symbol">l</font
+><sub>1</sub>&nbsp;q<sub>1</sub><sup>u</sup> &nbsp;. </td></tr></table></td><td width="50%"></td></tr></table>
+</td></tr></table>
+
+
+
+<div class="p"><!----></div>
+  <p>The test functions for the orbit-flip bifurcations are then: </p>
+
+<ul>
+<li> Orbit-flip with respect to the stable manifold
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  e<sup><font face="symbol">-m</font
+><sub>1</sub> T</sup>  &lt; p<sub>1</sub><sup>s</sup>, x(1) <font face="symbol">-</font
+> x<sub>0</sub> &gt; </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Orbit-flip with respect to the unstable manifold
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  e<sup><font face="symbol">l</font
+><sub>1</sub> T</sup>  &lt; p<sub>1</sub><sup>u</sup>, x(0) <font face="symbol">-</font
+> x<sub>0</sub> &gt; </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+</ul> 
+
+<div class="p"><!----></div>
+<p>For the inclination-flip bifurcations, in [<a href="../node89.html#Champneys2">23</a>] the following test functions are introduced:
+</p>
+
+<ul>
+<li> Inclination-flip with respect to the stable manifold
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  e<sup><font face="symbol">-m</font
+><sub>1</sub> T</sup>  &lt; q<sub>1</sub><sup>s</sup>, <font face="symbol">f</font
+>(0) &gt; </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+
+<li> Inclination-flip with respect to the unstable manifold
+	  
+<br clear="all" /><table border="0" width="95%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">y</font
+> =  e<sup><font face="symbol">l</font
+><sub>1</sub> T</sup>  &lt; q<sub>1</sub><sup>u</sup>, <font face="symbol">f</font
+>(1) &gt; </td></tr></table>
+</td></tr></table>
+
+
+<div class="p"><!----></div>
+</li>
+</ul> 
+<p>where <font face="symbol">f</font
+> (<font face="symbol">f</font
+> <font face="symbol">Î</font
+> <font face="helvetica"><i>C</i></font><sup>1</sup>([0,1],\mathbb R<sup>n</sup>)) is the solution to the adjoint system, which can be written as
+<a name="inclinationsystem">
+</a>
+<br clear="all" /></p>
+<table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />ï<br />ï<br />í<br />
+ï<br />ï<br />ï<br />î
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm"><font face="symbol">f</font
+><br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+(t) + 2&nbsp;T&nbsp;A<sup>T</sup>(x(t),<font face="symbol">a</font
+><sub>0</sub>)&nbsp;<font face="symbol">f</font
+>(t) = 0</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(L<sub>s</sub>)<sup>T</sup><font face="symbol">f</font
+>(1) = 0</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(L<sub>u</sub>)<sup>T</sup><font face="symbol">f</font
+>(0) = 0</td></tr></table></td></tr>
+<tr><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+ó<br />õ
+</font></td><td nowrap="nowrap" align="center">
+<small>1</small><!--sup
+--><br /><br />
+<small>0</small>&nbsp;<br /></td><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp">~<br /></div>
+<div class="norm"><font face="symbol">f</font
+><br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+<small>T</small><!--sup
+--><br />&nbsp;<br /></td><td nowrap="nowrap" align="center">
+(t)[<font face="symbol">f</font
+>(t)<font face="symbol">-</font
+></td><td nowrap="nowrap" align="center">
+<div class="comp">~<br /></div>
+<div class="norm"><font face="symbol">f</font
+><br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+(t)]dt = 0</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+ </td></tr></table>
+</td><td width="1%">(98)</td></tr></table>
+
+
+  <p>where L<sub>s</sub> and L<sub>u</sub> are matrices whose columns form bases for the stable and unstable eigenspaces of A(x<sub>0</sub>,<font face="symbol">a</font
+><sub>0</sub>), respectively, and the last condition selects one solution out of the family c<font face="symbol">f</font
+>(t) for c  <font face="symbol">Î</font
+> \mathbb R. L<sub>u</sub> is equivalent to Q<sub>U</sub> from the mathematical definition of the system, and L<sub>s</sub> to Q<sub>S</sub>. In the homoclinic defining system the orthogonal complements of Q<sub>S</sub> and Q<sub>U</sub> are used; in the adjoint system for the inclination-flip bifurcation, we use the matrices themselves (or at least, their transposed versions).<br />
+
+  </p>
+
+<div class="p"><!----></div>
+  <center>	
+<p>
+	<a name="MLFasthom">
+</a>
+</p>
+</center>
+<div class="p"><!----></div>
+      <h4><a name="tth_sEc12.4.2">
+12.4.2</a>&nbsp;&nbsp; MatCont: the Koper example</h4>
+  <p>Consider the following system of differential equations:
+<a name="Eq:Koper">
+</a>
+<br clear="all" /></p>
+  <table border="0" width="100%"><tr><td>
+<table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+</td><td align="left" class="cl"><font face="symbol">
+ì<br />ï<br />ï<br />í<br />
+ï<br />ï<br />î
+</font></td><td nowrap="nowrap" align="center">
+<table>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">e</font
+><sub>1</sub></td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">x<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+(k&nbsp;y <font face="symbol">-</font
+>x<sup>3</sup>+3x<font face="symbol">-l</font
+>)</td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">y<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+x <font face="symbol">-</font
+> 2y + z</td></tr></table></td></tr>
+<tr><td align="right"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+</td><td nowrap="nowrap" align="center">
+<div class="comp"><font face="symbol">×</font
+><br /></div>
+<div class="norm">z<br /></div>
+<div class="comb">&nbsp;</div>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table></td><td align="center"><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+=</td></tr></table></td><td><table border="0" cellspacing="0" cellpadding="0"><tr><td nowrap="nowrap" align="center">
+<font face="symbol">e</font
+><sub>2</sub> (y<font face="symbol">-</font
+>z).</td></tr></table></td></tr></table>
+</td><td nowrap="nowrap" align="center">
+</td></tr></table>
+</td><td width="1%">(99)</td></tr></table>
+
+
+  <p>This system, which is a three-dimensional van der Pol-Duffing oscillator, has been introduced 
+and studied by [<a href="../node89.html#Champneys2">23</a>]. It is used as a standard demo in  HomCont. 
+Parameters <font face="symbol">e</font
+><sub>1</sub> and <font face="symbol">e</font
+><sub>2</sub> are kept at
+0.1 and 1, respectively. We note that system (<a href="#Eq:Koper">99</a>) has certain symmetry: 
+If (x(t),y(t),z(t)) is a solution for a given value of <font face="symbol">l</font
+>, then (<font face="symbol">-</font
+>x(t),<font face="symbol">-</font
+>y(t),<font face="symbol">-</font
+>z(t)) 
+is a solution for <font face="symbol">-l</font
+>. </p>
+
+<div class="p"><!----></div>
+  <p>Starting from a general point (0, <font face="symbol">-</font
+>1, 0.1) and setting  k = 0.15 and <font face="symbol">l</font
+> =  0, 
+we find by time integration a stable equilibrium at (<font face="symbol">-</font
+>1.775, <font face="symbol">-</font
+>1.775, <font face="symbol">-</font
+>1.775). </p>
+
+<div class="p"><!----></div>
+  <p>By equilibrium continuation with <font face="symbol">l</font
+> free, we find two limit points ( LP), at 
+(<font face="symbol">-</font
+>1.024695, <font face="symbol">-</font
+>1.024695, <font face="symbol">-</font
+>1.024695) for <font face="symbol">l</font
+> = <font face="symbol">-</font
+>2.151860 with normal form coefficient
+a=<font face="symbol">-</font
+>4.437056e+000 and at
+(1.024695, 1.024695, 1.024695) for <font face="symbol">l</font
+> = 2.151860 with normal form coefficient
+a=<font face="symbol">-</font
+>4.437060e+000 (note the
+reflection). </p>
+
+<div class="p"><!----></div>
+  <p>By continuation of the limit points with (k,<font face="symbol">l</font
+>) free,  MatCont detects a 
+cusp point  CP at (0,0,0) for k = <font face="symbol">-</font
+>3 and <font face="symbol">l</font
+> =  0.
+Also detected are two 
+Zero-Hopf points  ZH for k = <font face="symbol">-</font
+>0.3 at <font face="symbol">±</font
+>(0.948683, 0.948683, 0.948683) 
+and <font face="symbol">l</font
+> =  <font face="symbol">±</font
+>1.707630, but these are in fact Neutral Saddles. Further, two Bogdanov-Takens points   BT are found for k = <font face="symbol">-</font
+>0.05 at 
+<font face="symbol">±</font
+>(0.991632, 0.991632, 0.991632) and <font face="symbol">l</font
+> =  <font face="symbol">±</font
+>1.950209. The normal form 
+coefficients are (a,b)=(6.870226e+000, 3.572517e+001). </p>
+
+<div class="p"><!----></div>
+  <p>A bifurcation diagram of (<a href="#Eq:Koper">99</a>) is shown in Figure .
+  </p>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg32">
+</a> <center><table border="0"><tr><td></td><td><table border="0"><tr><td></td><td width="197">
+
+	
+<table align="center" border="0"><tr><td>
+<a href="../../tth_exe/ex/equilibria1.eps">Figure</a></td></tr></table><!--hboxt-->
+
+</td></tr></table><!--vbox-->
+</td><td></td></tr></table><!--hboxt--><table border="0"><tr><td></td><td><table border="0"><tr><td></td><td width="237">
+
+	
+<table align="center" border="0"><tr><td>
+<a href="../../tth_exe/ex/equilibria2.eps">Figure</a></td></tr></table><!--hboxt-->
+
+</td></tr></table><!--vbox-->
+</td><td></td></tr></table><!--hboxt-->	<center>
+  <p>Figure 32: Left: equilibrium bifurcation diagram of the Koper system. 
+	Dashed line = equilibria, full line = limit points,  CP = Cusp Point,  BT = 
+	Bogdanov-Takens,  ZH = Zero-Hopf,  LP = Limit Point. 
+	Right: zoom on the left part of the diagram.</p>
+  </center>
+	<a name="fig:Koperequil">
+</a>
+</center>
+<div class="p"><!----></div>
+  <p>We now compute a  HHS curve starting at one of the  BT points, and setting 
+the curve-type to Homoclinic. To further initialize the homoclinic continuation, 
+some parameters have to be set and/or selected in the Starter window. </p>
+
+<div class="p"><!----></div>
+  <p>First we select 2 system parameters as free parameters, e.g. k and <font face="symbol">l</font
+>. 
+We must also set the <i>Initial amplitude</i>, i.e. an approxinate size of the first homoclinic orbit. 
+The default setting of 1e-2 is a good value in most cases. </p>
+
+<div class="p"><!----></div>
+  <p>Another option is to start from a limit cycle with large period. 
+For example, select the  BT point at <font face="symbol">l</font
+> =  1.950209, and then compute 
+a curve of Hopf points  H passing through it, along which one encounters a Generalized 
+Hopf bifurcation  GH. 
+Stop the continuation at (the random value) <font face="symbol">l</font
+> =  1.7720581, where the Hopf point 
+is at (0.98526071, 0.98526071, 0.98526071) and k = <font face="symbol">-</font
+>0.23069361. 
+We then can find limit cycles for very slowly decreasing values of <font face="symbol">l</font
+>, 
+(<font face="symbol">l</font
+> decreases down to 1.77178), with a rapid increase in the period. 
+At some point, one can stop the continuation, and switch to the continuation of the
+homoclinic orbit. </p>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg33">
+</a> <center><table border="0"><tr><td></td><td><table border="0"><tr><td></td><td width="355">
+
+	
+<table align="center" border="0"><tr><td>
+<a href="../../tth_exe/ex/lc2hom.eps">Figure</a></td></tr></table><!--hboxt-->
+
+</td></tr></table><!--vbox-->
+</td><td></td></tr></table><!--hboxt--><table border="0"><tr><td></td><td><table border="0"><tr><td></td><td width="395">
+
+	
+<table align="center" border="0"><tr><td>
+<a href="../../tth_exe/ex/homoclinics.eps">Figure</a></td></tr></table><!--hboxt-->
+
+</td></tr></table><!--vbox-->
+</td><td></td></tr></table><!--hboxt-->	<center>
+  <p>Figure 33: Left: limit cycles, starting from a Hopf point  H and approaching 
+	a homoclinic orbit. Right: a family of  HHS orbits.</p>
+  </center>
+	<a name="Fig:Koperhom">
+</a>
+</center>
+<div class="p"><!----></div>
+  <p>One can also monitor the eigenvalues of the equilibrium during continuation, by displaying 
+them in the Numerical window. This is a very useful feature, because it gives indications on what 
+further bifurcations might be expected.
+For example, a non-central homoclinic-to-saddle-node reveals itself by the fact that 
+one eigenvalue approaches zero. Once one is close enough to such a point, the user can 
+switch to the continuation of  HSN 
+orbits from there. </p>
+<p>
+<BR></p>
+<HR>
+</BODY>
+</HTML>

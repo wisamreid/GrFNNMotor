@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Continuer</TITLE>
+<META NAME="description" CONTENT="Continuer">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node21.html">
+<LINK REL="previous" HREF="node19.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node21.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html409"
+  HREF="node21.html">Curve file</A>
+<B> Up:</B> <A NAME="tex2html405"
+  HREF="node18.html">Software</A>
+<B> Previous:</B> <a href="node19.html" name="tex2html380">System definition</a>
+ &nbsp <B>  <A NAME="tex2html407"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H2><A NAME="SECTION00051000000000000000"></A><A NAME="s:cont"></A>
+<BR>
+Continuation and output
+</H2>
+
+<p>The syntax of the continuer is: </p>
+
+<blockquote>
+<p>
+<tt>[x,v,s,h,f] = cont(@curve, x0, v0, options);</tt> </p>
+</blockquote>
+<p>
+<tt>curve</tt> is a MATLAB m-file where the problem is specified (cf. section <A HREF="node21.html#s:curvedef">4.2</A>). Evaluating a function by means of a function handle replaces the earlier matlab mechanism of evaluating a function through a string containing the function name.<br />
+<tt>x0</tt> and <tt>v0</tt> are respectively the initial point and the tangent vector at the initial point where the continuation starts.<br />
+<tt>options</tt> is a structure as described in section <A HREF="node23.html#s:options">4.4.1</A>. <br />
+The arguments <tt>v0</tt> and <tt>options</tt> can be omitted. In this case the tangent vector at <tt>x0</tt> is computed internally and default options are used.
+<br />
+<br />
+The function returns a series of matrices:<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>
+<tt>x</tt> and <tt>v</tt> are the points and their tangent vectors along the curve. Each column in <tt>x</tt> and <tt>v</tt> corresponds to a point on the curve.<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>
+<tt>s</tt> is an array with structures containing information about the found singularities.  Its first and last elements always refer to the first and last points of the curve, respectively, since for convenience these are also considered
+&#223;pecial". </p>
+
+<div class="p"><!----></div>
+<p>This structure has the following fields:<br />
+
+</p>
+
+<table>
+<tr><td><tt>s.index</tt> </td><td>index of the singularity point in <tt>x</tt>, so <tt>s(1).index</tt> is always
+equal to 1 and </td></tr>
+<tr><td></td><td><tt>s(end).index</tt> is the number of computed points. </td></tr>
+<tr><td><tt>s.label</tt> </td><td>label of the singularity; by convention <tt>s(1).label</tt> is "00" and <tt>s(end).label</tt> is </td></tr>
+<tr><td></td><td>"99". </td></tr>
+<tr><td><tt>s.msg</tt>   </td><td>an array of strings that may contain any information which
+is useful for the user, </td></tr>
+<tr><td></td><td>for example the full name of the detected special point. </td></tr>
+<tr><td><tt>s.data</tt>  </td><td>an array of structures. For each special point it contains fields with additional
+</td></tr>
+<tr><td></td><td>information, depending on the type of point. For example, there can be fields for 
+</td></tr>
+<tr><td></td><td>normal form coefficients. In the case of branch points, it contains information 
+</td></tr>
+<tr><td></td><td>that allows to distinguish the &#246;ld" branch on which the point was found from  
+</td></tr>
+<tr><td></td><td>the "new" branch to which the user might wish to switch in another run.</td></tr></table>
+
+<p>
+
+<br />
+<br />
+<tt>h</tt> contains some information on the continuation process. Its columns are related to the computed points, and have the following components:<br />
+
+</p>
+
+<table>
+<tr><td>Stepsize </td><td>Stepsize used to calculate this point (zero for initial</td></tr>
+<tr><td></td><td>point and singular points) </td></tr>
+<tr><td>Number of Newton iterations </td><td>For singular points this is the number of locator iterations </td></tr>
+<tr><td>User function values </td><td>The values of all active user functions</td></tr>
+<tr><td>Test function values </td><td>The values of all active test functions </td></tr></table>
+
+<p>
+
+<br />
+<br />
+<tt>f</tt> contains different information, depending on the continuation run. 
+For noncycle-related continuations, the <tt>f</tt>-vector just contains the eigenvalues, 
+if asked for.
+For limit cycle continuations, it begins with the mesh points of the time- discretization, 
+followed by, if they were asked for, 
+the PRC- and dPRC-values in all points of the periodic orbit (cf. section ). 
+Then, if required, follow the multipliers.<br />
+<br />
+It is also possible to extend the most recently computed curve with the same options (also same number of points) as it was first computed.
+The syntax to extend this curve is: </p>
+
+<blockquote>
+<p>
+<tt>[x, v, s, h, f] = cont( x, v, s, h, f, cds);</tt> </p>
+</blockquote>
+<p>
+<tt>x, v, s, h</tt> and <tt>f</tt> are the results of the previous call to the continuer and <tt>cds</tt> is the global variable that contains the curve description of the most recently computed curve (note that this variable has to be defined as <tt>global cds</tt> in teh calling method). The function returns the same output as before, extended with the new results. <br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>In  MatCont, all curves that have been computed using a specific system are stored in 
+separate <tt>.mat</tt>-files, in a directory called <i>diagram</i>, under a subdirectory 
+named after the system. For example, curves of the <i>Connor</i> system will be kept in 
+<tt>.mat</tt>-files under the subdirectory 
+<tt>Systems/Connor/diagram/</tt>. 
+For continuation runs, each such <tt>mat</tt>-file
+contains the computed <tt>x,v,s,h,f</tt> arrays, plus the <tt>cds</tt> structure and a 
+structure related to the curve type. Also, it contains the variables <i>point</i>,
+<i>ctype</i> and <i>num</i>. To understand their meaning, suppose that we are computing
+curves of limit cycles that we start from Hopf points. The first such computed curve
+then gets the name "H_LC(1)", <i>point</i> stores the string "H" and
+<i>ctype</i> stores the string "LC". Furthermore, <i>num</i> stores the index in <tt>s</tt>
+of the last selected point of the curve (the default is 1).
+The second curve of the same type is called "H_LC(2)" and so on. In fact, to save storage space, only a limited number of curves of a certain type is stored. This number can be set by the user and the default is 2.
+To save a computed curve permanently, the user must change its name. </p>
+
+<div class="p"><!----></div>
+<p>For time integration runs, cf. &#167;  (Curve Type O) and &#167;  (Curve type DO), the <tt>mat</tt>-file contains <tt>ctype</tt>, <tt>option</tt>, <tt>param</tt>, <tt>point</tt>, <tt>s</tt>, <tt>t</tt>, <tt>x</tt>. Here <tt>t</tt> is the vector of time points and <tt>x</tt>
+is the corresponding array of computed points. <tt>s</tt> contains data on the first and last computed 
+points. The meaning of <tt>point,ctype</tt> is similar to the case of continuation curves.
+Finally, <tt>param</tt> is the vector of parameters of the ODE (constant during time integration) and
+<tt>option</tt> is a structure that contains optional settings for time integration.<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>To export the computed results of a system to a different installation of  MatCont 
+one has to copy the corresponding <tt>m</tt>-file, the <tt>mat</tt>-file and the directory of the 
+system. </p>
+
+<div class="p"><!----></div>
+<p>These files also contain all information needed to export the computed results to the 
+general  matlab environment, so  MatCont is really an open system.<br />
+
+</p>
+
+<div class="p"><!----></div>
+ <p>MatCont also produces graphical output. 2D and 3D graphs are plotted in  matlab figure windows. Such a graph can be handled as any other graph that is produced in  matlab. It can be 
+selected using the arrow-function of the  matlab figure, and 
+the line width, line style and colour can be altered. Markers can be set on the curve. 
+It can be copy-pasted into another  matlab figure. In a figure, textboxes can be inserted and axes labels can be added.
+Thus the user has a plethora of possibilities to combine different  MatCont output 
+graphs into one figure. <br />
+
+ </p>
+
+<div class="p"><!----></div>
+ <p>Finally, we note that users often want to introduce new systems that are modifications of existing systems,
+but with slightly different sets of state variables and/or parameters. The best strategy to do this in
+ MatCont is first to edit the existing system, change its name to a new one and click 
+ &quot;OK" to build an  m-file with a different name and no associated directory of computed curves. Afterwards, one can edit the newly created system, make all desired changes and click 
+ &quot;OK" again. </p>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

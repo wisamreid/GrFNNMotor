@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>Generator window</TITLE>
+<META NAME="description" CONTENT="Generator window">
+<META NAME="keywords" CONTENT="doc_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<b> Next</b>: <a href="integratormatcont.html">Integrator</a><b> 
+Up:</b> <a href="generatorwindowmatcont.html">Generator window</a> <b> Previous:</b> <a href="generatorwindowmatcont.html">Generator window</a>&nbsp <b> <a 
+  href="../node1.html">Contents</a></b> <br>
+<p>The continuer is the most-used type of generator. It has the following numerical parameters:</p>
+<center><img src="continuer.jpg" align="middle" width="297" height="536" > 
+<p>&nbsp;</p>
+</center>
+<p> 
+<table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290" valign="bottom"> 
+ 
+        <p><b><br>
+        Continuation data<br>
+&nbsp;</b></p>    </td>
+    <td> 
+      <p>&nbsp;</p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <p>InitStepsize</p>
+	</td>
+	<td>
+	  <p>Initial stepsize</p>
+    </td>
+   </tr>
+   <tr>
+    <td> MinStepsize </td>
+    <td> Minimal stepsize</td>
+  </tr>
+  <tr>
+    <td> MaxStepsize </td>
+    <td> Maximal stepsize</td>
+  </tr>
+</table>
+<table border=0 cellspacing=0 >
+  <tr> 
+    <td width="290">         <p><b><br>
+    Corrector data<br>
+&nbsp;</b></p>    </td>
+    <td> 
+      <p>&nbsp;</p>
+    </td>
+	<td>
+	</tr>
+	<tr>
+	<td>
+	  <p>MaxNewtonIters</p>
+	</td>
+	<td>
+	  <p>maximum number of Newton-Raphson iterations before switching to Newton-Chords 
+        in the corrector iterations.</p>
+    </td>
+	</tr>
+	
+  <tr> 
+    <td> 
+      <p>MaxCorrIters</p>
+    </td>
+	<td> maximum number of correction iterations.</td>	  
+   </tr>
+   
+  <tr> 
+    <td> 
+      <p>MaxTestIters</p>
+    </td>
+    <td> maximum number of iterations to locate a zero of a testfunction.</td>
+	  </tr>
+	  
+  <tr> 
+    <td> 
+      <p>VarTolerance </p>
+    </td>
+	   
+    <td> tolerance of coordinates: ||x|| &lt; VarTolerance is the second convergence 
+      criterium of the Newton iteration.</td>
+	  </tr>
+	  
+  <tr> 
+    <td> 
+      <p>FunTolerance</p>
+    </td>
+	  
+    <td> tolerance of function values:||F(x)|| &lt; FunTolerance is the first convergence 
+      criterium of the Newton iteration.</td>
+	  </tr>
+	  <tr>
+	  
+    <td> Adapt</td>
+	  
+    <td> number of points indicating when to adapt some internal problem 
+    parameters while computing 
+      the curve (default:3)</td>
+	  
+  <tr> 
+    <td>        <p> <b><br>
+    Stop data<br>
+&nbsp;</b></p>    </td>
+	  <td>
+	  <p>&nbsp;</p>
+      </td>
+	  </tr>
+	  
+  <tr> 
+    <td> 
+      <p> MaxNumPoints</p>
+    </td>
+	  
+    <td> maximum number of points on the curve.</td>
+	  </tr>
+	  
+    <td> 
+      <p> ClosedCurve</p>
+    </td>
+    <td> number of points indicating when to start checking if the curve is closed.</td>
+	  </tr>
+  </table>
+  
+</body>
+</html>

@@ -1,0 +1,162 @@
+2011-05-08  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Make sure older versions of matlab don't fail on ignored argument.
+    * SBML/gds_from_sbml.m (gds_from_sbml): remove ignored argument marked
+    with '~'
+
+2011-04-28  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Bug: wrong callbacks called in Systems window.
+    * systems.fig:  changed callbacks functions of n1-n5 f1-f3 r1-r3
+
+    Default to numeric integrations for SBML imports.
+    * SBML/gds_from_sbml.m (default_gds): changed der.
+
+
+2011-04-26  Pieter Pareit <pieter.pareit@ Universiteit Gent>
+
+    Bug: would not start when file in settings is invalid.
+    * matcont.m (matcont): check if file exists before load.
+
+2011-04-23  Pieter Pareit <pieter.pareit@ Universiteit Gent>
+
+    Change resize beheavior of some windows. In the GUIDE, check the
+    resize proportional option in 'Tools->GUI Options...'.
+    * GUI/select_point.fig
+    * GUI/select_corve.fig
+
+    Trim the equations in the system window. This makes editing easier.
+    * GUI/systmes.m (load_system): before adding equations, trim line by
+    line.
+
+    Bug: on some java platforms, the system dialog was not updating the
+    wrap.
+    * GUI/systems.m (systems): force resize, so callback is called at least
+    once.
+
+    Bug: gds might not contain field system, so unable to store oldgds.
+    * SBML/import_sbml.m (import_sbml.m): check if field exists.
+
+    Better handle invalid coordinates.
+    * GUI/systems.m (coordinates_Callback): on invalid coordinate, don't
+    erase, but reset focus.
+
+    Beter handle invalid parameters.
+    * GUI/systems.m (parameters_Callback): on invalid parameters, don't
+    erase, but reset focus.
+
+    Beter handle notification to change jacobian.
+    * GUI/systems.m (parameters_Callback): only tell user to redo jacobian
+    if jacobian is not computer generated.
+
+    Remember initial values of coordinates and parameters between system
+    edits.
+    * GUI/systems.m (coordinates_Callback): store old_coords, and check
+    them.
+    * GUI/systems.m (parameters_Callback): store old_params and check them.
+
+2011-04-22 Willy Govaerts <Willy.Govaerts@UGent.be>
+    Fix title of matcont window
+    * matcont.m (matcont): calls to set(fig,'Name','MatCont')
+
+2011-04-21  Virginie De Witte   <Virginie.DeWitte@UGent.be>
+
+    Small changes in:
+    gui_HSN
+    gui_Het
+    gui_PD
+    nf_NS
+    neimarksacker
+    perioddoubling
+
+2011-04-18  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Systems.
+    * Systems/*: took systems of previous release.
+
+    Error message fixed.
+    * SBML/import_sbml.m (import_sbml): spelling.
+    * SBML/init_sbmltoolbox. (init_sbmltoolbox): documentation.
+
+2011-04-04  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Fixed an indexing bug when an line with assignment is shorter then
+    the longest name of a coordinate.
+    * systems.m (parse_input): use regexp istead of strfind
+
+    Add the names of the assignments to the syms list when calculating the
+    jacobian and others
+    * systems.m (symjac): go through the assignments and add the lhs to the
+    symbols.
+
+    When reading an SBML model, replace the use of nthroot by a
+    complementary call to power, as the symbolic toolbox of matlab does 
+    not like the former.
+    * gds_from_sbml.m (replace_nthroot_by_power): added.
+
+    Try to keep as much assignments from the SBML model in matcont, without
+    substituting them.
+    * gds_from_sbml.m (gds_from_sbml): changed some logic.
+
+    Fix bug: Closing without system, or canceling without previous system.
+    * GUI/systems.m (cancel_Callback): check if oldgds is set.
+    * matcont.m (exit_callback): check if system is field of gds.
+
+    Added better visual indication that matcont is working on model.
+    * GUI/systems.m (ok_Callback): added calls to waitbar.
+    * SBML/import_sbml.m (import_sbml.m): added calls to waitbar.
+    * SBML/gds_from_sbml.m (gds_from_sbml.m): added calls to waitbar.
+
+2011-04-03  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Placed settings of SBML in it's own folder so it does not gets overwritten
+    * import_sbml.m (import_sbml): settings
+
+    Made procedure to test installation of SBML Toolbox more robust
+    * init_sbmltoolbox.m (test_libsbml): added call to GetParameters
+
+    Made it possible to handle models with functions in them
+    * gds_from_sbml.m (substitute_functions): added
+    * SubstituteFunction.m (SubstituteFunction): modification of original
+    file from the SBML Toolbox, upstream notified
+
+2011-03-21  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Fix bug, new system still using jacobian of previous system
+    
+    * GUI/editsystem.m (edit_Callback): Reset global var hds.
+    * GUI/systems.m (ok_Callback): Reset global var hds.
+
+2011-03-19  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Fix bug, sometimes unable to continue a system, error with datenum
+
+    * matcont.m (make_curvename): set variable da in correct way
+    * matcont.m (make_curve): set variable da in correct way
+
+2011-03-17  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Remember window position of main window between sessions
+
+    * matcont.m (matcont): delayed showing of mainwindow and load position,
+    then show mainwindow at correct position
+    * matcont.m (exit_callback): save position of mainwindow
+
+2011-03-08  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Changed input field, not to wrap text.
+
+    * GUI/findjobj.m: Added
+    * GUI/findjobj_license.txt: Added
+    * GUI/systems.m (systems): Added Java-hack to display horizontal
+    scrollbar and not to wrap text
+
+2011-03-06  Pieter Pareit   <pieter.pareit@ Universiteit Gent>
+
+    Addition of SBML import support
+
+    * matcont.m: addpath for SBML
+    * SBML/import_sbml.m: added
+    * SBML/gds_from_sbml.m: added
+    * SBML/Substitute.m: added
+    * SBML/test.xml: added

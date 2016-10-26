@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Processing</TITLE>
+<META NAME="description" CONTENT="Processing">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="previous" HREF="node46.html">
+<LINK REL="up" HREF="node45.html">
+<LINK REL="next" HREF="node48.html">
+<style>
+<!--
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ div.p { margin-top: 7pt;} span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+-->
+</style>
+</HEAD>
+
+<BODY >
+<B>Next: </B> <A NAME="tex2html758"
+  HREF="../Ch8/node50.html">Continuation of codim 1</A><B> Up:</B>
+<A NAME="tex2html154"
+  HREF="node44.html">Continuation of limit cycles</A>
+<B> Previous:</B>     <a href="node48.html">Processing</a>&nbsp;&nbsp; <B>  <A NAME="tex2html756"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<BR>
+<b><font size="5">The Phase Response Curve</font></b><p>The phase response curve of a limit cycle, or PRC, is a curve, defined over the 
+period of the cycle, that expresses, at each time of that period, the effect of a 
+small input vector on the cycle. In experimental circumstances, this may correspond 
+to injected current, to the addition of more chemical agents, etc. A positive value 
+means that the current cycle is shortened in time, a negative value means that the 
+period is prolonged. </p>
+
+<div class="p"><!----></div>
+<p>The PRC, as it is generally computed, is exact for infinitesimally small input vectors. 
+In practice the maximum norm of the input vector would depend on the needed accuracy and 
+the values of the system's state variables. </p>
+
+<div class="p"><!----></div>
+<p>The derivative phase response curve or dPRC also has some very important applications. 
+For the concrete use of PRC and dPRC in synchronization studies in neural modeling, 
+we refer to [].<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>We have developed a new numerical method of computing the PRC and dPRC, that is specifically 
+aimed at the computation during continuation of limit cycles. For the computation of one single PRC it is not less efficient than 
+previous methods, but the advantage is less obvious. For details on this method, 
+we refer to [Govaerts and Sautois 2006a]. The standard method, which uses numerical integration
+of the adjoint system, was implemented in  XPPAUT [].  MatCont and  Cl_MatCont support the computation of the PRC and dPRC of limit cycles during continuation, using this new method.<br />
+
+</p>
+
+<div class="p"><!----></div>
+<p>The use in  MatCont 
+is easy: before starting the actual limit cycle continuation, the user can specify 
+whether he wants to compute the PRC, dPRC or both, and he needs to indicate the 
+input vector used. When a scalar is given as input, then the
+vector has this scalar as first entry and all other entries are zero. Then in separate 
+plotting windows, for each computed step in limit cycle continuation, the PRC 
+and/or dPRC are computed and plotted. </p>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

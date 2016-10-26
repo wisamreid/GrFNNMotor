@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Options</TITLE>
+<META NAME="description" CONTENT="Options">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node24.html">
+<LINK REL="previous" HREF="node22.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node24.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <a href="node24.html" name="tex2html481">Derivatives of the 
+ODE-file</a>
+<B> Up:</B> <A NAME="tex2html477"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html471"
+  HREF="node22.html">Options</A>
+ &nbsp <B>  <A NAME="tex2html479"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00052400000000000000"></A><A NAME="s:options"></A>
+<BR>
+The options-structure</H3>
+<p>It is possible to specify various options for the continuation run. The 
+continuer stores the handle to the options in the variables <tt>cds.curve_options</tt>. 
+A call to <tt>feval(cds.curve.options)</tt> must return a structure created with <tt>
+contset</tt>: </p>
+
+<blockquote>
+<p>
+<tt>options = contset;</tt> </p>
+</blockquote>
+<p>will initialize the structure. Options can then be set using </p>
+
+<blockquote>
+<p>
+<tt>options = contset(options, optionname, optionvalue);</tt> </p>
+</blockquote>
+<p>where <tt>optionname</tt> is an option from the following list. </p>
+
+<div class="p"><!----></div>
+
+<dl compact="compact">
+ <dt><b>InitStepsize</b></dt>
+	<dd> the initial stepsize (default: 0.01)</dd>
+ <dt><b>MinStepsize</b></dt>
+	<dd> the minimum stepsize to compute the next point on the curve (default: 
+	10<sup><font face="symbol">-</font
+>5</sup>)</dd>
+ <dt><b>MaxStepsize</b></dt>
+	<dd> the maximum stepsize (default: 0.1)</dd>
+ <dt><b>MaxCorrIters</b></dt>
+	<dd> maximum number of correction iterations (default: 10)</dd>
+ <dt><b>MaxNewtonIters</b></dt>
+	<dd> maximum number of Newton-Raphson iterations before switching to 
+	Newton-Chords in the corrector iterations (default: 3)</dd>
+ <dt><b>MaxTestIters</b></dt>
+	<dd> maximum number of iterations to locate a zero of a testfunction (default: 
+	10)</dd>
+ <dt><b>Increment</b></dt>
+	<dd> the increment to compute the derivatives numerically (default: 10<sup><font face="symbol">-</font
+>5</sup>)</dd>
+ <dt><b>FunTolerance</b></dt>
+	<dd> tolerance of function values: <font face="symbol">||</font
+>F(x)<font face="symbol">||</font
+> <font face="symbol">£</font
+>  <tt>FunTolerance</tt> is the first convergence criterium of the Newton 
+	iteration (default: 10<sup><font face="symbol">-</font
+>6</sup>)</dd>
+ <dt><b>VarTolerance</b></dt>
+	<dd> tolerance of coordinates: <font face="symbol">||d</font
+>x<font face="symbol">||</font
+> <font face="symbol">£</font
+>  <tt>VarTolerance</tt> is the second convergence criterium of the Newton 
+	iteration (default: 10<sup><font face="symbol">-</font
+>6</sup>)</dd>
+ <dt><b>TestTolerance</b></dt>
+	<dd> tolerance of test functions (default: 10<sup><font face="symbol">-</font
+>5</sup>)</dd>
+ <dt><b>Singularities</b></dt>
+	<dd> boolean indicating the presence of a singularity matrix (default: 0)</dd>
+ <dt><b>MaxNumPoints</b></dt>
+	<dd> maximum number of points on the curve (default: 300)</dd>
+ <dt><b>Backward</b></dt>
+	<dd> boolean indicating the direction of the continuation (sign of the 
+	initial tangent vector) v<sub>0</sub> (default: 0)</dd>
+ <dt><b>CheckClosed</b></dt>
+	<dd> number of points indicating when to start to check if the curve is 
+	closed (0 = do not check) (default: 50)</dd>
+ <dt><b>Adapt</b></dt>
+	<dd> number of points after which to call the adapt-function while computing 
+	the curve (default: 1=adapt always)</dd>
+ <dt><b>IgnoreSingularity</b></dt>
+	<dd> vector containing indices of singularities which are to be ignored (default: 
+	empty)</dd>
+ <dt><b>Multipliers</b></dt>
+	<dd> boolean indicating the computation of the multipliers (default: 0)</dd>
+ <dt><b>Eigenvalues</b></dt>
+	<dd> boolean indicating the computation of the eigenvalues (default: 0)</dd>
+ <dt><b>Userfunctions</b></dt>
+	<dd> boolean indicating the presence of user functions (default: 0)</dd>
+ <dt><b>UserfunctionsInfo</b></dt>
+	<dd> is an array with structures containing information about the 
+	userfunctions. This structure has the following fields:<br />
+
+<table>
+<tr><td><tt>.label</tt> </td><td>label of the userfunction </td></tr>
+<tr><td><tt>.name</tt>  </td><td>name of this particular userfunction </td></tr>
+<tr><td><tt>.state</tt> </td><td>boolean indicating whether the userfunction has 
+	to be evaluated or not </td></tr></table>
+</dd>
+ <dt><b>PRC</b></dt>
+	<dd> variable indicating the computation of the phase response curve (default: 
+	empty)</dd>
+ <dt><b>dPRC</b></dt>
+	<dd> variable indicating the computation of the derivative of the phase 
+	response curve (default: empty)</dd>
+ <dt><b>Input</b></dt>
+	<dd> vector representing the input given to the system for the computation 
+	of the phase response curve (default: 0)</dd>
+</dl>
+
+<div class="p"><!----></div>
+ <p>Options also contains some fields which are not set by the user but frozen 
+	or filled by calls to the curvefile, namely:</p>
+
+<dl compact="compact">
+ <dt><b>MoorePenrose</b></dt>
+	<dd> boolean indicating the use of the Moore-Penrose continuation as the 
+	Newton-like corrector procedure (default: 1)</dd>
+ <dt><b>SymDerivative</b></dt>
+	<dd> the highest order symbolic derivative which is present (default: 0)</dd>
+ <dt><b>SymDerivativeP</b></dt>
+	<dd> the highest order symbolic derivative with respect to the free 
+	parameter(s) which is present (default: 0)</dd>
+ <dt><b>Testfunctions</b></dt>
+	<dd> boolean indicating the presence of test functions (default: 0)</dd>
+ <dt><b>WorkSpace</b></dt>
+	<dd> boolean indicating to initialize and clean up user variable space (default: 
+	0)</dd>
+ <dt><b>Locators</b></dt>
+	<dd> boolean vector indicating the user has provided his own locator code to 
+	locate zeroes of test functions. Otherwise the default locator will be used 
+	(default: empty)</dd>
+ <dt><b>ActiveParams</b></dt>
+	<dd> vector containing indices of the active parameter(s) (default: empty)</dd>
+</dl>
+
+<P>
+
+<P>
+<HR>
+<BR>
+&nbsp;</BODY></HTML>

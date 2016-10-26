@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>User functions</TITLE>
+<META NAME="description" CONTENT="User functions">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node28.html">
+<LINK REL="previous" HREF="node26.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node28.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html517"
+  HREF="node28.html">Defaultprocessor</A>
+<B> Up:</B> <A NAME="tex2html489"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html507"
+  HREF="node26.html">Locators</A>
+ &nbsp <B>  <A NAME="tex2html515"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3><A NAME="SECTION00052700000000000000">
+User functions</A>
+</H3>
+<p>To detect userfunctions on the curve one must set the option <em>Userfunctions</em> on. 
+The continuer has stored the handles to the userfunctions <tt>cds.curve_userf</tt>.
+First a call to <tt>UserInfo = contget(cds.options, 'UserfunctionsInfo', [])</tt> is made to get information  of the userfunctions. A call to <tt>feval(cds.curve_userf, UserInfo, ids, x, v)</tt> then must return the evaluation of all 
+userfunctions ids, whose information is in the structure <tt>UserInfo</tt>, 
+at <tt>x</tt> (<tt>v</tt> is the tangent vector at <tt>x</tt>). 
+As a second return argument it should return an array of all user function id's which could 
+not be evaluated, if this array is not empty the stepsize will be decreased. </p>
+
+<div class="p"><!----></div>
+<p>When a change of sign of a userfunction is detected, the userfunction <tt>i</tt> is processed at
+<tt>x</tt>. This is the point where the results (values of the userfunction) can be saved in the 
+structure <tt>s.data</tt> which can be reused for further analysis. </p>
+
+<P>
+<BR><HR>
+</BODY>
+</HTML>

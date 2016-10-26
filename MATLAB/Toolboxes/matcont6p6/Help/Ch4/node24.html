@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.48)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Symbolic derivatives</TITLE>
+<META NAME="description" CONTENT="Symbolic derivatives">
+<META NAME="keywords" CONTENT="doc_cl_matcont">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 6.0">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="doc_cl_matcont.css">
+
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="node22.html">
+<LINK REL="next" HREF="node25.html">
+<style>
+<!--
+ div.p { margin-top: 7pt;}-->
+</style>
+</HEAD>
+
+<BODY >
+<BR>
+<B> Next:</B> <A NAME="tex2html469"
+  HREF="node25.html">Singularities and test functions</A>
+<B> Up:</B> <A NAME="tex2html465"
+  HREF="node22.html">Options</A>
+<B> Previous:</B> <A NAME="tex2html459"
+  HREF="node23.html">The options-structure</A>
+ &nbsp <B>  <A NAME="tex2html467"
+  HREF="../node1.html">Contents</A></B> 
+<BR>
+<BR>
+<H3>Derivatives of the ODE-file</H3>
+<font FACE="CMR10" SIZE="3">
+<p ALIGN="LEFT">In the ODE-file of the object to be continued, you can provide 
+the derivates that are needed for the continuation algorithm or other 
+computations. The continuer has stored the handle to the derivatives in the 
+variables </font><font FACE="Courier New" SIZE="2">cds.curve_jacobian, 
+cds.curve_hessians</font><font FACE="CMR10" SIZE="3">. </font></p>
+<p ALIGN="LEFT"><font FACE="CMR10" SIZE="3">If </font>
+<font FACE="Courier New" SIZE="2">cds.symjac= 1</font><font FACE="CMR10" SIZE="3">, 
+then a call to </font><font FACE="Courier New" SIZE="2">feval(cds.curve jacobian, 
+x) </font><font FACE="CMR10" SIZE="3">must return the (</font><font FACE="CMMI10" LANG="JA" SIZE="3">n
+</font><font FACE="CMSY10" LANG="KO" SIZE="3">&#8722;</font><font FACE="CMR10" SIZE="3">1)
+</font><font FACE="CMSY10" LANG="KO" SIZE="3">× </font>
+<font FACE="CMMI10" LANG="JA" SIZE="3">n </font><font FACE="CMR10" SIZE="3">
+Jacobian matrix evaluated at point </font>
+<font FACE="CMMI10" LANG="JA" SIZE="3">x</font><font FACE="CMR10" SIZE="3">. <br>
+If </font><font FACE="Courier New" SIZE="2">cds.symhess= 1</font><font FACE="CMR10" SIZE="3">, 
+then a call to</font><font SIZE="2" face="Courier New"> feval(cds.curve hessians, 
+x)</font><font FACE="CMTT10" SIZE="3"> </font><font FACE="CMR10" SIZE="3">must 
+return a 3-dimensional (</font><font FACE="CMMI10" LANG="JA" SIZE="3">n </font>
+<font FACE="CMSY10" LANG="KO" SIZE="3">&#8722; </font><font FACE="CMR10" SIZE="3">1
+</font><font FACE="CMSY10" LANG="KO" SIZE="3">× </font>
+<font FACE="CMMI10" LANG="JA" SIZE="3">n </font>
+<font FACE="CMSY10" LANG="KO" SIZE="3">× </font>
+<font FACE="CMMI10" LANG="JA" SIZE="3">n</font><font FACE="CMR10" SIZE="3">) 
+matrix </font><font FACE="CMMI10" LANG="JA" SIZE="3">H </font>
+<font FACE="CMR10" SIZE="3">such that </font>
+<font FACE="CMMI10" LANG="JA" SIZE="3">H</font><font FACE="CMR10" SIZE="3">(</font><font FACE="CMMI10" LANG="JA" SIZE="3">i, 
+j, k</font><font FACE="CMR10" SIZE="3">) = </font>[(<font face="symbol">¶</font
+><sup>2</sup>F<sub>i</sub>(x))/(<font face="symbol">¶</font
+>x<sub>j</sub><font face="symbol">¶</font
+>x<sub>k</sub>)]. <font FACE="CMR10" SIZE="3"></p>
+<p ALIGN="LEFT">In the present implementation in most cases</font><font SIZE="2" face="Courier New"> 
+cds.symhess= 0</font><font FACE="CMR10" SIZE="3">, so the ODE-file does not 
+provide second order derivatives, since they are not needed in the algorithms 
+used.</p>
+</font><HR>
+</BODY>
+</HTML>
