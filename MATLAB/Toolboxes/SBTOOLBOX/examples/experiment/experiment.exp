@@ -1,0 +1,56 @@
+********** EXPERIMENT NAME
+example experiment
+
+********** EXPERIMENT NOTES
+just an example experiment 
+
+********** EXPERIMENT INITIAL PARAMETER AND STATE SETTINGS
+% The expression in this limiter will be evaluated when merging the 
+% experiment with the model. Please note that the entries here will not 
+% be evaluated sequentially. So the two following example will have the 
+% same result:
+%
+%  A(0) = 1
+%  B(0) = A(0) + 5
+%
+% is the same as:
+%
+% B(0) = A(0) + 5
+% A(0) = 1
+
+% Initial conditions can be set (both directly numerical values or 
+% as mathematical expressions)
+
+A(0) = 1                % comment 1
+B(0) = A(0) + 5         % comment 2
+
+% Parameter values can be changed by both setting numerical values and 
+% mathematical expressions
+k2 = 1 + k1*A(0)
+k1 = 0.5
+
+********** EXPERIMENT PARAMETER CHANGES
+% In this section parameter changes can be defined that are evaluated during
+% the merged models evaluation
+
+% One possibility is simply to define an algebraic expression for a parameter
+k3 = exp(-0.4*time)
+
+% The second possibility is to use piecewiseSB expressions (type "help piecewiseSB"
+% for more information on the syntax):
+k4 = piecewiseSB(-0.5,gt(time,5),0)
+
+% A third possibility that might dissappear in a revision of the description is
+% the following (note the required curly brackets):
+k5 = {2,10,3,5,10,0}
+% the interpretation of the line above is:
+% from time 2: value = 10: until time 3
+% from time 3: value = 5: until time 10
+% default value is 0 (last element)
+
+********** EXPERIMENT STATE CHANGES
+% State changes in the experiment description can only be done at certain 
+% time points yet. This will probably also change in a coming revision.
+
+time = 10, A = 5, B = 1+A
+time = 15, B = 10*A

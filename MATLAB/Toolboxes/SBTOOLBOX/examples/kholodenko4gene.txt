@@ -1,0 +1,74 @@
+********** MODEL NAME
+Four gene network
+
+********** MODEL NOTES
+Model of a 4 gene network, described in
+
+Kholodenko, et al. (2002) Untangling the wires: a strategy to trace 
+functional interactions in signaling and gene networks, PNAS 99, 12841-12846
+
+********** MODEL STATES
+d/dt(S1) = Syn1-Deg1
+d/dt(S2) = Syn2-Deg2
+d/dt(S3) = Syn3-Deg3
+d/dt(S4) = Syn4-Deg4
+
+S1(0) = 0.491977
+S2(0) = 0.605198
+S3(0) = 0.186642
+S4(0) = 0.651406
+
+
+********** MODEL PARAMETERS
+A14 = 4
+K14a = 1.6
+n14 = 2
+K12i = 0.5
+n12 = 1
+A24 = 4
+K24a = 1.6
+n24 = 2
+A32 = 5
+K32a = 1.5
+n32 = 2
+K31i = 0.7
+n31 = 1
+A43 = 2
+K43a = 0.15
+n43 = 2
+V1d = 200
+K1d = 30
+V2d = 500
+K2d = 60
+V3d = 150
+K3d = 10
+V4d = 500
+K4d = 50
+Vs1 = 5
+Vs2 = 3.5
+Vs3 = 3
+Vs4 = 4
+
+********** MODEL VARIABLES
+
+Syn1 = Vs1 *(1+A14*(S4/K14a)^n14) / ((1+(S4/K14a)^n14)*(1+(S2/K12i)^n12))
+Deg1 = V1d*S1/(K1d+S1)
+Syn2 = Vs2 *(1+A24*(S4/K24a)^n24) / (1+(S4/K24a)^n24)
+Deg2 = V2d*S2/(K2d+S2)
+Syn3 = Vs3 *(1+A32*(S2/K32a)^n32) / ((1+(S2/K32a)^n32)*(1+(S1/K31i)^n31))
+Deg3 = V3d*S3/(K3d+S3)
+Syn4 = Vs4 *(1+A43*(S3/K43a)^n43) / (1+(S3/K43a)^n43)
+Deg4 = V4d*S4/(K4d+S4)
+
+
+********** MODEL REACTIONS
+
+
+********** MODEL FUNCTIONS
+
+
+********** MODEL EVENTS
+
+
+********** MODEL MATLAB FUNCTIONS
+

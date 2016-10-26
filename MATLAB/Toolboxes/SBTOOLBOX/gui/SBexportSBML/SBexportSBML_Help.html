@@ -1,0 +1,319 @@
+<html><head><title>SBML Export Help</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<h1>SBML Export Help</h1>
+	<p>
+	The SBML export GUI allows you to inspect the automatically determined SBML properties of the SBmodel.
+	You can edit the properties, add new states, parameters, events, etc. In the case that no compartment is present in the 
+	model, or if certain elements are not assigned to a compartment the export GUI, when clicking on the <em>Export SBML</em>
+	button will ask if a default compartment should be added to the model. 
+	<p>
+	The necessary information for the SBML export can be determined automatically but can also be specified by the user (partly or completely)
+	prior to invoking the export functions. This information can be added by directly editing the SBmodels underlying data structure,
+	or by providing the information in the model text representation.
+	<p>
+	<table>
+		<tr><th colspan="3">1) Editing the structure</th></tr>
+		<tr><td colspan="3">The model structure is obtained by typing <em>modelstruct = SBstruct(sbmodel)</em>
+		 	The <em>states</em>, <em>parameters</em>, and <em>variables</em> fields of the structure have the 
+		 	following subfields that need to be set to correct values</td></tr>
+		<tr><td colspan="3" class="white">&nbsp;</td></tr>
+   		<tr><th>Subfield</th><th>Valid content</th><th>Condition</th>
+ 		<tr><td colspan="3" class="white">&nbsp;</td></tr>
+  		<tr><td><em>type</em></td><td>'isSpecie'</td><td>if SBML species</td></tr>
+        <tr><td></td><td>'isParameter'</td><td>if SBML parameter</td></tr> 
+        <tr><td></td><td>'isCompartment'</td><td>if SBML compartment</td></tr>
+		<tr><td colspan="3" class="white">&nbsp;</td></tr>
+  		<tr><td><em>compartment</em></td><td>species compartment</td><td>if type='isSpecie': name of the compartment where the SBML species is located in</td></tr>
+        <tr><td></td><td>outside compartment</td><td>if type='isCompartment': name of the outside compartment. Leave empty if no outside compartment</td></tr> 
+        <tr><td></td><td>''</td><td>if SBML parameter</td></tr>
+		<tr><td colspan="3" class="white">&nbsp;</td></tr>
+  		<tr><td><em>unittype</em></td><td>'amount'</td><td>if species given in amount units, e.g., mmol</td></tr>
+        <tr><td></td><td>'concentration'</td><td>if species given in amount units, e.g., mM</td></tr> 
+        <tr><td></td><td>''</td><td>if type is not 'isSpecie'</td></tr>
+		<tr><td colspan="3" class="white">&nbsp;</td></tr>		
+		<tr><th colspan="3">2) Providing the information in the model text description, by SBedit, SBeditBC or directly by editing text files</th></tr>
+		<tr><td colspan="3">For each state, parameter, and variable the additional information has
+ 			the following syntax:<p>
+			<em>[type:compartment:unittype]</em>
+			<p>
+			where valid contents for <em>type</em>, <em>compartment</em>, and <em>unittype</em> are defined as above.
+ 			This argument needs to be placed in each definition of a state,
+ 			parameter, and variable just before the optional comment.
+			<p>
+			Example for a species:<p>
+			<em>d/dt(A) = (-R1+2*R4)/cytosol  [isSpecie:cytosol:concentration] % optional comment</em>
+			</td></tr>
+	</table>
+	<p>
+In the following all functions involved in the SBML export functions are documented.
+	<p>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OVERVIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+</p><h2>Functions - Overview</h2>
+<table>
+	<!-- Export of SBmodel -->
+	<tbody><tr><th colspan="2">Export of a SBmodel</th></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<tr><th width="100"><a href="#SBexportSBML">SBexportSBML</a></th><td>Determines the necessary information for SBML export automatically and writes a SBML file.</td></tr>
+	<tr><th width="100"><a href="#SBexportSBMLGUI">SBexportSBMLGUI</a></th><td>Determines the necessary information for SBML export automatically and starts a GUI afterwards so that changes can be made.</td></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<!-- Functions adding necessary information to SBmodel for SBML export -->
+	<tr><th colspan="2">Functions adding necessary information to SBmodel for SBML export</th></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<tr><th width="100"><a href="#addDefaultCompartment">addDefaultCompartment</a></th><td>Adds a compartment to the SBmodel that contains all other components (SBML needs at least one compartment).</td></tr>
+	<tr><th width="100"><a href="#SBmakeSBMLpresets">SBmakeSBMLpresets</a></th><td>Fills the SBML type, unittype and compartment fields in the SBmodel with data.</td></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<!-- Functions checking SBmodel data fields for SBML compliance -->
+	<tr><th colspan="2">Functions checking SBmodel data fields for SBML compliance</th></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<tr><th width="100"><a href="#checkCompartmentsForLoop">checkCompartmentsForLoop</a></th><td>Advanced models may consist of more than one compartment, it is necessary to keep them in a tree like structure!</td></tr>
+	<tr><th width="100"><a href="#checkNamesInSBmodel">checkNamesInSBmodel</a></th><td>Depending
+on how a SBmodel is created it could be possible that identifiers had
+been used twice e.g. one letter for a variable and a function at the
+same time. This can lead to strange simulation results in the SBTOOLBOX
+and to invalid SBML after export.</td></tr>
+	<tr><th width="100"><a href="#existsNameInSBmodel">existsNameInSBmodel</a></th><td>To be aware of the double identifier problem before creating a new state, parameter, variable... this function can be used.</td></tr>
+	<tr><th width="100"><a href="#isSBmodelName">isSBmodelName</a></th><td>There are restrictions how SBmodel names (identifiers) may look like. Use this function to check compliance.</td></tr>
+	<tr><th width="100"><a href="#testSBMLsettings">testSBMLsettings</a></th><td>This
+function combines all tests that show whether a given SBmodel is
+expanded with the necessary information for SBML export. It is used by <em>SBexportSBML</em> and <em>SBexportSBMLGUI</em> before the converting process starts.</td></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<!-- Other functions (auxiliary functions) -->
+	<tr><th colspan="2">Other functions (auxiliary functions)</th></tr>
+	<tr><td colspan="2" class="white">&nbsp;</td></tr>
+	<tr><th width="100"><a href="#helpMATLAB">fetchCompartments</a></th><td>Returns 3 vectors with compartment information.</td></tr>
+	<tr><th width="100"><a href="#helpMATLAB">getallNamesFromSBmodel</a></th><td>Returns a list of all used names in a SBmodel.</td></tr>
+	<tr><th width="100"><a href="#helpMATLAB">getSBmodelFunctionNames</a></th><td>Returns a list all defined function names for a given SBmodel.</td></tr>
+</tbody></table>
+<p>	
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+</p><h1>Functions - Full Description and Examples</h1>
+
+<!-- Export of SBmodel -->
+<h2>Direct export of SBmodel</h2>
+<p>
+<!-- SBexportSBML -->
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="SBexportSBML"><span class="function">SBexportSBML(input)<span></span></span></a></th></tr>
+<tr><th>Information</th>
+<td>
+<p>
+	<em>SBexportSBML</em> is the convenient function for SBML export. All the user has to do is supplying
+	a SBmodel as input argument. Then several routines check whether the SBML fields in the SBmodel are set
+	correctly respectively the SBML fields are determined automatically. If these procedures are passed
+	without any problems the file saving dialog pops up and the user can provide a name for the created
+	SBML file.
+</p></td></tr>
+<tr><th>Usage</th>
+<td>
+	Run this script to export the SBmodel supplied with the <em>input</em> argument to SBML.
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+	</td>
+</tr><tr><th>Examples</th>
+<td>
+	<em>
+	&gt;&gt; novak_tyson<br>
+	&gt;&gt; SBexportSBML(sbm)
+	</em>
+	<p>	
+	Afterwards the, for the SBML export, necessary fields are filled a file saving dialog pops up where the user has to provide a
+name for the SBML file.
+</p></td>
+</tr>
+</tbody></table>
+</p><p>
+<!-- Export of SBmodel with GUI support -->
+</p><h2>Export of SBmodel with GUI support</h2>
+<p>
+<!-- SBexportSBMLGUI -->
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="SBexportSBMLGUI"><span class="function">SBexportSBMLGUI(input)<span></span></span></a></th></tr>
+<tr><th>Information</th>
+<td>
+	<p> This exports a SBmodel to SBML with the possibility to change the data in the SBML fields of the SBmodel before the SBML file
+	is written. The changes are made through a Java based GUI that starts automatically after empty SBML fields are filled with data
+	determined by <em>SBmakeSBMLpresets</em>
+	</p>
+</td>
+</tr>
+<tr><th>Usage</th>
+<td>
+	<p>
+	Run this script to export the SBmodel supplied with the <em>input</em> argument to SBML. The user is able to change data of
+	SBML fields before the SBML file is written.
+	</p>
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+</td>
+</tr><tr><th>Examples</th>
+<td>
+
+	<p><em>
+	&gt;&gt; novak_tyson<br>
+	&gt;&gt; SBexportSBML(sbm)
+	</em></p>
+
+</td>
+</tr>
+</tbody></table>
+</p><p>
+<!-- Functions for adding SBML information -->
+</p><h2>Functions for adding SBML information</h2>
+<p>
+<!-- Add default compartment -->
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="addDefaultCompartment"><span class="function">output = addDefaultCompartment(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	<p>
+	If only a missing root compartment is the reason why SBML exports fails, this function adds one.
+	</p>
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+	<p><em>output = [changedsbm]</em></p>
+	<p><em>changedsbm:</em> SBmodel with root compartment</p>
+
+</td>
+</tr><tr><th>Examples</th>
+<td>
+
+	<p>
+	<em>
+	&gt;&gt; novak_tyson<br>
+	&gt;&gt; [newsbm] = addDefaultCompartment(sbm)
+	</em>
+
+</p></td>
+</tr>
+</tbody></table>
+</p><p>
+<!-- SBmakeSBMLpresets -->
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="SBmakeSBMLpresets"><span class="function">output = SBmakeSBMLpresets(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	<p>
+	This function analyses the given SBmodel as <em>input</em> argument and tries to determine the correct SBML settings automatically.
+	<em>SBmakeSBMLpresets</em> is used by <em>SBexportSBML</em> and <em>SBexportSBMLGUI</em>.
+	THIS FUNCTON DOESN'T OVERRIDE ANY SBML SETTINGS MADE BEFORE!!!
+	</p>
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+	<p><em>output = [changedsbm]</em></p>
+	<p><em>changedsbm:</em> SBmodel will SBML settings</p>
+
+</td>
+</tr><tr><th>Examples</th>
+<td>
+
+	<p>
+	<em>
+	&gt;&gt; novak_tyson<br>
+	&gt;&gt; [newsbm] = SBmakeSBMLpresets(sbm)
+	</em>
+</p></td>
+</tr>
+</tbody></table>
+</p><p>
+<!-- Testing Functions -->
+</p><h2>Testfunctions to check SBML compliance</h2>
+<p>
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="checkCompartmentsForLoop"><span class="function">output = checkCompartmentsForLoop(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	Checks for a given SBmodel as <em>input</em> argument whether the definition of outside compartments are valid.
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+	<p><em>output = true<br>output = false</em></p>
+	<p>
+	Output is true if a loop is found otherwise false.
+	</p><p>
+</p></td>
+</tr></tbody></table>
+</p><p>
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="checkNamesInSBmodel"><span class="function">output = checkNamesInSBmodel(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	Checks whether the given SBmodel as <em>input</em> argument has identifiers which are defined more than once.
+	<p><em>input = [sbm]</em></p>
+	<p><em>sbm:</em> A SBmodel</p>
+	<p><em>output = true<br>output = false</em></p>
+	<p>
+	Output is true everything is fine otherwise false.
+	</p><p>
+</p></td>
+</tr></tbody></table>
+</p><p>
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="existsNameInSBmodel"><span class="function">output = existsNameInSBmodel(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	Tests whether a given name is already present in the given SBmodel.
+	<p><em>input = [sbm, name]</em></p>
+	<p><em>sbm:</em> A SBmodel<br>
+	<em>name:</em> A name to test for existence
+	</p>
+	<p><em>output = true<br>output = false</em></p>
+	<p>
+	Output is true if name is present otherwise false.
+	</p><p>
+</p></td>
+</tr></tbody></table>
+</p><p>
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="isSBmodelName"><span class="function">output = isSBmodelName(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	Tests whether a given name is a valid SBmodel identifier.
+	<p><em>input = [name]</em></p>
+	<p><em>name:</em> A name to validate</p>
+	<p><em>output = true<br>output = false</em></p>
+	<p>
+	Output is true if name is valid otherwise false.
+	</p><p>
+</p></td>
+</tr></tbody></table>
+</p><p>
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="testSBMLsettings"><span class="function">output = testSBMLsettings(input)<span></span></span></a></th></tr>
+<tr><th>Usage</th>
+<td>
+	Tests whether a given model can be exported to SBML.
+	<p><em>input = [model]</em></p>
+      <p><em>model:</em> A SBmodel</p>
+	<p><em>output = [sbmlCompliant]<br>
+	output = [sbmlCompliant, onlyDefaultCompartmentError]</em></p>
+	<p><em>sbmlCompliant:</em> true if all SBML settings have been made and are correct
+	<em>onlyDefaultCompartmentError:</em> true if only errors concerning a missing default compartment have been found
+	</p><p>
+</p></td>
+</tr></tbody></table>
+</p><p>
+<!-- Auxiliary functions -->
+</p><h2>Auxiliary functions</h2>
+<p>
+<!-- helpMATLAB -->
+<table class="functiondescription">
+<tbody><tr><th colspan="2"><a name="helpMATLAB">Auxiliary functions</a></th></tr>
+<tr><th>Usage</th>
+<td>
+	The following functions are not documented in detail in this manual.
+	To obtain more information please type in MATLAB:
+	<p>
+	<em>&gt;&gt; help "functionname"</em>
+	</p><p>
+	"functionname":
+	</p><p>
+	<em>
+	fetchCompartments<br>
+	getallNamesFromSBmodel<br>
+	getSBmodelFunctionNames<br>
+	</em></p>
+
+</td>
+</tr></tbody></table>
+</p><p>
+</p>
+</body></html>

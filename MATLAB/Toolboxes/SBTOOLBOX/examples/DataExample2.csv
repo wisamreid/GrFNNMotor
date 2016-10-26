@@ -1,0 +1,22 @@
+Name: Example for data representation in CSV file
+Notes: Here you can enter information about the experiment and the data. Each row of 'Notes' is expected to 
+Notes: have a leading 'Notes: ' identifier. The other identifiers are allowed only once and their use is obvious
+Notes: from this example. Contrary to the Excel file description no identifier is required for 'Components'. 
+Notes: When measurement data of different length is collected for different components
+Notes: non measured steps for a certain component are indicated by not putting a value between the commas. 
+Notes: Alternatively 'NaN' can be written instead. The order of the identifiers is crucial!
+StimulusFlag: 0,0,0,0,0,0,0,0,0
+NoiseOffset: 0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.200000,0.000000,0.000000
+NoiseVariance: 0.010000,0.000000,0.000000,0.000000,0.000000,0.000000,0.100000,0.000000,0.000000
+YT,MPF,PYT,PYTP,Cdc25P,Wee1P,IEP,APC,Cyclin
+0,0.0172,0.0116,0.0009,0.0198,0.073,0.9499,0.9499,0.242,0.3132
+0.1,0.017193,0.011569,0.000875,0.019807,0.073033,0.94993,0.94993,0.24218,0.31323
+0.2,0.017191,0.011559,0.000869,0.019796,0.073039,0.94995,0.94995,0.24241,0.3133
+0.3,0.017189,0.011556,0.000868,0.019785,0.073031,0.94996,0.94996,0.24263,0.31342
+0.4,0.017188,0.011554,0.000868,0.019775,0.073016,0.94995,0.94995,0.24278,0.31356
+0.5,0.017187,0.011552,0.000868,0.019768,0.072993,0.94993,0.94993,0.24286,0.31372
+0.6,0.017186,0.011551,0.000868,0.019763,0.072967,0.94991,0.94991,0.24284,0.31384
+0.7,0.017185,0.011549,0.000868,0.019759,0.072939,0.94988,0.94988,0.24272,0.31393
+0.8,0.017185,0.011548,0.000868,0.019757,0.072911,0.94986,0.94986,0.24249,0.31396
+0.9,0.017185,0.011547,0.000868,0.019757,0.072881,0.94983,0.94983,0.24214,0.31393
+1,0.017185,0.011547,0.000869,0.019758,0.072859,0.9498,0.9498,0.24175,0.31382
