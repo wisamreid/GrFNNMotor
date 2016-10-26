@@ -1,0 +1,11 @@
+syntax:glob
+*~
+.*.swp
+*.o
+*.mex*
+*.oct
+tags
+data
+pic_tmp/
+extern_lib/
+prj_neuron_gc/pic_tmp/

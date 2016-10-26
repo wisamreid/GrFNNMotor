@@ -1,0 +1,16 @@
+function A = getVARCoeffs(y, inds)
+
+%% prep  matrix for VAR
+% y = [];
+% for i=1:size(z,1)
+%     if sum(z(i,:)) > 0
+%         y = [y z(i,:)'];
+%     end
+% end
+
+%% VAR
+for i = 1:numel(inds)
+    disp('Computing autoVAR for neuron # ',num2str(i), 'out of ',);
+    results = vare(y(inds(i),:),20);
+    A{i} = results.nvar;
+end

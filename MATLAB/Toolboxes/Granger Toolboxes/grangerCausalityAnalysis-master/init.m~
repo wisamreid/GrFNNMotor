@@ -1,0 +1,30 @@
+disp('initializing workspace');
+
+basePath = '/N/u/madcanda/';
+dataPath = '../data/asdf/';
+asdfUtilsPath = '../asdf_utils/ASDF_utils/';
+mvgcPath = './mvgc_v1.0/';
+econometricsPath = './Econometrics/';
+
+addpath(dataPath);
+addpath(genpath(asdfUtilsPath));
+addpath(genpath(mvgcPath));
+addpath(genpath(econometricsPath));
+
+load('asdf.mat');
+
+% summing up activity across neurons and applying filter
+fs = [];
+for i=1:50000:sMax
+    cutasdf = ASDFChooseTime(asdf_raw,i,i+50000-1);
+    [raster,binunit] = ASDFToSparse(cutasdf);
+    raster = full(raster);
+    fs = [fs sum(raster)];
+end
+
+% filter
+load('spikeBurstMaskingFilter.mat');
+fsf = filter(Hd,fs);
+delay = mean(grpdelay(Hd));
+% adjusdtr 
+fsf = [fsf(delay:end) fsf(1:delay-1)];
