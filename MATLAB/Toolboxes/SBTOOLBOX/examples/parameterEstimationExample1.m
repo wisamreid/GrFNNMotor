@@ -1,4 +1,4 @@
-clc; clear all; close all;
+  clc; clear all; close all;
 echo on;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PARAMETER ESTIMATION EXAMPLE 1
