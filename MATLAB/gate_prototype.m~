@@ -1,0 +1,31 @@
+%% Walk through a digitized difference equation:
+% using the Runge Kutte method
+
+% http://www.physics.utah.edu/~detar/phys6720/handouts/ode/ode/node1.html
+
+clear all
+close all
+clc
+
+% F = @(t,y,alpha,beta1) y*(alpha + 1i*2*pi + beta1*abs(y)^2);
+F = @(t,y,alpha,beta1,beta2,epsilon) y*alpha + beta1*y^3 + (epsilon*beta2*y^5)/(1-epsilon*y^2);
+t0 = 0;
+y0 = 0.1;
+alpha = 0;
+beta1 = -100;
+beta2 = 0;
+epsilon = 0.01;
+tfinal = 3;
+T = 1/100;
+time = 0:T:tfinal;
+
+y = ode4(F,time,y0,alpha,beta1,beta2,epsilon);
+
+plot(y)
+grid on
+figure(2);
+plot((y(1:end-1)),diff(y))
+
+grid on
+hold on
+% plot(y0.*exp((alpha + 1i*2*pi + beta1*abs(y0)^2).*time),'r')
