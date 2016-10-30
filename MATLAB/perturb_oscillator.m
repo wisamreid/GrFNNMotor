@@ -3,37 +3,44 @@
 clear all
 close all
 clc
+% Include the GrFNN toolbox
+addpath(genpath('~/Documents/GrFNNToolbox/'))
 
 % differential equation for the amplitude of a hopf bifurcation
-Fr = @(t,r,alpha,beta1,beta2,epsilon,F,psy) r*alpha ...
-    + beta1*r^3 + (epsilon*beta2*r^5)/(1-epsilon*r^2) + F*cos(psy);
-Fpsy = @(t,Omega,F,r,psy) Omega - (F/r)*sin(psy);
+% %%% no input %%%
+% dzdt = @(t,z,alpha,beta1,beta2,epsilon) z*(alpha + 1i*2*pi + ...
+%     beta1*abs(z)^2 + (epsilon*beta2*abs(z)^4)/(1-epsilon*abs(z)^2));
+% %%% with input %%%
+dzdt = @(t,z,alpha,beta1,beta2,epsilon,F,omega0) z*(alpha + 1i*2*pi*20 + ...
+    beta1*abs(z)^2 + (epsilon*beta2*abs(z)^4)/(1-epsilon*abs(z)^2)) + ...
+    F*exp(1i*omega0*t);
 
 % parameters of the limit cycle oscillator
-r0 = 0.9;
+z0 = 0.3;
 alpha = 1;
 beta1 = -1;
-beta2 = -10;
+beta2 = -1;
 epsilon = 1;
-f = 20;
-omega = 2*pi*f;
+F = 0.5;
+f0 = 19.5;
+omega0 = 2*pi*f0;
 
 % parameters for time
 fs = 1000;
-dur = 10; % in seconds
+dur = 20; % in seconds
 T = 1/fs;
 time = 0:T:dur;
 
-% parameters for the stimulus
-f2 = 1;
-omega0 = 2*pi*f2;
-F = 1;
-Omega = omega - omega0;
-psy = omega - omega0;
-
 % integrate the ode to obtain the amplitude
-r = ode4(Fr,time,r0,alpha,beta1,beta2,epsilon,F,psy);
+% %%% no input %%%
+% z = ode4(dzdt,time,z0,alpha,beta1,beta2,epsilon);
+% %%% with input %%%
+z = ode4(dzdt,time,z0,alpha,beta1,beta2,epsilon,F,omega0);
+
+% extract inormation
+r = abs(z);
 drdt = diff(r);
+dzdt = diff(z);
 
 % visualize the amplitude of the oscillator over time
 figure(1)
@@ -43,19 +50,18 @@ ylabel('$A.U.$','Interpreter','Latex')
 xlabel('$time(s)$','Interpreter','Latex')
 grid on
 subplot(2,1,2)
-stem((r(1:end-1)),drdt)
+plot((r(1:end-1)),drdt)
 xlabel('$r$','Interpreter','Latex')
 ylabel('$\frac{dr}{dt}$','Interpreter','Latex')
 grid on
-
-% calculate z
-z = r.*exp(1i.*omega.*time');
-dzdt = diff(z);
 
 % plot z
 figure('units','normalized','position',[1 0.5 1 0.5])
 subplot(1,3,1)
 plot(time,real(z))
+hold on
+plot(time,imag(z))
+title('real part of z')
 axis square
 ylabel('$A.U.$','Interpreter','Latex')
 xlabel('$time(s)$','Interpreter','Latex')
@@ -71,39 +77,8 @@ axis square
 xlabel('$z$','Interpreter','Latex')
 ylabel('$\frac{dz}{dt}$','Interpreter','Latex')
 
-%%
-% clear all
-% close all
-% clc
-% % UNCOMMENT to try the same procedure with a saddle node
-% Fx = @(t,x,r) r - x^2;
-% Fy = @(t,y) -y;
-% 
-% % bifurcation parameter
-% r = 0.1;
-% 
-% for x0 = -1:0.1:1
-%     for y0 = -1:0.1:1
-%         
-%         % parameters for time
-%         fs = 100;
-%         dur = 10; % in seconds
-%         T = 1/fs;
-%         time = 0:T:dur;
-%         
-%         % integrate the ode to obtain the amplitude
-%         x = ode4(Fx,time,x0,r);
-%         y = ode4(Fy,time,y0);
-%         
-%         
-%         % plot the phase portrait
-%         plot(x,y)
-%         hold on
-%         grid on       
-%         axis square
-%         axis([-1 1 -1 1])
-%         xlabel('$x$','Interpreter','Latex')
-%         ylabel('$y$','Interpreter','Latex')
-%         
-%     end
-% end
+% uncomment for a quick and dirty fft of z
+figure(3)
+freqs = linspace(-fs/2,fs/2,2^(nextpow2(length(z))));
+plot(freqs,fftshift((fft(z,2^(nextpow2(length(z)))))))
+axis tight

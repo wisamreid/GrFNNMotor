@@ -1,4 +1,6 @@
 % This script shows a limit cycle oscillator in the beta band (20Hz)
+% by Irán Román
+% implementation of the theory in Kim and Large 2015
 
 clear all
 close all
@@ -13,7 +15,7 @@ alpha = 1;
 beta1 = -1;
 beta2 = -10;
 epsilon = 1;
-f = 20;
+f = 1;
 
 % parameters for time
 fs = 1000;
@@ -59,7 +61,7 @@ xlabel('real')
 ylabel('imaginary')
 subplot(1,3,3)
 % plot the phase portrait
-plot((z(1:end-1)),(dzdt))
+plot((abs(z(1:end-1))),abs((dzdt)))
 axis square
 xlabel('$z$','Interpreter','Latex')
 ylabel('$\frac{dz}{dt}$','Interpreter','Latex')
