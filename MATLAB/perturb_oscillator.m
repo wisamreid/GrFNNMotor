@@ -21,8 +21,8 @@ alpha = 1;
 beta1 = -1;
 beta2 = -1;
 epsilon = 1;
-F = 0.5;
-f0 = 19.5;
+F = 0.7;
+f0 = 20.5;
 omega0 = 2*pi*f0;
 
 % parameters for time
