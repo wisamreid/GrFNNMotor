@@ -62,3 +62,18 @@ spectrogram((z(:,1)),kaiser(256,5),220,20000,fs,'yaxis')
 title('Spectrum')
 ylim([0 100])
 xlabel('time(s)')
+
+% notes from Takako
+% Gamma does not spontaneously oscillate. Beta does. 
+% read: New insights into the relationship between dopamine, beta oscillations and motor function.
+% Beta is always oscillating. Gamma gives exogenous or endogenous input to
+% affect beta. Think about high gamma. DBS people didn't find beta
+% desynchronization when giving low gamma. High gamma will give the
+% desynchronization of beta. If you stimulate 20Hz, people are affected, with 40Hz gamma 
+% nothing happens, with high gamma 80Hz there is improvement. Dopamine
+% depleted brain gives constant beta. 
+
+% Gamma must start with sound. 
+
+% Granger causality. Berhnard. Issues with phase coherence. Bayes might
+% adress causality clarification. DCM
