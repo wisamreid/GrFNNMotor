@@ -39,7 +39,7 @@ plot(z(fs*9:end))
 clear all; close all; clc
 
 dzdt = @(t,z,alpha,beta1,beta2,epsilon,F,omega0)  ...        
-    z(1)*(alpha + 1i*2*pi*39.5 + beta1*abs(z(1))^2 + ...     
+    z(1)*(alpha + 1i*2*pi*79.5 + beta1*abs(z(1))^2 + ...     
     (epsilon*beta2*abs(z(1))^4)/(1-epsilon*abs(z(1))^2)) + ...
     F*exp(1i*omega0*t);
 
@@ -57,7 +57,7 @@ T = 1/fs;
 time = 0:T:dur;
 
 % parameters for input
-f0 = 40;
+f0 = 80;
 omega0 = 2*pi*f0;
 F = 0.6;
 
@@ -89,7 +89,7 @@ clear all; close all; clc
 dzdt = @(t,z,alpha,beta1,beta2,epsilon,F,omega0)  ...        
     [z(1)*(alpha + 1i*2*pi*20 + 15*beta1*abs(z(1))^2 + ...     
     (epsilon*beta2*abs(z(1))^4)/(1-epsilon*abs(z(1))^2)) + 200*(z(2)); ...
-    (z(2)*(alpha + 1i*2*pi*39.5 + beta1*abs(z(2))^2 + ... % beta layer
+    (z(2)*(alpha + 1i*2*pi*79.5 + beta1*abs(z(2))^2 + ... % beta layer
     (epsilon*beta2*abs(z(2))^4)/(1-epsilon*abs(z(2))^2)) + ...   
     F*exp(1i*omega0*t))]; % input to beta
 
@@ -107,7 +107,7 @@ T = 1/fs;
 time = 0:T:dur;
 
 % parameters for input
-f0 = 40;
+f0 = 80;
 omega0 = 2*pi*f0;
 F = 0.6;
 
@@ -144,6 +144,24 @@ title('Spectrum')
 ylim([0 100])
 xlabel('time(s)')
 
+% use 80 Hz instead of 40Hz. We just don't know too much about 40 Hz gamma. 
+% Talamocortical loop may be the one giving the 40Hz response (Healthy). In
+% Parkinson's this loop is not there. 
+% 
+% You see beta everywhere. Even in the cerebelum and Olivo-cerebelar loop. 
+% Next variation: Without sound, a top down (intention to move) cue is
+% given to the system, and the system produces movement. Have beta dip
+% prior to single movement, and high gamma burst before the dip of gamma. 
+%
+% After having this, we can modulate the parameters for the initial beta,
+% with high amplitude beta not letting gamma act. Jenkinson's and Brown hypothesis:
+% there is dopaminergic input coming to STN, low level input, and enhances
+% beta. This is the parkinsonism state. Have the model have a parameter:
+% High Gamma amplitude, beta level, beta level is modulated by the
+% available Dopamine
+
+%%
+
 % notes from Takako
 % Gamma does not spontaneously oscillate. Beta does. 
 % read: New insights into the relationship between dopamine, beta oscillations and motor function.
@@ -158,3 +176,16 @@ xlabel('time(s)')
 
 % Granger causality. Berhnard. Issues with phase coherence. Bayes might
 % adress causality clarification. DCM
+
+%%
+
+% 11/02/2016
+% Due to status, these people can say things they think without very clear evicende
+% Cautious Note: Not Always possible what they say. 
+% Compare to Terry, who is a pioneer, but doesn't show the flag too much.
+% Only cited when thinking about predictive coding in the physiological
+% system that they are trying to infer. Friston has a visionary position in
+% the community, and thus one has to be carefull with their observations. 
+
+% Hippocampal, rat work, gamma band, Rudolfo Llinas work. Very stablished
+% animal physiology lab. Everyone ends up coming to MEG. 
