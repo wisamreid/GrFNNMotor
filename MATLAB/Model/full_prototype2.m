@@ -1,4 +1,6 @@
-% implementation of the Runge Kutta method
+% implementation of the 3rd version of the model
+% two layers, first layer at beta frequency, 2nd layer at high-gamma. 
+% the output (2nd layer activity) shows gamma bursts and beta ERD
 
 clear all;close all;clc;
 
@@ -18,6 +20,14 @@ beta22 = 0;
 epsilon2 = 1;
 f2 = 0.5;
 
+% parameters of the beta oscillator
+z03 = 1;
+alpha3 = 5;
+beta13 = -500;
+beta23 = 0;
+epsilon3 = 1;
+f3 = 20;
+
 % parameters for time
 fs = 1000;
 dur = 10; % in seconds
@@ -30,13 +40,17 @@ ntime = length(time);
 t_out = zeros(size(time));
 z_out_1 = zeros(size(time));
 z_out_2 = zeros(size(time));
+z_out_3 = zeros(size(time));
 
+% initialization values
 t_out(1) = time(1);
 z_out_1(1) = z01;
 z_out_2(1) = z02;
+z_out_3(1) = z03;
 
-% coupling parameter
+% coupling parameters
 c12 = 200;
+c23 = 1000000; % dopamine level
 
 % add an input
 input = zeros(size(time));
@@ -89,7 +103,29 @@ for i=1:ntime-1
     k4 = z3*(alpha2 + 1i*2*pi*f2 + beta12*abs(z3)^2 + ...
         ((epsilon2*beta22*abs(z3))^4)/(1-epsilon2*abs(z3)^2)) + c12*(z_out_1(i));
     
-    z_out_2(i+1) = z_out_2(i) + (1/6)*T*(k1+(2*k2)+(2*k3)+k4);            
+    z_out_2(i+1) = z_out_2(i) + (1/6)*T*(k1+(2*k2)+(2*k3)+k4); 
+    
+	%%% third layer %%%
+    
+    k1 = z_out_3(i)*(alpha3 + 1i*2*pi*20 + beta13*abs(z_out_3(i))^2 + ...
+        ((epsilon1*beta23*abs(z_out_3(i)))^4)/(1-epsilon1*abs(z_out_3(i))^2)) + c23*abs(z_out_2(i));
+    
+    z1 = z_out_3(i)+(T/2)*k1;
+    
+    k2 = z1*(alpha3 + 1i*2*pi*20 + beta13*abs(z1)^2 + ...
+        ((epsilon1*beta23*abs(z1))^4)/(1-epsilon1*abs(z1)^2)) + c23*abs(z_out_2(i) + z_out_2(i+1))/2;
+    
+    z2 = z_out_3(i)+(T/2)*k2;
+    
+    k3 = z2*(alpha3 + 1i*2*pi*20 + beta13*abs(z2)^2 + ...
+        ((epsilon1*beta23*abs(z2))^4)/(1-epsilon1*abs(z2)^2)) + c23*abs(z_out_2(i) + z_out_2(i+1))/2;
+    
+    z3 = z_out_3(i)+T*k3;
+    
+    k4 = z3*(alpha3 + 1i*2*pi*20 + beta13*abs(z3)^2 + ...
+        ((epsilon1*beta23*abs(z3))^4)/(1-epsilon1*abs(z3)^2)) + c23*abs(z_out_2(i));
+    
+    z_out_3(i+1) = z_out_3(i) + (1/6)*T*(k1+(2*k2)+(2*k3)+k4);
     
     t_out(i+1) = t_out(i) + T;
     
@@ -97,12 +133,16 @@ end
 
 figure(1)
 axis square
-subplot(1,2,1)
+subplot(1,3,1)
 plot((z_out_1));
 title('Oscillator 1')
 grid on
-subplot(1,2,2)
+subplot(1,3,2)
 plot((z_out_2));
+grid on
+title('Oscillator 2')
+subplot(1,3,3)
+plot((z_out_3));
 grid on
 title('Oscillator 2')
 
@@ -135,5 +175,49 @@ title('Input')
 subplot(3,1,3)
 spectrogram(z_out_2,kaiser(256,5),220,20000,fs,'yaxis')
 title('Spectrum')
+ylim([0 100])
+xlabel('time(s)')
+
+figure(4)
+subplot(3,1,1)
+% plot3(time,real(z_out_2),imag(z_out_2))
+plot(abs(z_out_3))
+axis tight
+grid on
+title('Magnitude')
+subplot(3,1,2)
+plot(time,abs(z_out_2))
+grid on
+title('Input')
+subplot(3,1,3)
+spectrogram(z_out_3,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum')
+ylim([0 100])
+xlabel('time(s)')
+
+figure(5)
+subplot(4,1,1)
+spectrogram(z_out_3,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum Beta Oscillator')
+ylim([0 100])
+xlabel('Time(s)')
+subplot(4,1,2)
+spectrogram(z_out_2,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum slow Modulator')
+ylim([0 100])
+xlabel('time(s)')
+subplot(4,1,3)
+spectrogram(z_out_1,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum slow Modulator')
+ylim([0 100])
+xlabel('time(s)')
+subplot(4,1,4)
+plot(time,input)
+grid on
+title('Input')
+
+figure(6)
+spectrogram(z_out_2+z_out_3,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum of the System')
 ylim([0 100])
 xlabel('time(s)')

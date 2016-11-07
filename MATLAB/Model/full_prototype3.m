@@ -3,24 +3,24 @@
 clear all;close all;clc;
 
 % parameters of the gamma oscillator
-z01 = 0;
-alpha1 = -10;
-beta1 = 0;
-beta2 = 0;
-epsilon1 = 20;
+z01 = 0.00001;
+alpha1 = -15;
+beta1 = 1;
+beta2 = -1;
+epsilon1 = 1;
 f1 = 80;
 
-% parameters of the modulating oscillator
-z02 = 0.0001;
-alpha2 = -100;
-beta12 = 0;
+% parameters of the beta oscillator
+z02 = 0.01;
+alpha2 = 8;
+beta12 = -2000;
 beta22 = 0;
-epsilon2 = 1;
-f2 = 0.5;
+epsilon2 = 0.03;
+f2 = 20;
 
 % parameters for time
 fs = 1000;
-dur = 10; % in seconds
+dur = 7; % in seconds
 T = 1/fs;
 time = 0:T:dur;
 
@@ -31,18 +31,19 @@ t_out = zeros(size(time));
 z_out_1 = zeros(size(time));
 z_out_2 = zeros(size(time));
 
+% initialization values
 t_out(1) = time(1);
 z_out_1(1) = z01;
 z_out_2(1) = z02;
 
-% coupling parameter
-c12 = 200;
+% coupling parameters
+c12 = 100000; %dopamine level
 
 % add an input
 input = zeros(size(time));
-ntaps = 4;
+ntaps = 5;
 for i=1:ntaps
-    input(fs*2*i) = 1;%hann(100+1);
+    input(fs*i) = 1;%hann(100+1);
 end
 
 for i=1:ntime-1
@@ -89,7 +90,7 @@ for i=1:ntime-1
     k4 = z3*(alpha2 + 1i*2*pi*f2 + beta12*abs(z3)^2 + ...
         ((epsilon2*beta22*abs(z3))^4)/(1-epsilon2*abs(z3)^2)) + c12*(z_out_1(i));
     
-    z_out_2(i+1) = z_out_2(i) + (1/6)*T*(k1+(2*k2)+(2*k3)+k4);            
+    z_out_2(i+1) = z_out_2(i) + (1/6)*T*(k1+(2*k2)+(2*k3)+k4);     
     
     t_out(i+1) = t_out(i) + T;
     
@@ -137,3 +138,36 @@ spectrogram(z_out_2,kaiser(256,5),220,20000,fs,'yaxis')
 title('Spectrum')
 ylim([0 100])
 xlabel('time(s)')
+
+figure(4)
+subplot(4,1,1)
+plot3(time,real(z_out_2),imag(z_out_2))      
+grid on
+title('Complex amplitude of the Beta Oscillator')
+subplot(4,1,2)
+spectrogram(z_out_2,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum of the Beta Oscillator')
+ylim([0 100])
+subplot(4,1,3)
+spectrogram(z_out_1,kaiser(256,5),220,20000,fs,'yaxis')
+title('Spectrum of the Gamma Oscillator')
+ylim([0 100])
+subplot(4,1,4)
+stem(time,input)
+grid on
+ylim([0.01 1.2])
+ylabel('Amplitude')
+xlabel('time(s)')
+title('Input')
+%%
+close all
+figure(1)
+grid on
+for i=1:length(time)   
+    
+    plot3(time(i:i+1),real(z_out_2(i:i+1)),imag(z_out_2(i:i+1)),'-k')
+    grid on
+    hold on
+    pause(0.000001)
+       
+end
