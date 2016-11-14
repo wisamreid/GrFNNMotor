@@ -8,14 +8,14 @@
 clear all; close all; clc
 
 dzdt = @(t,z,alpha,beta1,beta2,epsilon)  ...        
-    z(1)*(alpha + 1i*2*pi*20 + beta1*abs(z(1))^2 + ...     
+    z(1)*(alpha + 1i*2*pi + beta1*abs(z(1))^2 + ...     
     (epsilon*beta2*abs(z(1))^4)/(1-epsilon*abs(z(1))^2));
 
 % parameters of the limit cycle oscillator
-z0 = 0.3;
+z0 = 0.99;
 alpha = 1;
 beta1 = -1;
-beta2 = -1;
+beta2 = 0;
 epsilon = 1;
 
 % parameters for time
@@ -29,7 +29,7 @@ time = 0:T:dur;
 
 % extract information
 figure(1)
-plot(z(fs*9:end))
+plot(z)
 
 %%
 % A gamma oscillator will only become transiently active when stimulated.
@@ -88,7 +88,7 @@ clear all; close all; clc
 % the output of gamma modulates a betaoscillator
 dzdt = @(t,z,alpha,beta1,beta2,epsilon,F,omega0)  ...        
     [z(1)*(alpha + 1i*2*pi*20 + 15*beta1*abs(z(1))^2 + ...     
-    (epsilon*beta2*abs(z(1))^4)/(1-epsilon*abs(z(1))^2)) + 200*(z(2)); ...
+    (epsilon*beta2*abs(z(1))^4)/(1-epsilon*abs(z(1))^2)) + 600*(z(2)); ...
     (z(2)*(alpha + 1i*2*pi*79.5 + beta1*abs(z(2))^2 + ... % beta layer
     (epsilon*beta2*abs(z(2))^4)/(1-epsilon*abs(z(2))^2)) + ...   
     F*exp(1i*omega0*t))]; % input to beta
@@ -119,13 +119,13 @@ r = abs(z);
 dr2dt = diff(r(:,1));
 dr1dt = diff(r(:,2));
 
-figure(2)
+figure(1)
 plot(z)
 % plot(r(1:end-1,2),dr1dt)
 % hold on
 % plot(r(1:end-1,1),dr2dt)
 
-figure(3)
+figure(2)
 subplot(3,1,1)
 plot(time,r)
 title('Magnitude of Oscillators')
@@ -151,11 +151,11 @@ xlabel('time(s)')
 % You see beta everywhere. Even in the cerebelum and Olivo-cerebelar loop. 
 % Next variation: Without sound, a top down (intention to move) cue is
 % given to the system, and the system produces movement. Have beta dip
-% prior to single movement, and high gamma burst before the dip of gamma. 
+% prior to single movement, and high gamma burst before the dip of beta. 
 %
 % After having this, we can modulate the parameters for the initial beta,
 % with high amplitude beta not letting gamma act. Jenkinson's and Brown hypothesis:
-% there is dopaminergic input coming to STN, low level input, and enhances
+% there is dopaminergic input coming to STN, low level of input, and enhances
 % beta. This is the parkinsonism state. Have the model have a parameter:
 % High Gamma amplitude, beta level, beta level is modulated by the
 % available Dopamine

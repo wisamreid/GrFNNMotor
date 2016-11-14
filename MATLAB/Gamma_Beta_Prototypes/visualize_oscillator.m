@@ -6,20 +6,24 @@ clear all
 close all
 clc
 
+
+% Include the GrFNN toolbox
+addpath(genpath('~/Documents/GrFNNToolbox/'))
+
 % differential equation for the amplitude of a hopf bifurcation
 F = @(t,r,alpha,beta1,beta2,epsilon) r*alpha + beta1*r^3 + (epsilon*beta2*r^5)/(1-epsilon*r^2);
 
 % parameters of the limit cycle oscillator
-r0 = 0.9;
-alpha = 1;
-beta1 = -1;
-beta2 = -10;
+r0 = 0.31;
+alpha = -0.1;
+beta1 = 1;
+beta2 = -1;
 epsilon = 1;
 f = 1;
 
 % parameters for time
 fs = 1000;
-dur = 1; % in seconds
+dur = 10; % in seconds
 T = 1/fs;
 time = 0:T:dur;
 

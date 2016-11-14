@@ -26,7 +26,7 @@ z_out(1) = z0;
 
 % add an input
 input = zeros(size(time));
-input(fs*10:fs*10+10) = 700;
+input(fs*10:fs*10+10) = 100;
 
 for i=1:ntime-1
         

@@ -221,3 +221,6 @@ spectrogram(z_out_2+z_out_3,kaiser(256,5),220,20000,fs,'yaxis')
 title('Spectrum of the System')
 ylim([0 100])
 xlabel('time(s)')
+
+%%
+% Is MC driving the high-gamma? 
