@@ -163,7 +163,7 @@ title('Input')
 close all
 figure(1)
 grid on
-for i=1:length(time)   
+for i=1:length(time)-1   
     
     plot3(time(i:i+1),real(z_out_2(i:i+1)),imag(z_out_2(i:i+1)),'-k')
     grid on

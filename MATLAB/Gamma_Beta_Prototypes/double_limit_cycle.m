@@ -106,7 +106,7 @@ alpha = -100;
 beta1 = 500;
 beta2 = -50;
 epsilon = 1;
-f1 = 100;
+f1 = 10;
 
 % parameters for time
 fs = 100000;
