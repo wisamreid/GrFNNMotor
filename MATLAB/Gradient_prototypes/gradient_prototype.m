@@ -6,17 +6,19 @@ freqs = [0.5, 1, 2, 4, 8];
 nfreqs = length(freqs);
 
 % parameters of the oscillator
-r0 = 0.9;
+r0 = 0.1;
 alpha = 1;
 beta1 = -1;
 beta2 = -1;
 epsilon = 1;
+w = 2*pi;
 
 % parameters for the input
 F = 1;
 f = 1;
 w0 = 2*pi*f;
-
+omega = w - w0;
+    
 psi0 = 0.5*pi;
 
 % parameters for time
@@ -28,8 +30,7 @@ time = 0:T:end_t;
 for i=1:nfreqs
     
     f_scale = freqs(i);
-    w = 2*pi*f_scale;
-    omega = w - w0;
+    
     % solve r_dot
     full_sys = @(t,z,alpha,beta1,beta2,epsilon,w,omega,F,w0,f_scale)  ...
         [z(1)*alpha + beta1*z(1)^3 + (epsilon*beta2*z(1)^5)/(1-epsilon*z(1)^2) + F*cos(z(2));
@@ -39,14 +40,14 @@ for i=1:nfreqs
     [time,z] = ode45(@(t,z) full_sys(t,z,alpha,beta1,beta2,epsilon,w,omega,F,w0,f_scale),time,[r0,psi0]);
     
     figure(1)
-    subplot(2,nfreqs,i)
+    subplot(3,nfreqs,i)
     plot(time,(1/f_scale)*z(:,1))
     title(sprintf('%d Hz',f_scale))
     ylim([0 1])
     grid on
     xlabel('Time (s)')
     ylabel('Magnitude')
-    subplot(2,nfreqs,nfreqs/1+i)
+    subplot(3,nfreqs,nfreqs/1+i)
     plot(time,(1/f_scale)*z(:,2))
     grid on
     xlabel('Time (s)')
