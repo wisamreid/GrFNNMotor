@@ -130,7 +130,7 @@ if animate
             xlabel('Time (s)')
             ylabel('Real part')
             zlabel('Imaginary part')
-            pause
+            pause(0.05)
         end
     end
 end
@@ -139,3 +139,6 @@ figure(2)
 plot(linspace(-(fs/2),(fs/2)-1,length(z_all_1)),fftshift(abs(fft(z_all_2))))
 axis tight
 grid on
+
+% Langner, periodotopy, MEG human paper trying to find, in humans, his
+% previous findings from animal work. References in Fujioka 2003. 

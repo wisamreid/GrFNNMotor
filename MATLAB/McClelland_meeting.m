@@ -139,7 +139,7 @@ f1 = 10;
 % parameters for time
 fs = 1000;
 start_t = 1; % in seconds
-end_t = 1; % in seconds
+end_t = 5; % in seconds
 T = 1/fs;
 time = 0:T:start_t;
 
@@ -268,7 +268,7 @@ time = 0:T:start_t;
 
 % input parameter
 npulses = 3;
-pulse_amp = 0.8;
+pulse_amp = -0.8;
 pul_step = 1; % in seconds
 
 dzdt = @(t,z,alpha,beta1,beta2,epsilon,f1)  ...
@@ -394,7 +394,7 @@ T = 1/fs;
 time = 0:T:start_t;
 
 % input parameters
-npulses = 10;
+npulses = 5;
 pulse_amp = 0.2945; % 1Hz : 0.2945, 2Hz : 0.18, 3Hz : 0.135, 4Hz : 0.11, 5Hz : 0.10
 % in Fujioka et al. 2012 the tempos were 2.5Hz, 1.7Hz, and 1.3Hz
 % the corresponding pulse amplitudes are: 2.5Hz : 0.153, 1.7Hz : 0.205, 1.3Hz : 0.247
