@@ -37,7 +37,7 @@ z_out_1(1) = z01;
 z_out_2(1) = z02;
 
 % coupling parameters
-c12 = 100000; %dopamine level
+c12 = 10; %dopamine level
 
 % add an input
 input = zeros(size(time));
