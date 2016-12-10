@@ -1,5 +1,7 @@
 % Replicating Figure 1: Kim and Large 2015
 % by Wisam Reid
+% 
+% Abandoning this script for now
 
 %% CLEAN AND CLEAR
 

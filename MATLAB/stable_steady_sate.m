@@ -73,8 +73,8 @@ end
 %%
 clear all;close all;clc;
 
-% parameters of the gamma oscillator
-r0 = 0.2;
+% parameters of the oscillator
+r0 = 0.1;
 alpha = 0;
 beta1 = -100;
 beta2 = 0;
@@ -84,11 +84,11 @@ w = f*2*pi;
 
 % parameters for the input
 F = 0.2;
-f0 = 3;
+f0 = 0.9;
 w0 = 2*pi*f0;
 
 omega = w - w0;
-psi0 = pi;
+psi0 = 0;
 
 % parameters for time
 fs = 1000;
