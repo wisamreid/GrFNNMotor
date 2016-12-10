@@ -1,6 +1,8 @@
 function [ r_star, psi_star ] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F)
 % 
-% findSS: Calculate steady state amplitude and phase 
+% getSS: Calculate steady state amplitude and phase 
+% Author: Wisam Reid
+% Email: wisam@ccrma.stanford.edu
 % 
 % Arguments: 
 % 
@@ -14,8 +16,8 @@ function [ r_star, psi_star ] = getSS(f_osc, f_input, alpha, beta1, beta2, epsil
 % 
 % Returns:
 % 
-% r_star: A float, steady state gain
-% psi_star: A float, steady state phase
+%          r_star: A float, steady state gain
+%        psi_star: A float, steady state phase
 
 % calculate Omega
 Omega = 2*pi*(f_osc - f_input);
@@ -24,11 +26,12 @@ syms r Psi
 r_dot = alpha*r + beta1*r^3 + ((epsilon*beta2*r^5)/(1 - epsilon*r^2)) + F*cos(Psi) == 0;
 psi_dot = Omega - (F/r)*sin(Psi) == 0;
 
-% sol = solve([r_dot, psi_dot], [r, Psi]);
 sol = vpasolve([r_dot, psi_dot], [r, Psi]);
 
 r_star = sol.r;
-psi_star = eval(mod(sol.Psi, 2*pi));
+psi_star = eval(mod(sol.Psi, 2*pi)); % wrap the phase
+
+% Now we handle each quadrant correctly
 
 % first quadrant
 % do nothing
@@ -40,8 +43,8 @@ end
 
 % third quadrant 
 if psi_star > pi && psi_star < 3*pi/2
-    r_star = -1*r_star;
     psi_star = psi_star - pi;
+    r_star = -1*r_star;
 end
 
 % fourth quadrant 
@@ -50,10 +53,12 @@ if psi_star > 3*pi/2
     r_star = -1*r_star;
 end
 
+% edge cases
 if psi_star == 0 || psi_star == pi
    r_star = -1*r_star; 
 end
 
+% % print
 % r_star
 % psi_star
 
