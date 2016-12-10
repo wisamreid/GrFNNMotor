@@ -14,7 +14,6 @@ function [ r_star, psi_star ] = getSS(f_osc, f_input, alpha, beta1, beta2, epsil
 %           beta2: (Hopf Oscillator Parameter)
 %         epsilon: (Hopf Oscillator Parameter)
 %               F: Forcing Amplitude
-%      print_flag: optional
 % 
 % Returns:
 % 
@@ -22,15 +21,15 @@ function [ r_star, psi_star ] = getSS(f_osc, f_input, alpha, beta1, beta2, epsil
 %        psi_star: A float, steady state phase
 
 switch nargin
-    case nargin == 7
-        print_flag = 1;
-    case nargin ~= 8 ||  nargin ~= 7       
-        disp('Error running getSS')
+    case nargin = 7
+        print_flag = 0
+    case otherwise
+        disp('Error running getFP')
         disp('Please provide the right number of arguments')
         disp('Function Call: ')
-        disp('getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, print_flag)')
+        disp('getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F)')
         fprintf('\n')
-        disp('type "help getSS" for more details')
+        disp('type "help getFP" for more details')
         fprintf('\n')
         return
 end 
