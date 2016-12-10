@@ -47,7 +47,7 @@ for i=1:nfreqs
     xlabel('Time (s)')
     ylabel('Magnitude')    
     figure(2)    
-    polar(pi,1.3)
+    polar(pi,1.3) 
     hold on
     polar(z(:,2),z(:,1))
     hold on
