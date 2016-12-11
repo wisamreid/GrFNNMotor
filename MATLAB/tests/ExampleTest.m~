@@ -1,0 +1,37 @@
+classdef ExampleTest < matlab.unittest.Testcase
+    %UNTITLED5 Summary of this class goes here
+    %   Detailed explanation goes here
+    
+    properties
+        OriginalPath
+    end
+    
+    methods (TestMethodSetup)
+        function addLibToPath(testCase)
+            testCase.OriginalPath = path;
+            addpath(fullfile(pwd,'../lib'));
+        end
+    end
+    
+    methods (Test)
+        function testName(testCase)
+            actSolution = functionToTest(arg1, arg2);
+            expSolution = 1;
+            testCase.verifyEqual(actSolution,expSolution,'AbsTol',sqrt(eps));
+        end
+    end
+    
+end
+
+% % Run test file
+% testCase1 = Test1;
+% result1 = run(testCase1);
+
+% % Run a single test
+% result2 = run(testCase1,'testName');
+
+% % In order to test several classes together 
+% % we use the Test Suite Package
+% import matlab.unittest.TestSuite
+methods()
+ 

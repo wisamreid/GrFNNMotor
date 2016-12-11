@@ -1,4 +1,4 @@
-function [regime, fixed_pts, r_star, psi_star] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F)
+function [regime, r_star, psi_star] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F)
 % 
 % getFP: Calculate fixed points for a given oscillator
 %        under periodic forcing
@@ -24,7 +24,6 @@ function [regime, fixed_pts, r_star, psi_star] = getFP(f_osc, f_input, alpha, be
 %                   4: unstable spiral
 %                   5: a saddle point
 %                   0: could not be identified
-%       fixed_pts: Array
 %          r_star: A float, steady state gain
 %        psi_star: A float, steady state phase
 
@@ -110,9 +109,6 @@ else Delta < 0;
     disp(['The fixed point could not be identified'])
     fprintf('\n')
 end 
-
-%  add fixed points later
-fixed_pts = ['fixed points have not been implimented yet'];
 
 end
 
