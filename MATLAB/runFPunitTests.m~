@@ -24,7 +24,7 @@ import matlab.unittest.TestSuite
 % methods('TestSuite')
 
 % Only work on failed tests?
-failed_only = 1;
+failed onl
 
 %% Load tests
 
@@ -57,8 +57,5 @@ getFP_All_Results = run(getFPTestSuite);
 
 %% reRun Failed Tests 
 
-if failed_only
-    clc 
-    failedTests = getFPTestSuite([getFP_All_Results.Failed]);
-    run(failedTests)
-end
+failedTests = getFPTestSuite([getFP_All_Results.Failed]);
+run(failedTests)
