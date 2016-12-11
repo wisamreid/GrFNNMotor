@@ -1,8 +1,13 @@
 classdef getFP_F4A_Test < matlab.unittest.TestCase
-    % getFPTest 
-    %   Fixed Point Location and Stability Tests from Kim & Large 2015 figures
+    % getFP_F4A_Test 
+    %   Stability Regime Tests from 
+    %   Kim & Large 2015 figure 4A
+    %   
     %   Note: The expected values are determined by inspection from the figures
     %   and are not ground truth
+    %
+    %   Author: Wisam Reid
+    %   Email: wisam@ccrma.stanford.edu
     
     properties
         OriginalPath

@@ -31,14 +31,20 @@ F4C = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4C_Test.m'));
 
 %% Testing getFP function
 
-getFPTestSuite = [F3, F4A, F4B, F4C]; % select figures from Kim & Large 2015
-getFP_All_Results = run(getFPTestSuite);
+% getFPTestSuite = [F3, F4A, F4B, F4C]; % select figures from Kim & Large 2015
+% getFP_All_Results = run(getFPTestSuite);
 
 % % display test results
 % disp(getFP_All_Results)
 
 % % reRun Failed Tests 
 % failedTests = totalSuite([totalResult.Failed]);
+
+%%
+
+getFPTestSuite = [F4C];
+getFP_All_Results = run(getFPTestSuite);
+
 
 %% Testing getSS function
 

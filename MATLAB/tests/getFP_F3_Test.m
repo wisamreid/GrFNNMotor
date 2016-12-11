@@ -1,8 +1,13 @@
 classdef getFP_F3_Test < matlab.unittest.TestCase
-    % getFPTest 
-    %   Fixed Point Location and Stability Tests from Kim & Large 2015 figures
+    % getFP_F3_Test 
+    %   Fixed Point Location and Stability Tests from 
+    %   Kim & Large 2015 figure 3
+    %   
     %   Note: The expected values are determined by inspection from the figures
     %   and are not ground truth
+    %
+    %   Author: Wisam Reid
+    %   Email: wisam@ccrma.stanford.edu
     
     properties
         OriginalPath
