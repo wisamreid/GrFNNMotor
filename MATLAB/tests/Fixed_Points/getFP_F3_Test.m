@@ -1,7 +1,7 @@
-classdef getFP_F5_Test < matlab.unittest.TestCase
-    % getFP_F5_Test 
+classdef getFP_F3_Test < matlab.unittest.TestCase
+    % getFP_F3_Test 
     %   Fixed Point Location and Stability Tests from 
-    %   Kim & Large 2015 figure 5
+    %   Kim & Large 2015 figure 3
     %   
     %   Note: The expected r_star and psi_star values are determined by 
     %   inspection from the figures and are not ground truth
@@ -16,17 +16,17 @@ classdef getFP_F5_Test < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function addLibToPath(testCase)
             testCase.OriginalPath = path;
-            addpath(fullfile(pwd,'../lib'));
+            addpath(fullfile(pwd,'../../lib'));
         end
     end
     
     methods (Test)
         
         %%%%%%%%%%%%%%%
-        % Figure 5
+        % Figure 3
         %%%%%%%%%%%%%%%
         
-        function testFigure5_1(testCase)
+        function testFigure3A1(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
@@ -34,7 +34,7 @@ classdef getFP_F5_Test < matlab.unittest.TestCase
             expRegime = 1;
             expRstar = 0.125;
             expPsiStar = pi/8;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 1.02, 1, -100, 0, 0, 0.02);
+            [actRegime, actRstar, actPsiStar] = getFP(1, 0.9, 0, -100, 0, 0, 0.2);
             testCase.verifyEqual(actRegime,expRegime);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
@@ -46,7 +46,7 @@ classdef getFP_F5_Test < matlab.unittest.TestCase
 
         end
         
-        function testFigure5_2(testCase)
+        function testFigure3A2(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
@@ -54,7 +54,7 @@ classdef getFP_F5_Test < matlab.unittest.TestCase
             expRegime = 2;
             expRstar = 0.06;
             expPsiStar = pi/2;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 1.04, 1, -100, 0, 0, 0.02);
+            [actRegime, actRstar, actPsiStar] = getFP(1, 0.5, 0, -100, 0, 0, 0.2);
             testCase.verifyEqual(actRegime,expRegime);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);

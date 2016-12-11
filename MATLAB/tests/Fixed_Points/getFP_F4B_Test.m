@@ -13,7 +13,7 @@ classdef getFP_F4B_Test < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function addLibToPath(testCase)
             testCase.OriginalPath = path;
-            addpath(fullfile(pwd,'../lib'));
+            addpath(fullfile(pwd,'../../lib'));
         end
     end
     

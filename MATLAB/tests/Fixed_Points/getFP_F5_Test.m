@@ -1,7 +1,7 @@
-classdef getFP_F3_Test < matlab.unittest.TestCase
-    % getFP_F3_Test 
+classdef getFP_F5_Test < matlab.unittest.TestCase
+    % getFP_F5_Test 
     %   Fixed Point Location and Stability Tests from 
-    %   Kim & Large 2015 figure 3
+    %   Kim & Large 2015 figure 5
     %   
     %   Note: The expected r_star and psi_star values are determined by 
     %   inspection from the figures and are not ground truth
@@ -16,25 +16,25 @@ classdef getFP_F3_Test < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function addLibToPath(testCase)
             testCase.OriginalPath = path;
-            addpath(fullfile(pwd,'../lib'));
+            addpath(fullfile(pwd,'../../lib'));
         end
     end
     
     methods (Test)
         
         %%%%%%%%%%%%%%%
-        % Figure 3
+        % Figure 5
         %%%%%%%%%%%%%%%
         
-        function testFigure3A1(testCase)
+        function testFigure5A1(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expRegime = 1;
-            expRstar = 0.125;
-            expPsiStar = pi/8;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.9, 0, -100, 0, 0, 0.2);
+            expRstar = 0.11;
+            expPsiStar = pi/4;
+            [actRegime, actRstar, actPsiStar] = getFP(1, 0.98, 1, -100, 0, 0, 0.02);
             testCase.verifyEqual(actRegime,expRegime);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
@@ -46,15 +46,15 @@ classdef getFP_F3_Test < matlab.unittest.TestCase
 
         end
         
-        function testFigure3A2(testCase)
+        function testFigure5A2(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 2;
-            expRstar = 0.06;
+            expRegime = 4;
+            expRstar = 0.02;
             expPsiStar = pi/2;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.5, 0, -100, 0, 0, 0.2);
+            [actRegime, actRstar, actPsiStar] = getFP(1, 0.96, 1, -100, 0, 0, 0.02);
             testCase.verifyEqual(actRegime,expRegime);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
