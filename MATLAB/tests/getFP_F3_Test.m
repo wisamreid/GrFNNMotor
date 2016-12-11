@@ -3,8 +3,8 @@ classdef getFP_F3_Test < matlab.unittest.TestCase
     %   Fixed Point Location and Stability Tests from 
     %   Kim & Large 2015 figure 3
     %   
-    %   Note: The expected values are determined by inspection from the figures
-    %   and are not ground truth
+    %   Note: The expected r_star and psi_star values are determined by 
+    %   inspection from the figures and are not ground truth
     %
     %   Author: Wisam Reid
     %   Email: wisam@ccrma.stanford.edu
@@ -27,8 +27,8 @@ classdef getFP_F3_Test < matlab.unittest.TestCase
         %%%%%%%%%%%%%%%
         
         function testFigure3A1(testCase)
-            rError = 0.02;
-            psiError = pi/12;
+            rError = 0.02; % error margin
+            psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expRegime = 1;
@@ -47,8 +47,8 @@ classdef getFP_F3_Test < matlab.unittest.TestCase
         end
         
         function testFigure3A2(testCase)
-            rError = 0.02;
-            psiError = pi/12;
+            rError = 0.02; % error margin
+            psiError = pi/12; % error margin
             regimeOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expRegime = 2;

@@ -2,9 +2,6 @@ classdef getFP_F4A_Test < matlab.unittest.TestCase
     % getFP_F4A_Test 
     %   Stability Regime Tests from 
     %   Kim & Large 2015 figure 4A
-    %   
-    %   Note: The expected values are determined by inspection from the figures
-    %   and are not ground truth
     %
     %   Author: Wisam Reid
     %   Email: wisam@ccrma.stanford.edu
