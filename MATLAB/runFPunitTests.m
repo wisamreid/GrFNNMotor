@@ -35,12 +35,14 @@ F5 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F5_Test.m'));
 F6 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F6_Test.m'));
 F7 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F7_Test.m'));
 F8 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F8_Test.m'));
+F9 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F9_Test.m'));
+F10 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F10_Test.m'));
 
 %% Testing getFP function
 
 % grab all the tests in the folder
-getFPTestSuite = TestSuite.fromFolder(test_folder_path);
-% getFPTestSuite = [F8];
+% getFPTestSuite = TestSuite.fromFolder(test_folder_path);
+getFPTestSuite = F10;
 
 getFP_All_Results = run(getFPTestSuite);
 
