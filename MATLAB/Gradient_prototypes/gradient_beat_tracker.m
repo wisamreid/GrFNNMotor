@@ -6,7 +6,7 @@ freqs1 = logspace(-0.1,0.6,30)';
 nfreqs1 = length(freqs1);
 z10 = 0.00001*ones(nfreqs1,1); % initial complex state of the oscillators
 alpha1 = 0*ones(nfreqs1,1);
-beta11 = -500*ones(nfreqs1,1);
+beta11 = -300*ones(nfreqs1,1);
 beta12 = 0*ones(nfreqs1,1);
 epsilon1 = 1*ones(nfreqs1,1);
 
@@ -93,7 +93,7 @@ t_all = [t_all time'];
 
 %%% Period of Stimulation 2: at 2.2Hz
 % parameters for time during impulse stimulation
-f = 2.2; % period of stimulation in Hz
+f = 0.5; % period of stimulation in Hz
 stim_t = 1/f; % in seconds
 time = t_all(end)+T:T:t_all(end)+stim_t;
 
