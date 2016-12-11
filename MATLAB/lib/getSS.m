@@ -59,8 +59,8 @@ psi_dot = Omega - (F/r)*sin(Psi) == 0;
 
 sol = vpasolve([r_dot, psi_dot], [r, Psi]);
 
-r_star = sol.r;
-psi_star = eval(mod(sol.Psi, 2*pi)); % wrap the phase
+r_star = double(sol.r);
+psi_star = double(eval(mod(sol.Psi, 2*pi))); % wrap the phase
 
 % Now we handle each quadrant correctly
 

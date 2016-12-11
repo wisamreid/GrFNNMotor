@@ -1,0 +1,40 @@
+% A script for running unittests
+% 
+% Author: Wisam Reid
+% Email: wisam@ccrma.stanford.edu
+%
+%% CLEAN AND CLEAR
+
+close all
+clear
+clc
+
+%% Utilities
+
+test_folder_path = 'tests/';
+
+% In order to test several classes together 
+% we use the Test Suite Package
+import matlab.unittest.TestSuite
+
+% % Check for available methods
+% methods('TestSuite')
+
+% Load tests
+F3 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F3_Test.m'));
+F4A = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4A_Test.m'));
+F4B = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4B_Test.m'));
+
+%% Testing getFP function
+
+totalTestSuite = [F3, F4A, F4B];
+totalResult = run(totalTestSuite);
+
+% display
+% disp(totalResult)
+
+% % reRun Failed Tests 
+% failedTests = totalSuite([totalResult.Failed]);
+
+%% Testing getSS function
+

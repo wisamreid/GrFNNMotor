@@ -39,7 +39,9 @@ if nargin ~= 7
     return
 end 
 
-% Displays 
+% Displays
+fprintf('\n')
+disp(['----------------'])
 disp(['Running getFP:'])
 fprintf('\n')
 disp(['The Oscillator Frequency is: ',num2str(f_osc), ' Hz'])
@@ -78,6 +80,9 @@ T = trace(J); % calculate the trace
 Delta = det(J); % calculate the determinant
 disc = T^2 - 4*Delta; % calculate the discriminant
 
+disp(['R_Star is: ', num2str(r_star)])
+disp(['Psi_Star is: ', num2str(psi_star)])
+
 if Delta > 0 && disc > 0 && T < 0;
     regime = 1;
     disp(['The fixed point is a stable node'])
@@ -109,6 +114,8 @@ else Delta < 0;
     disp(['The fixed point could not be identified'])
     fprintf('\n')
 end 
+
+disp(['----------------'])
 
 end
 
