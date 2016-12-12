@@ -28,7 +28,7 @@ failed_only = 1;
 
 %% Load tests
 
-% for loading individual figures
+% for loading tests from individual figures
 F3 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F3_Test.m'));
 F4A = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4A_Test.m'));
 F4B = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4B_Test.m'));
@@ -48,12 +48,12 @@ F11 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F11_Test.m'));
 getFPTestSuite = TestSuite.fromFolder(test_folder_path);
 
 % % run tests for a single figure
-% getFPTestSuite = F11;
+% getFPTestSuite = [F8];
 
 getFP_All_Results = run(getFPTestSuite);
 
-% % display test results
-% disp(getFP_All_Results)
+% display test results
+disp(getFP_All_Results)
 
 %% reRun Failed Tests 
 

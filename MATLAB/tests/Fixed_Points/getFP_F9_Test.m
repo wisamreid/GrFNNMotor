@@ -29,18 +29,18 @@ classdef getFP_F9_Test < matlab.unittest.TestCase
         function testFigure9A1(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 2;
+            expStability = 2;
             expRstar = 0.77;
             expPsiStar = 5*pi/8;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.7, -1, 4, -1, 1, 1.5);
-            testCase.verifyEqual(actRegime,expRegime);
+            [actRstar, actPsiStar, actStability] = getFP(1, 0.7, -1, 4, -1, 1, 1.5);
+            testCase.verifyEqual(actStability,expStability);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
             disp(['The expected R_Star is: ', num2str(expRstar)])
             disp(['The expected Psi_Star is: ', num2str(expPsiStar)])
 
@@ -49,18 +49,18 @@ classdef getFP_F9_Test < matlab.unittest.TestCase
         function testFigure9A2(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
+            expStability = 4;
             expRstar = 0.6;
             expPsiStar = pi/2;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.6, -1, 4, -1, 1, 1.5);
-            testCase.verifyEqual(actRegime,expRegime);
+            [actRstar, actPsiStar, actStability] = getFP(1, 0.6, -1, 4, -1, 1, 1.5);
+            testCase.verifyEqual(actStability,expStability);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
             disp(['The expected R_Star is: ', num2str(expRstar)])
             disp(['The expected Psi_Star is: ', num2str(expPsiStar)])
 
@@ -69,18 +69,18 @@ classdef getFP_F9_Test < matlab.unittest.TestCase
         function testFigure9A3(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
+            expStability = 4;
             expRstar = 0.4;
             expPsiStar = pi/2;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.4, -1, 4, -1, 1, 1.5);
-            testCase.verifyEqual(actRegime,expRegime);
+            [actRstar, actPsiStar, actStability] = getFP(1, 0.4, -1, 4, -1, 1, 1.5);
+            testCase.verifyEqual(actStability,expStability);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
             disp(['The expected R_Star is: ', num2str(expRstar)])
             disp(['The expected Psi_Star is: ', num2str(expPsiStar)])
 
@@ -89,18 +89,18 @@ classdef getFP_F9_Test < matlab.unittest.TestCase
         function testFigure9A4(testCase)
             rError = 0.02; % error margin
             psiError = pi/12; % error margin
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 2;
+            expStability = 2;
             expRstar = 0.3;
             expPsiStar = pi/2;
-            [actRegime, actRstar, actPsiStar] = getFP(1, 0.2, -1, 4, -1, 1, 1.5);
-            testCase.verifyEqual(actRegime,expRegime);
+            [actRstar, actPsiStar, actStability] = getFP(1, 0.2, -1, 4, -1, 1, 1.5);
+            testCase.verifyEqual(actStability,expStability);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
             disp(['The expected R_Star is: ', num2str(expRstar)])
             disp(['The expected Psi_Star is: ', num2str(expPsiStar)])
 

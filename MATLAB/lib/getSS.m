@@ -1,29 +1,45 @@
-function [ r_star, psi_star ] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, print_flag)
+function [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-% getSS: Calculate steady state amplitude and phase 
-%        for a given oscillator under periodic forcing
+%  getSS: Calculate steady state amplitude and phase 
+%         for a given oscillator under periodic forcing
+% 
 % Author: Wisam Reid
-% Email: wisam@ccrma.stanford.edu
+%  Email: wisam@ccrma.stanford.edu
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% Function Definition:
+% 
+%   getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
 % Arguments: 
 % 
-%           f_osc:  Oscillator Frequency
-%         f_input:  Forcing Input Frequency
-%           alpha: (Hopf Oscillator Parameter)
-%           beta1: (Hopf Oscillator Parameter)
-%           beta2: (Hopf Oscillator Parameter)
-%         epsilon: (Hopf Oscillator Parameter)
-%               F: Forcing Amplitude
-%      print_flag: optional
+%           f_osc:  (float) Oscillator Frequency
+%         f_input:  (float) Forcing Input Frequency
+%           alpha:  (float) Hopf Oscillator Parameter
+%           beta1:  (float) Hopf Oscillator Parameter
+%           beta2:  (float) Hopf Oscillator Parameter
+%         epsilon:  (float) Hopf Oscillator Parameter
+%               F:  (float) Forcing Amplitude
+%    display_flag:  [optional] (boolean) print to console
 % 
-% Returns:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+% 
+% Returns:  [r_star, psi_star,regime]
 % 
 %          r_star: A float, steady state gain
 %        psi_star: A float, steady state phase
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Handle Arguments
 
 switch nargin
     case nargin == 7
-        print_flag = 1;
+        display_flag = 1;
     case nargin ~= 8 ||  nargin ~= 7       
         disp('Error running getSS')
         disp('Please provide the right number of arguments')
@@ -35,7 +51,9 @@ switch nargin
         return
 end 
 
-if print_flag
+%% Displays
+
+if display_flag
     % Display
     disp(['Running getFP:'])
     fprintf('\n')
@@ -48,8 +66,26 @@ if print_flag
     disp(['epsilon is: ',num2str(epsilon)])
     disp(['F is: ',num2str(F)])
     fprintf('\n')
-end    
+end
 
+%% Determine parameter regime
+
+% First, we need to know which bifurcation parameter regime we 
+% are operating in
+regime = getOscParamRegime(alpha, beta1, beta2, epsilon);
+
+%%
+% Next, we can find the boundary between stable nodes and stable spirals by solving:
+%     
+%     discriminant = 0
+%     r_dot = 0 
+%     psi_dot = 0 
+%     
+% simultaneously where T and   are the trace and determinant of the 
+% Jacobian matrix evaluated at a fixed point (see Section 2). 
+% We find that the boundary is at
+
+%%
 % calculate Omega
 Omega = 2*pi*(f_osc - f_input);
 
@@ -62,7 +98,7 @@ sol = vpasolve([r_dot, psi_dot], [r, Psi]);
 r_star = double(sol.r);
 psi_star = double(eval(mod(sol.Psi, 2*pi))); % wrap the phase
 
-% Now we handle each quadrant correctly
+%% Now we handle each quadrant correctly
 
 % first quadrant
 % do nothing

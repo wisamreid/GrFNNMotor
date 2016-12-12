@@ -1,6 +1,6 @@
 classdef getFP_F4B_Test < matlab.unittest.TestCase
     % getFP_F4B_Test 
-    %   Stability Regime Tests from 
+    %   Stability Type Tests from 
     %   Kim & Large 2015 figure 4B
     %
     %   Author: Wisam Reid
@@ -24,62 +24,62 @@ classdef getFP_F4B_Test < matlab.unittest.TestCase
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         function testFigure4B1(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
-            actRegime = getFP(1, 0.4, 1, -100, 0, 0, 0.2);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 4;
+            [r_star, psi_star, actStability] = getFP(1, 0.4, 1, -100, 0, 0, 0.2);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B2(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 2;
-            actRegime = getFP(1, 0.6, 1, -100, 0, 0, 0.2);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 2;
+            [r_star, psi_star, actStability] = getFP(1, 0.6, 1, -100, 0, 0, 0.2);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B3(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 1;
-            actRegime = getFP(1, 1, 1, -100, 0, 0, 0.2);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 1;
+            [r_star, psi_star, actStability] = getFP(1, 1, 1, -100, 0, 0, 0.2);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B4(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 2;
-            actRegime = getFP(1, 1.4, 1, -100, 0, 0, 0.2);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 2;
+            [r_star, psi_star, actStability] = getFP(1, 1.4, 1, -100, 0, 0, 0.2);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B5(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
-            actRegime = getFP(1, 1.6, 1, -100, 0, 0, 0.2);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 4;
+            [r_star, psi_star, actStability] = getFP(1, 1.6, 1, -100, 0, 0, 0.2);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
@@ -89,38 +89,38 @@ classdef getFP_F4B_Test < matlab.unittest.TestCase
         
         
         function testFigure4B6(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
-            actRegime = getFP(1, 0.6, 1, -100, 0, 0, 0.02);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 4;
+            [r_star, psi_star, actStability] = getFP(1, 0.6, 1, -100, 0, 0, 0.02);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B7(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 1;
-            actRegime = getFP(1, 1, 1, -100, 0, 0, 0.02);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 1;
+            [r_star, psi_star, actStability] = getFP(1, 1, 1, -100, 0, 0, 0.02);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
         function testFigure4B8(testCase)
-            regimeOptions = {' stable node',' stable spiral',' unstable node', ...
+            stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expRegime = 4;
-            actRegime = getFP(1, 1.4, 1, -100, 0, 0, 0.02);
-            testCase.verifyEqual(actRegime,expRegime);
+            expStability = 4;
+            [r_star, psi_star, actStability] = getFP(1, 1.4, 1, -100, 0, 0, 0.02);
+            testCase.verifyEqual(actStability,expStability);
             
             % Display
-            disp(strcat('The expected regime is: a ', regimeOptions(expRegime)))
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
 
         end
         
