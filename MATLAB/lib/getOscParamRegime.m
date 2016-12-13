@@ -2,8 +2,8 @@ function [regime] = getOscParamRegime(alpha, beta1, beta2, epsilon)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % getOscParamRegime: 
-%         Calculate which bifurcation parameter regime we 
-%         are operating in
+%         Calculate which bifurcation parameter regime of 
+%         the autonomous oscillator behavior 
 % 
 % Author: Wisam Reid
 %  Email: wisam@ccrma.stanford.edu
@@ -50,9 +50,55 @@ switch nargin
         return
 end 
 
+%% Define r_dot
+
+r_dot = @(r) alpha*r + beta1*r^3 + ((epsilon*beta2*r^5)/(1 - epsilon*r^2));
+
 %% Determine parameter regime
 
-regime = 0;
+syms r 
+% Set the derivative of r_dot wrt r equal to zero
+d_r_dot_dr = alpha + ...
+            (3*beta1*r^2) + ...
+            ((epsilon*beta2*r^4*(5 - 3*epsilon*r^2))/((-1 + epsilon*r^2)^2)) ...
+            == 0;
+
+sol = vpasolve(d_r_dot_dr, r);
+
+% plug the largest
+local_max = r_dot(max(sol));
+
+%% Evaluate Regime
+
+if alpha == 0 && beta1 < 0 && beta2 == 0
+    if local_max == 0    
+        regime = 1;
+    else
+        display('Warning: critical Hopf Regime does not have')
+        display('a fixed point at 0')
+        regime = 0; 
+    end
+elseif alpha > 0 && beta1 < 0 && beta2 == 0
+    if local_max > 0    
+        regime = 2;
+    else
+        display('Warning: supercritical Hopf regime does not have')
+        display('a fixed point greater than 0')
+        regime = 0; 
+    end
+elseif alpha < 0 && beta1 > 0 && beta2 < 0
+    if local_max > 0    
+        regime = 3;
+    elseif local_max < 0
+        regime = 4;
+    else
+        display('Warning: Parameter regime could not be classified')
+        regime = 0; 
+    end
+else
+   display('Warning: Parameter regime could not be classified')
+   regime = 0; 
+end
 
 
 end

@@ -1,4 +1,4 @@
-% A script for running unittests
+% A script for running unittests for the getFP function
 % 
 % Fixed Point Location and Stability Tests from Kim & Large 2015 figures
 %     
