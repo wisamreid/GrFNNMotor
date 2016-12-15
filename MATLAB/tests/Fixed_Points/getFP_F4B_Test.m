@@ -103,7 +103,7 @@ classdef getFP_F4B_Test < matlab.unittest.TestCase
         function testFigure4B7(testCase)
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expStability = 1;
+            expStability = [1; 5; 3];
             [r_star, psi_star, actStability] = getFP(1, 1, 1, -100, 0, 0, 0.02);
             testCase.verifyEqual(actStability,expStability);
             

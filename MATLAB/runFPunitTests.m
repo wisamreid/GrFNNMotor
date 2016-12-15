@@ -45,11 +45,11 @@ F11 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F11_Test.m'));
 
 %% Testing getFP function
 
-% grab all the tests in the folder
-getFPTestSuite = TestSuite.fromFolder(test_folder_path);
+% % grab all the tests in the folder
+% getFPTestSuite = TestSuite.fromFolder(test_folder_path);
 
-% % run tests for a single figure
-% getFPTestSuite = [F1];
+% run tests for a single figure
+getFPTestSuite = [F4D];
 
 getFP_All_Results = run(getFPTestSuite);
 
@@ -68,3 +68,11 @@ if failed_only
         disp(remaining_fails)
     end
 end
+
+display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+display('XX   Keep an Eye on 4B7: Fig 4 vs Fig 5  XX')
+display('XX  Keep an Eye on 4C10: Fig 4 vs Fig 8  XX')
+display('XX  Keep an Eye on 4C14: Fig 4 vs Fig 7  XX')
+display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')

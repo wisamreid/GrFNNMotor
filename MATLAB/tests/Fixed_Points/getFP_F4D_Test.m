@@ -115,7 +115,7 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expStability = 2;
-            [r_star, psi_star, actStability] = getFP(1, 0.8, -1, 4, -1, 1, 0.2);
+            [r_star, psi_star, actStability] = getFP(1, 0.8, -1, 2.5, -1, 1, 0.2);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
@@ -126,13 +126,12 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
         function testFigure4D9(testCase)
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expStability = 5;
-            [r_star, psi_star, actStability] = getFP(1, 1, -1, 4, -1, 1, 0.2);
+            expStability = [1; 5; 1];
+            [r_star, psi_star, actStability] = getFP(1, 1, -1, 2.5, -1, 1, 0.2);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
             disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
-            disp('WARNING! This stability has 2 Fixed Points')
             
         end
         
@@ -140,7 +139,7 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expStability = 2;
-            [r_star, psi_star, actStability] = getFP(1, 1.2, -1, 4, -1, 1, 0.2);
+            [r_star, psi_star, actStability] = getFP(1, 1.2, -1, 2.5, -1, 1, 0.2);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
@@ -156,7 +155,7 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expStability = 2;
-            [r_star, psi_star, actStability] = getFP(1, 0.8, -1, 4, -1, 1, 0.1);
+            [r_star, psi_star, actStability] = getFP(1, 0.8, -1, 2.5, -1, 1, 0.1);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
@@ -168,7 +167,7 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expStability = 1;
-            [r_star, psi_star, actStability] = getFP(1, 1, -1, 4, -1, 1, 0.1);
+            [r_star, psi_star, actStability] = getFP(1, 1, -1, 2.5, -1, 1, 0.1);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
@@ -180,7 +179,7 @@ classdef getFP_F4D_Test < matlab.unittest.TestCase
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
             expStability = 2;
-            [r_star, psi_star, actStability] = getFP(1, 1.2, -1, 4, -1, 1, 0.1);
+            [r_star, psi_star, actStability] = getFP(1, 1.2, -1, 2.5, -1, 1, 0.1);
             testCase.verifyEqual(actStability,expStability);
             
             % Display
