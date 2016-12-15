@@ -1,9 +1,9 @@
-function [regime, r, drdt] = getOscParamRegime(alpha, beta1, beta2, epsilon)
+function [regime, r_local_max, drdt_local_max] = getOscParamRegime(alpha, beta1, beta2, epsilon)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % getOscParamRegime: 
-%         Calculate which bifurcation parameter regime of 
-%         the autonomous oscillator behavior 
+%         Calculate the bifurcation parameter regime of 
+%         an autonomous oscillator 
 % 
 % Author: Wisam Reid
 %  Email: wisam@ccrma.stanford.edu
@@ -33,8 +33,8 @@ function [regime, r, drdt] = getOscParamRegime(alpha, beta1, beta2, epsilon)
 %                   3: super critical double limit cycle
 %                   4: subcritical double limit cycle 
 %                   0: could not be identified
-%               r: (float) r value at the local max 
-%            drdt: (float) dr/dt value at the local max 
+%     r_local_max: (float) r value at the local max 
+%  drdt_local_max: (float) dr/dt value at the local max 
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -86,14 +86,19 @@ if ~isempty(drdt)
         % plug in the largest
         local_max = max(local_max,drdt(i));
     end 
-    drdt = local_max;
+    drdt_local_max = local_max;
+    r_local_max = r(1);
 else
-    drdt = 0; 
+    drdt_local_max = -1; 
+    if isempty(r)
+        r_local_max = -1;
+    end
+    regime = 0;
+    fprintf('\n')
+    display('Warning: Parameter regime could not be classified')
+    display('Use values within bound for nonzero beta2, epsilon')
+    return % stop right here  
 end 
-
-if ~isempty(r)
-    r = r(1);
-end
 
 %% Evaluate Regime
 
