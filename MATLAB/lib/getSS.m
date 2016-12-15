@@ -90,33 +90,9 @@ print_warnings = 0;
 
 %% Find ss amplitudes numerically for forced or autonomous oscillators
 
-if ~F % autonomous oscillator
-        
-    % this is r_dot = 0 with some algebraic manipulation
-    r = roots([epsilon*(beta2-beta1), 0, beta1-epsilon*alpha, 0, alpha, 0]);
-
-    % only unique real values
-    r = real(unique(r(find(abs(imag(r)) < eps('single')))));
-
-    r = r(find(r >=0)); % no negative amplitude
-
-    % take r's below the asymptote
-    if beta2
-      r = r(find(r < 1/sqrt(epsilon)));
-    end
-
-%     % Take only stable r*
-%     ind1 = find(slope(r,alpha,beta1,beta2,epsilon) < 0);
-%     ind2a = find(slope(r,alpha,beta1,beta2,epsilon) == 0);
-%     ind2b = find(slope(r-eps('single'),alpha,beta1,beta2,epsilon) < 0);
-%     ind2c = find(slope(r+eps('single'),alpha,beta1,beta2,epsilon) < 0);
-%     ind2 = intersect(ind2a,intersect(ind2b,ind2c));
-%     r = r([ind1; ind2]);
-%     r = sort(r,'descend');
-
-else % oscillator is driven by a complex sinusoid
+if F % oscillator is driven by a complex sinusoid
     
-    % calculate Omega
+        % calculate Omega
     Omega = 2*pi*(f_osc - f_input);
 
     r = sqrt(roots([ ...
@@ -134,11 +110,21 @@ else % oscillator is driven by a complex sinusoid
     % remove multiple roots
     r = sort(unique(r),'descend'); 
 
-    % take r's below the asymptote
-    if beta2
-      r = r(find(r < 1/sqrt(epsilon))); 
-    end
+else % autonomous oscillator
+    
+    % this is r_dot = 0 with some algebraic manipulation
+    r = roots([epsilon*(beta2-beta1), 0, beta1-epsilon*alpha, 0, alpha, 0]);
 
+    % only unique real values
+    r = real(unique(r(find(abs(imag(r)) < eps('single')))));
+
+    r = r(find(r >=0)); % no negative amplitude
+
+end
+
+% take r's below the asymptote
+if beta2
+  r = r(find(r < 1/sqrt(epsilon))); 
 end
 
 %% Find corresponding relative phrases
@@ -166,12 +152,12 @@ if F
 else
     psi = [];
 end
+
 %% output
 
 r_star = r;
 psi_star = psi;
 
-% 
 % % ========================================================
 % function drdotdr = slope(r, a, b1, b2, e)
 % drdotdr = a + 3*b1*r.^2 + (5*e*b2*r.^4-3*e^2*b2*r.^6)./((1-e*r.^2).^2);

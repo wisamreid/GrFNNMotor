@@ -81,6 +81,7 @@ end
 
 %% Oscillator Parameter Regime
 
+% type 'help getOscParamRegime' for more info
 regime = getOscParamRegime(alpha, beta1, beta2, epsilon);
 
 %% Calculate the steady state amplitude and phase values
@@ -113,6 +114,34 @@ if F
     Delta = dpdr.*dqdP - dpdP.*dqdr; % determinant of J
     T = dpdr + dqdP; % trace of J
     chDet = T.^2 - 4*Delta; % determinant of characteristic eq
+
+else
+    
+    %%%%%% Characterize stability at r* for autonomous oscillators %%%%%%
+    
+    %%% Find Stable Nodes
+    
+    % r_dot/dr neg slopes : stable FP
+    ind_stable = find(getDrdotdr(r_star,alpha,beta1,beta2,epsilon) < 0);
+    % r_dot/dr zero slopes with surrounding neg: marginally stable FP
+    ind_stable_zero_slope = find(getDrdotdr(r_star,alpha,beta1,beta2,epsilon) == 0);
+    ind_marginally_stable_left = find(getDrdotdr(r_star-eps('single'),alpha,beta1,beta2,epsilon) < 0);
+    ind_marginally_stable_right = find(getDrdotdr(r_star+eps('single'),alpha,beta1,beta2,epsilon) < 0);
+    % keep the 
+    ind_marginally_stable = intersect(ind_stable_zero_slope, ...
+                            intersect(ind_marginally_stable_left,ind_marginally_stable_right));
+    
+    ind_stable = union(ind_stable,ind_marginally_stable); 
+%     r_stable = r_star([ind_stable; ind_marginally_stable]);
+%     r_stable = sort(r_stable,'descend'); % final sorted indices for stable FPs
+    
+    %%% Find Unstable Nodes
+    
+    ind_unstable = find(getDrdotdr(r_star-eps('single'),alpha,beta1,beta2,epsilon) > 0);
+%     r_unstable = r_star(ind_unstable);
+%     r_unstable = sort(r_unstable,'descend'); % final sorted indices for unstable FPs
+
+    
 end
 
 %% Displays
@@ -171,7 +200,11 @@ for i = 1:numFP
         end
     
     else
-        % do nothing for now
+        % assign stabile/unstable values for autonomous osc FPs
+        % 1 = stable, 3 = unstable
+        stability_type(ind_stable) = 1;
+        stability_type(ind_unstable) = 3;
+        
     end
 end
 
@@ -190,5 +223,10 @@ end
 %   stabType = stabType(indStab);
 % end
 
+% ========================================================
+function drdotdr = getDrdotdr(r, a, b1, b2, e)
+    % function for finding the slope of the amplitude vector field (r_dot vs r) 
+    drdotdr = a + 3*b1*r.^2 + (5*e*b2*r.^4-3*e^2*b2*r.^6)./((1-e*r.^2).^2);
+end
 end
 
