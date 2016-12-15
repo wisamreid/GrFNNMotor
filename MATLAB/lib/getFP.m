@@ -1,4 +1,4 @@
-function [r_star, psi_star, stability_type] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
+function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 %     getFP: Calculate fixed points for a given oscillator
@@ -28,17 +28,18 @@ function [r_star, psi_star, stability_type] = getFP(f_osc, f_input, alpha, beta1
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-%   Returns: [r_star, psi_star, stability_type]
+%   Returns: [r_star, psi_star, stability_type, regime]
 % 
-%          r_star: A float, steady state gain
-%        psi_star: A float, steady state phase
-%  stability_type: integer (0-5)
+%          r_star: (float) steady state gain
+%        psi_star: (float) steady state phase
+%  stability_type: (integer) [0-5]
 %                   1: stable node
 %                   2: stable spiral
 %                   3: unstable node
 %                   4: unstable spiral
 %                   5: a saddle point
 %                   0: could not be identified
+%          regime: (integer) [0-4]
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,6 +79,10 @@ if display_flag
     fprintf('\n')
 end
 
+%% Oscillator Parameter Regime
+
+regime = getOscParamRegime(alpha, beta1, beta2, epsilon);
+
 %% Calculate the steady state amplitude and phase values
 
 [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, 0);
@@ -86,31 +91,25 @@ numFP = length(r_star);
 stability_type = zeros(length(r_star),1);
 
 %% Calculate the Jacobian
+%  Trace, Determinant, and Discriminant 
 % See Kim & Large 2015 pg 4
 % 
 % partial derivative r_dot wrt r
-dpdr = alpha + 3*beta1*r_star.^2 + ...
-        ((epsilon*beta2*r_star.^4.*(5 - 3*epsilon*r_star.^2))./ ...
-        (1 - epsilon*r_star.^2).^2); 
-% partial derivative r_dot wrt psi
-dpdP = -F*sin(psi_star);
-% partial derivative psi_dot wrt r
-dqdr = (F./r_star.^2).*sin(psi_star);
-% partial derivative psi_dot wrt psi
-dqdP = -1*(F./r_star).*cos(psi_star);
-
-% the Jacobian
-J = [dpdr, dpdP; ...
-            dqdr, dqdP];
-
-%%  Trace, Determinant, and Discriminant 
-
-% % These methods only work for square matrices (single FPs)
-% T = trace(J); % calculate the trace
-% Delta = det(J); % calculate the determinant
-% chDet = T.^2 - 4*Delta; % calculate the discriminant
-
 if F
+    dpdr = alpha + 3*beta1*r_star.^2 + ...
+            ((epsilon*beta2*r_star.^4.*(5 - 3*epsilon*r_star.^2))./ ...
+            (1 - epsilon*r_star.^2).^2); 
+    % partial derivative r_dot wrt psi
+    dpdP = -F*sin(psi_star);
+    % partial derivative psi_dot wrt r
+    dqdr = (F./r_star.^2).*sin(psi_star);
+    % partial derivative psi_dot wrt psi
+    dqdP = -1*(F./r_star).*cos(psi_star);
+
+    % the Jacobian
+    J = [dpdr, dpdP; ...
+                dqdr, dqdP];
+
     Delta = dpdr.*dqdP - dpdP.*dqdr; % determinant of J
     T = dpdr + dqdP; % trace of J
     chDet = T.^2 - 4*Delta; % determinant of characteristic eq

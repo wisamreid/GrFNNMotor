@@ -22,7 +22,7 @@ import matlab.unittest.TestSuite
 % methods('TestSuite')
 
 % Only work on failed tests?
-failed_only = 0;
+failed_only = 1;
 
 %% Testing getFP function
 
@@ -37,7 +37,12 @@ disp(getFP_All_Results)
 %% reRun Failed Tests 
 
 if failed_only
-    clc 
     failedTests = getFPTestSuite([getFP_All_Results.Failed]);
-    run(failedTests)
+    numFailed = size(failedTests);
+    if numFailed(2) ~= 0
+        clc 
+        remaining_fails = run(failedTests);
+        % display remaining fails
+        disp(remaining_fails)
+    end
 end

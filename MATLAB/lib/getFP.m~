@@ -1,4 +1,4 @@
-function [r_star, psi_star, stability_type] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
+function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 %     getFP: Calculate fixed points for a given oscillator
@@ -30,15 +30,16 @@ function [r_star, psi_star, stability_type] = getFP(f_osc, f_input, alpha, beta1
 % 
 %   Returns: [r_star, psi_star, stability_type]
 % 
-%          r_star: A float, steady state gain
-%        psi_star: A float, steady state phase
-%  stability_type: integer (0-5)
+%          r_star: (float) steady state gain
+%        psi_star: (float) steady state phase
+%  stability_type: (integer) [0-5]
 %                   1: stable node
 %                   2: stable spiral
 %                   3: unstable node
 %                   4: unstable spiral
 %                   5: a saddle point
 %                   0: could not be identified
+%          regime: (integer) [0-4]
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,6 +79,10 @@ if display_flag
     fprintf('\n')
 end
 
+%% Oscillator Pa
+
+regime = getOscParamRegime(alpha, beta1, beta2, epsilon);
+
 %% Calculate the steady state amplitude and phase values
 
 [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, 0);
@@ -105,12 +110,12 @@ J = [dpdr, dpdP; ...
 
 %%  Trace, Determinant, and Discriminant 
 
-if F & 
-    % These methods only work for square matrices (single FPs)
-    T = trace(J); % calculate the trace
-    Delta = det(J); % calculate the determinant
-    chDet = T.^2 - 4*Delta; % calculate the discriminant
-if 
+% % These methods only work for square matrices (single FPs)
+% T = trace(J); % calculate the trace
+% Delta = det(J); % calculate the determinant
+% chDet = T.^2 - 4*Delta; % calculate the discriminant
+
+if F
     Delta = dpdr.*dqdP - dpdP.*dqdr; % determinant of J
     T = dpdr + dqdP; % trace of J
     chDet = T.^2 - 4*Delta; % determinant of characteristic eq

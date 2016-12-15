@@ -49,7 +49,7 @@ F11 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F11_Test.m'));
 getFPTestSuite = TestSuite.fromFolder(test_folder_path);
 
 % % run tests for a single figure
-% getFPTestSuite = [F3];
+% getFPTestSuite = [F1];
 
 getFP_All_Results = run(getFPTestSuite);
 
