@@ -31,19 +31,33 @@ classdef getFP_F5_Test < matlab.unittest.TestCase
             psiError = pi/12; % error margin
             stabilityOptions = {' stable node',' stable spiral',' unstable node', ...
                 ' unstable spiral',' saddle point'};
-            expStability = 1;
-            expRstar = 0.11;
-            expPsiStar = pi/4;
+            expStability = [1; 5; 4];
+            expRstar = [0.11; 0.09; 0.02]; 
+            expPsiStar = [pi/4; 3*pi/4; pi];
             [actRstar, actPsiStar, actStability] = getFP(1, 0.98, 1, -100, 0, 0, 0.02);
             testCase.verifyEqual(actStability,expStability);
             testCase.verifyEqual(actRstar,expRstar,'AbsTol',rError);
             testCase.verifyEqual(actPsiStar,expPsiStar,'AbsTol',psiError);
             
             % Display
-            disp(strcat('The expected stability is: a ', stabilityOptions(expStability)))
-            disp(['The expected R_Star is: ', num2str(expRstar)])
-            disp(['The expected Psi_Star is: ', num2str(expPsiStar)])
+            disp('For Fixed Point 1')
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability(1))))
+            disp(['The expected R_Star is: ', num2str(expRstar(1))])
+            disp(['The expected Psi_Star is: ', num2str(expPsiStar(1))])
+            fprintf('\n')
 
+            disp('For Fixed Point 2')
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability(2))))
+            disp(['The expected R_Star is: ', num2str(expRstar(2))])
+            disp(['The expected Psi_Star is: ', num2str(expPsiStar(2))])
+            fprintf('\n')
+            
+            
+            disp('For Fixed Point 3')
+            disp(strcat('The expected stability is: a ', stabilityOptions(expStability(3))))
+            disp(['The expected R_Star is: ', num2str(expRstar(3))])
+            disp(['The expected Psi_Star is: ', num2str(expPsiStar(3))])
+            fprintf('\n')
         end
         
         function testFigure5A2(testCase)
