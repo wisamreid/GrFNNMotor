@@ -39,8 +39,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
         
@@ -62,8 +62,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
         
@@ -85,8 +85,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
 
@@ -112,8 +112,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
         
@@ -135,8 +135,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
  
@@ -158,8 +158,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
          end
          
@@ -181,8 +181,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
          end
 
@@ -193,7 +193,7 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
         function testBasicSuperCriticalDLC(testCase)
             
             alpha = -1;
-            beta1 = 1;
+            beta1 = 4;
             beta2 = -1;
             epsilon = 1;
             
@@ -208,8 +208,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
         end
 
@@ -235,8 +235,8 @@ classdef getOscParamRegime_Test < matlab.unittest.TestCase
             disp(['beta2 is: ', num2str(beta2)])
             disp(['epsilon is: ', num2str(epsilon)])
             fprintf('\n')
-            disp(['The expected regime is: ', num2str(actRegime)])
-            disp(['The actual regime is: ', num2str(expRegime)])
+            disp(['The expected regime is: ', num2str(expRegime)])
+            disp(['The actual regime is: ', num2str(actRegime)])
 
        end
         

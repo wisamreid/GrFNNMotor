@@ -93,7 +93,8 @@ print_warnings = 0;
 switch forced
     
     case forced == 0 % autonomous oscillator
-
+        
+        % this is r_dot = 0 with some algebraic manipulation
         r = roots([epsilon*(beta2-beta1), 0, beta1-epsilon*alpha, 0, alpha, 0]);
         
         % only unique real values
