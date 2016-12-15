@@ -28,7 +28,8 @@ failed_only = 1;
 
 %% Load tests
 
-% for loading tests from individual figures
+% for loading tests from individual figures (See Kim & Large 2015)
+F1 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F1_Test.m'));
 F3 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F3_Test.m'));
 F4A = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4A_Test.m'));
 F4B = TestSuite.fromFile(strcat(test_folder_path,'getFP_F4B_Test.m'));
@@ -48,7 +49,7 @@ F11 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F11_Test.m'));
 getFPTestSuite = TestSuite.fromFolder(test_folder_path);
 
 % % run tests for a single figure
-% getFPTestSuite = [F8];
+% getFPTestSuite = [F3];
 
 getFP_All_Results = run(getFPTestSuite);
 
@@ -58,7 +59,12 @@ disp(getFP_All_Results)
 %% reRun Failed Tests 
 
 if failed_only
-    clc 
     failedTests = getFPTestSuite([getFP_All_Results.Failed]);
-    run(failedTests)
+    numFailed = size(failedTests);
+    if numFailed(2) ~= 0
+        clc 
+        remaining_fails = run(failedTests);
+        % display remaining fails
+        disp(remaining_fails)
+    end
 end

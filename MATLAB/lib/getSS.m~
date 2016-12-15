@@ -23,7 +23,7 @@ function [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon
 %           beta1:  (float) Hopf Oscillator Parameter
 %           beta2:  (float) Hopf Oscillator Parameter
 %         epsilon:  (float) Hopf Oscillator Parameter
-%               F:  (float) Forcing Amplitude [F = 0 is autonomous] 
+%               F:  (float) Forcing Amplitude
 %    display_flag:  [optional] (boolean) print argument details to console
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
@@ -88,7 +88,7 @@ end
 % boolean for solution warning messages
 print_warnings = 0; 
 
-%% Find ss amplitudes numerically for forced or autonomous oscillators
+%% Find ss amplitudes numerically
 
 switch forced
     
@@ -143,33 +143,27 @@ end
 
 %% Find corresponding relative phrases
 
-% For now we are only going to find the steady-state phase for driven 
-% oscillators
-if forced 
-    % get the sign of psi
-    signPsi = (Omega >= 0)*2 - 1;
+% get the sign of psi
+signPsi = (Omega >= 0)*2 - 1;
 
-    psi = signPsi*acos(-(alpha*r + beta1*r.^3 + beta2*epsilon*r.^5./(1-epsilon*r.^2))/F);
+psi = signPsi*acos(-(alpha*r + beta1*r.^3 + beta2*epsilon*r.^5./(1-epsilon*r.^2))/F);
 
-    if print_warnings
-
-      maxImag = max(abs(imag(psi)));
-
-      if  maxImag > eps('single')*100
-        disp(['Warning: significant nonzero imaginary part in psi ('...
-          num2str(maxImag) ') for Omega = ' num2str(Omega)])
-      end
-
-    end
-
-    psi = real(psi);
-else
-    psi = [];
+if print_warnings
+    
+  maxImag = max(abs(imag(psi)));
+  
+  if  maxImag > eps('single')*100
+    disp(['Warning: significant nonzero imaginary part in psi ('...
+      num2str(maxImag) ') for Omega = ' num2str(Omega)])
+  end
+  
 end
-%% output
 
-r_star = r;
-psi_star = psi;
+psi = real(psi);
+%% Prepare output
+if All % both stable and unstable fixed points
+  rStar = r;
+  psiStar = psi;
 
 % %% Get Jacobian matrix
 % J11 = alpha + 3*beta1*r.^2 + epsilon*beta2*r.^4.*(5-3*epsilon*r.^2)./(1-epsilon*r.^2).^2;
@@ -221,7 +215,7 @@ psi_star = psi;
 %     r_dot = 0 
 %     psi_dot = 0 
 %     
-% simultaneously where T and Delta  are the trace and determinant of the 
+% simultaneously where T and   are the trace and determinant of the 
 % Jacobian matrix evaluated at a fixed point (see Section 2). 
 % We find that the boundary is at
 
