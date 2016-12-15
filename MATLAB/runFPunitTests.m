@@ -1,6 +1,7 @@
 % A script for running unittests for the getFP function
 % 
-% Fixed Point Location and Stability Tests from Kim & Large 2015 figures
+% Fixed Point Location, Parameter Regime and Stability Tests 
+% Test are derived from figures in Kim & Large 2015 
 %     
 % Author: Wisam Reid
 % Email: wisam@ccrma.stanford.edu
@@ -26,7 +27,7 @@ import matlab.unittest.TestSuite
 % Only work on failed tests?
 failed_only = 1;
 
-%% Load tests
+%% Load Individual Tests by Figure 
 
 % for loading tests from individual figures (See Kim & Large 2015)
 F1 = TestSuite.fromFile(strcat(test_folder_path,'getFP_F1_Test.m'));
