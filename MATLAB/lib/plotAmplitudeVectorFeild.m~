@@ -1,4 +1,4 @@
-function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
+function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number, plot_color)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % plotAmplitudeVectorFeild: 
@@ -19,7 +19,7 @@ function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon
 % 
 % Function Definition:
 % 
-%   plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
+%   plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number, plot_color)
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
@@ -33,6 +33,7 @@ function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon
 %           f_osc:  [Optional] (float) oscillator frequency
 %         f_input:  [Optional] (float) input frequency
 %   figure_number:  [Optional] (int) number to be used for the plot
+%      plot_color:  [Optional] specifiy color for plotting
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
@@ -62,7 +63,7 @@ function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon
 
 %% Handle Arguments
 
-if nargin < 4 || nargin > 8  
+if nargin < 4 || nargin > 9  
     disp('Error running plotAmplitudeVectorFeild')
     disp('Please provide the right number of arguments')
     disp('Function Call: ')
@@ -80,10 +81,21 @@ if nargin == 4
     f_input = 0.0;
     F = 0.0;
     figure_number = 1;
+    plot_color = 0;
+end
+
+if nargin == 5 || nargin == 6
+    display('Please enter the right number of parameters')
+    error('Type "help plotAmplitudeVectorFeild" for more information')
 end
 
 if nargin == 7
     figure_number = 1;
+    plot_color = [];
+end
+
+if nargin == 8
+    plot_color = [];
 end
 
 % make sure the input is properly zeroed out for autonomous osc
@@ -145,19 +157,19 @@ if regime == 1
     z0 = [exp(1i*theta)]; % initial conditions
 % Supercritical Hopf
 elseif regime == 2 % Supercritical Hopf
-    assert(numFPs == 1,'Critical Hopf has more than one FP')
-    z0 = [eps,r_star+.0]; % initial conditions
+    assert(numFPs == 2,'Supercritical Hopf does not have 2 FP')
+    z0 = [eps,r_star(2)+0.3]; % initial conditions
 % Supercritical DLC
 elseif regime == 3 
     assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
-    z0 = [r_star(2)-eps,r_star(2)+eps, 1.0]; % initial conditions
+    z0 = [r_star(2)-0.001,r_star(2)+0.001, 0.99999999]; % initial conditions
 % Subcritical DLC
 elseif regime == 4 
     assert(numFPs == 1,'Subcritical DLC has more than one FP')
      z0 = [1.0]; % initial conditions
 % Unknown
 elseif regime == 0 
-    display('The oscillators parameter regime is unknown plot was not generated')
+    display('The oscillators parameter regime is unknown, plot was not generated')
     return
 end
 
@@ -169,19 +181,60 @@ dur = 30; % in seconds
 T = 1/fs;
 time = 0:T:dur;
 
+ic_num = 1;
 for ic = z0 % loop through initial conditions
-    
+
     dzdt = @(t,z,alpha,beta1,beta2,epsilon,f_osc,f_input)  ...
         z*(alpha + 1i*2*pi*f_osc + beta1*abs(z)^2 + ...
         (epsilon*beta2*abs(z)^4)/(1-epsilon*abs(z)^2) + F*exp(1i*2*pi*f_input*t)); 
 
     % integrate the ode to obtain the amplitude
     [~,z_out] = ode45(@(t,z) dzdt(t,z,alpha,beta1,beta2,epsilon,f_osc,f_input),time,[ic]);
-
-    % plot
-    plot_obj = figure(figure_number);
-    plot((abs(z_out(1:end-1))),diff(abs(z_out)),'linewidth',2);
-    hold on
+    
+    if ic_num == 1
+        % store color for first condition
+        
+        r1 = (abs(z_out(1:end-1)));
+        r_dot1 = diff(abs(z_out));
+        
+        if ~isempty(plot_color)
+            % plot
+            plot_obj = figure(figure_number);
+            plot(r1,r_dot1,'linewidth',2,'Color', plot_color);
+            hold on
+        else    
+            % plot
+            plot_obj = figure(figure_number);
+            plot(r1,r_dot1,'linewidth',2);
+            hold on
+        end
+    else
+        % we will remove the lines drawn for 
+        % rest of the initial conditions from the legend
+        r = (abs(z_out(1:end-1)));
+        r_dot = diff(abs(z_out));
+    
+         if ~isempty(plot_color)
+            % plot
+            plot_obj = figure(figure_number);
+            h_rest = plot(r,r_dot,'linewidth',2,'Color', plot_color);
+            hold on
+        else    
+            % plot
+            plot_obj = figure(figure_number);
+            h_rest = plot(r,r_dot,'linewidth',2);
+            hold on
+         end
+         
+         hasbehavior(h2,'legend',false);
+%         leg_info = get(r_dot, 'Annotation');
+%         r_dot = get(leg_info{2}, 'LegendInformation');
+%         set(r_dot, 'IconDisplayStyle', 'off')
+         
+    end
+    
+    ic_num = ic_num + 1;
+    
 %     figure(2)
 %     polar((angle(z_out)),abs(abs(z_out)))
 %     hold on
