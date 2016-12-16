@@ -23,7 +23,7 @@ alpha = 0;
 beta1 = -1;
 beta2 = 0;
 epsilon = 0; 
-F = 0.1;
+F = 0.1;v
 f_osc = 1;
 f_input = 1;
 
