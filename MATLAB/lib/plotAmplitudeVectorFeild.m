@@ -138,28 +138,27 @@ FPs = r_star;
 
 %% grab all required initial conditions
 
-switch regime
-    % Critical Hopf
-    case regime == 1 
-        theta = pi;
-        assert(numFPs == 1,'Critical Hopf has more than one FP')
-        z0 = [exp(1i*theta)]; % initial conditions
-    % Supercritical Hopf
-    case regime == 2 % Supercritical Hopf
-        assert(numFPs == 1,'Critical Hopf has more than one FP')
-        z0 = [eps,1.0]; % initial conditions
-    % Supercritical DLC
-    case regime == 3 
-        assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
-        z0 = [r_star(2)-eps,r_star(2)+eps, 1.0]; % initial conditions
-    % Subcritical DLC
-    case regime == 4 
-        assert(numFPs == 1,'Subcritical DLC has more than one FP')
-         z0 = [1.0]; % initial conditions
-    % Unknown
-    case regime == 0 
-        display('The oscillators parameter regime is unknown plot was not generated')
-        return
+% Critical Hopf
+if regime == 1 
+    theta = pi;
+    assert(numFPs == 1,'Critical Hopf has more than one FP')
+    z0 = [exp(1i*theta)]; % initial conditions
+% Supercritical Hopf
+elseif regime == 2 % Supercritical Hopf
+    assert(numFPs == 2,'Supercritical Hopf does not have 2 FP')
+    z0 = [eps,r_star(2)+0.3]; % initial conditions
+% Supercritical DLC
+elseif regime == 3 
+    assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
+    z0 = [r_star(2)-0.001,r_star(2)+0.001, 0.99999999]; % initial conditions
+% Subcritical DLC
+elseif regime == 4 
+    assert(numFPs == 1,'Subcritical DLC has more than one FP')
+     z0 = [1.0]; % initial conditions
+% Unknown
+elseif regime == 0 
+    display('The oscillators parameter regime is unknown, plot was not generated')
+    return
 end
 
 %% Plot 
@@ -169,10 +168,6 @@ fs = 1000;
 dur = 30; % in seconds
 T = 1/fs;
 time = 0:T:dur;
-
-% % frequency difference between the oscillator and input 
-% % this will be w = 2*pi*f_osc for autonomous osc
-% Omega = 2*pi*(f_osc - f_input);
 
 for ic = z0 % loop through initial conditions
     

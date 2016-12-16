@@ -69,7 +69,7 @@ if nargin == 7
 end 
 
 if nargin == 8
-    stable_only = 1; % output only stable FPs
+    stable_only = 0; % output only stable FPs
 end 
 
 %% Parameter Displays   
@@ -151,7 +151,7 @@ else
     ind_marginally_stable = intersect(ind_stable_zero_slope, ...
                             intersect(ind_marginally_stable_left,ind_marginally_stable_right));
     
-    ind_stable = union(ind_stable,ind_marginally_stable); 
+    ind_stable = union(ind_stable,ind_marginally_stable);
     
     %%% Find Unstable Nodes
     
@@ -233,7 +233,7 @@ if stable_only
     disp('Warning: Only returning stable FPs')
   end
   r_star = r_star(ind_stable);
-  if ~F
+  if F
     psi_star = psi_star(ind_unstable);
   end
 end

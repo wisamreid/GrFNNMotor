@@ -53,12 +53,17 @@ switch nargin
 end 
 
 % make sure the input is properly zeroed out for autonomous osc
-if F == 0 || f_input == 0
+if F && ~f_input
     display('Both F and f_input must be zero for autonomous oscillators')
     display('F and f_input have been set to zero')
     f_input = 0;
     F = 0;
-end 
+elseif  f_input && ~F
+    display('Both F and f_input must be zero for autonomous oscillators')
+    display('F and f_input have been set to zero')
+    f_input = 0;
+    F = 0;
+end  
 
 % Check input arguments
 if F < 0
@@ -101,7 +106,7 @@ print_warnings = 0;
 
 if F % oscillator is driven by a complex sinusoid
     
-        % calculate Omega
+    % calculate Omega
     Omega = 2*pi*(f_osc - f_input);
 
     r = sqrt(roots([ ...

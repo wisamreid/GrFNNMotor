@@ -143,45 +143,43 @@ FPs = r_star;
 
 %% sanity check
 
-switch regime
-    % Critical Hopf
-    case regime == 1 
-        assert(numFPs == 1,'Critical Hopf has more than one FP')
-    % Supercritical Hopf
-    case regime == 2 % Supercritical Hopf
-        assert(numFPs == 1,'Critical Hopf has more than one FP')
-    % Supercritical DLC
-    case regime == 3 
-        assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
-    % Subcritical DLC
-    case regime == 4 
-        assert(numFPs == 1,'Subcritical DLC has more than one FP')
-    % Unknown
-    case regime == 0 
-        display('The oscillators parameter regime is unknown plot was not generated')
-        return
+% Critical Hopf
+if regime == 1 
+    assert(numFPs == 1,'Critical Hopf has more than one FP')
+% Supercritical Hopf
+elseif regime == 2 % Supercritical Hopf
+    assert(numFPs == 2,'Critical Hopf has more than one FP')
+% Supercritical DLC
+elseif regime == 3 
+    assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
+% Subcritical DLC
+elseif regime == 4 
+    assert(numFPs == 1,'Subcritical DLC has more than one FP')
+% Unknown
+elseif regime == 0 
+    display('The oscillators parameter regime is unknown plot was not generated')
+    return
 end
 
 %% Plot 
 
-for i = numFPs % loop through fixed points
-
+for i = 1:numFPs % loop through fixed points
     % plot
     plot_obj = figure(figure_number);
     if stability_type(i) == 1
-        plot(0,FPs(i),'o','MarkerFaceColor', orange,'MarkerSize',10);
+        plot(FPs(i),0,'o','MarkerFaceColor', orange,'MarkerSize',10);
         hold on
     elseif stability_type(i) == 2
-        plot(0,FPs(i),'o','MarkerFaceColor', 'y','MarkerSize',10);
+        plot(FPs(i),0,'o','MarkerFaceColor', 'y','MarkerSize',10);
         hold on
     elseif stability_type(i) == 3
-        plot(0,FPs(i),'o','MarkerFaceColor', 'g','MarkerSize',10);
+        plot(FPs(i),0,'o','MarkerFaceColor', 'g','MarkerSize',10);
         hold on
     elseif stability_type(i) == 4
-        plot(0,FPs(i),'o','MarkerFaceColor', 'c','MarkerSize',10);
+        plot(FPs(i),0,'o','MarkerFaceColor', 'c','MarkerSize',10);
         hold on
     elseif stability_type(i) == 5
-        plot(0,FPs(i),'o','MarkerFaceColor', 'm','MarkerSize',10);
+        plot(FPs(i),0,'o','MarkerFaceColor', 'm','MarkerSize',10);
         hold on
     else
         display('FP could not be identified')

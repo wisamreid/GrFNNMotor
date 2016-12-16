@@ -1,4 +1,4 @@
-function [plot_obj] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
+function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % plotAmplitudeVectorFeild: 
@@ -39,6 +39,7 @@ function [plot_obj] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, 
 % Returns:  [plot_obj]
 %   
 %        plot_obj:  Figure (figure_number) with properties
+%             FPs:  (float) Array of fixed points (r*)
 %  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
@@ -86,13 +87,12 @@ if nargin == 7
 end
 
 % make sure the input is properly zeroed out for autonomous osc
-if F == 0.0 
-    f_input ~= 0.0
+if F && ~f_input
     display('Both F and f_input must be zero for autonomous oscillators')
     display('F and f_input have been set to zero')
     f_input = 0;
     F = 0;
-elseif  F ~= 0.0 && f_input == 0.0
+elseif  f_input && ~F
     display('Both F and f_input must be zero for autonomous oscillators')
     display('F and f_input have been set to zero')
     f_input = 0;
@@ -133,30 +133,32 @@ end
 
 [r_star, ~, ~, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, 0);
 
+numFPs = length(r_star);
+FPs = r_star;
+
 %% grab all required initial conditions
 
-switch regime
-    % Critical Hopf
-    case regime == 1 
-        theta = pi;
-        assert(length(r_star) == 1,'Critical Hopf has more than one FP')
-        z0 = [exp(1i*theta)]; % initial conditions
-    % Supercritical Hopf
-    case regime == 2 % Supercritical Hopf
-        assert(length(r_star) == 1,'Critical Hopf has more than one FP')
-        z0 = [eps,1.0]; % initial conditions
-    % Supercritical DLC
-    case regime == 3 
-        assert(length(r_star) == 3,'Supercritical DLC does not have 3 FPs')
-        z0 = [r_star(2)-eps,r_star(2)+eps, 1.0]; % initial conditions
-    % Subcritical DLC
-    case regime == 4 
-        assert(length(r_star) == 1,'Subcritical DLC has more than one FP')
-         z0 = [1.0]; % initial conditions
-    % Unknown
-    case regime == 0 
-        display('The oscillators parameter regime is unknown plot was not generated')
-        return
+% Critical Hopf
+if regime == 1 
+    theta = pi;
+    assert(numFPs == 1,'Critical Hopf has more than one FP')
+    z0 = [exp(1i*theta)]; % initial conditions
+% Supercritical Hopf
+elseif regime == 2 % Supercritical Hopf
+    assert(numFPs == 1,'Critical Hopf has more than one FP')
+    z0 = [eps,r_star+.0]; % initial conditions
+% Supercritical DLC
+elseif regime == 3 
+    assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
+    z0 = [r_star(2)-eps,r_star(2)+eps, 1.0]; % initial conditions
+% Subcritical DLC
+elseif regime == 4 
+    assert(numFPs == 1,'Subcritical DLC has more than one FP')
+     z0 = [1.0]; % initial conditions
+% Unknown
+elseif regime == 0 
+    display('The oscillators parameter regime is unknown plot was not generated')
+    return
 end
 
 %% Plot 
@@ -166,10 +168,6 @@ fs = 1000;
 dur = 30; % in seconds
 T = 1/fs;
 time = 0:T:dur;
-
-% % frequency difference between the oscillator and input 
-% % this will be w = 2*pi*f_osc for autonomous osc
-% Omega = 2*pi*(f_osc - f_input);
 
 for ic = z0 % loop through initial conditions
     
@@ -181,14 +179,10 @@ for ic = z0 % loop through initial conditions
     [~,z_out] = ode45(@(t,z) dzdt(t,z,alpha,beta1,beta2,epsilon,f_osc,f_input),time,[ic]);
 
     % plot
-    figure(1)
     plot_obj = figure(figure_number);
-    plot((abs(z_out(1:end-1))),diff(abs(z_out)));
+    plot((abs(z_out(1:end-1))),diff(abs(z_out)),'linewidth',2);
     hold on
 %     figure(2)
 %     polar((angle(z_out)),abs(abs(z_out)))
 %     hold on
 end
-
-end
-
