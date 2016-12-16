@@ -1,8 +1,8 @@
-function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag, stable_only)
+function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-%     getFP: Calculate fixed points (FPs) for a given autonomous oscillator
-%            or an oscillator under periodic forcing
+%     getFP: Calculate fixed points for a given oscillator
+%            under periodic forcing
 % 
 %    Author: Wisam Reid
 %     Email: wisam@ccrma.stanford.edu
@@ -11,7 +11,7 @@ function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alph
 % 
 % Function Definition:
 % 
-%   getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag, stable_only)
+%   getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
@@ -25,7 +25,6 @@ function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alph
 %         epsilon:  (float) Hopf Oscillator Parameter
 %               F:  (float) Forcing Amplitude
 %    display_flag:  [optional] (boolean) print to console
-%     stable_only:  [optional] (boolean) output only stable FPs
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
@@ -47,7 +46,7 @@ function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alph
 %% Handle arguments
 
 switch nargin 
-    case nargin < 7 || nargin > 9
+    case nargin < 7 || nargin > 8
         disp('Error running getFP')
         disp('Please provide the right number of arguments')
         disp('Function Call: ')
@@ -59,12 +58,7 @@ switch nargin
 end 
 
 if nargin == 7
-    display_flag = 1; % display default
-    stable_only = 0; % output only stable FPs
-end 
-
-if nargin == 8
-    stable_only = 1; % output only stable FPs
+    display_flag = 0; % display default
 end 
 
 %% Parameter Displays   
@@ -101,33 +95,24 @@ stability_type = zeros(length(r_star),1);
 %  Trace, Determinant, and Discriminant 
 % See Kim & Large 2015 pg 4
 % 
-% We can find the boundary between stable nodes and stable spirals by solving:
-%     
-%     T^2 ? 4*Delta = 0  (determinant of characteristic equation)
-%     r_dot = 0 
-%     psi_dot = 0  
-% 
-% simultaneously where T and Delta are the trace and determinant of the 
-% Jacobian matrix evaluated at a fixed point
-
+% partial derivative r_dot wrt r
 if F
-    % partial derivative r_dot wrt r
     dpdr = alpha + 3*beta1*r_star.^2 + ...
             ((epsilon*beta2*r_star.^4.*(5 - 3*epsilon*r_star.^2))./ ...
             (1 - epsilon*r_star.^2).^2); 
     % partial derivative r_dot wrt psi
-    dpdp = -F*sin(psi_star);
+    dpdP = -F*sin(psi_star);
     % partial derivative psi_dot wrt r
     dqdr = (F./r_star.^2).*sin(psi_star);
     % partial derivative psi_dot wrt psi
-    dqdp = -1*(F./r_star).*cos(psi_star);
+    dqdP = -1*(F./r_star).*cos(psi_star);
 
     % the Jacobian
-    J = [dpdr, dpdp; ...
-                dqdr, dqdp];
+    J = [dpdr, dpdP; ...
+                dqdr, dqdP];
 
-    Delta = dpdr.*dqdp - dpdp.*dqdr; % determinant of J
-    T = dpdr + dqdp; % trace of J
+    Delta = dpdr.*dqdP - dpdP.*dqdr; % determinant of J
+    T = dpdr + dqdP; % trace of J
     chDet = T.^2 - 4*Delta; % determinant of characteristic eq
 
 else
@@ -147,14 +132,19 @@ else
                             intersect(ind_marginally_stable_left,ind_marginally_stable_right));
     
     ind_stable = union(ind_stable,ind_marginally_stable); 
+%     r_stable = r_star([ind_stable; ind_marginally_stable]);
+%     r_stable = sort(r_stable,'descend'); % final sorted indices for stable FPs
     
     %%% Find Unstable Nodes
     
     ind_unstable = find(getDrdotdr(r_star-eps('single'),alpha,beta1,beta2,epsilon) > 0);
+%     r_unstable = r_star(ind_unstable);
+%     r_unstable = sort(r_unstable,'descend'); % final sorted indices for unstable FPs
 
+    
 end
 
-%% Displays and Stability Type
+%% Displays
 
 for i = 1:numFP
     if F
@@ -221,17 +211,17 @@ end
 if display_flag
     disp('----------------')
 end
-
-% do we only want to output stable Fps
-if stable_only
-  if display_flag
-    disp('Warning: Only returning stable FPs')
-  end
-  r_star = r_star(ind_stable);
-  if ~F
-    psi_star = psi_star(ind_unstable);
-  end
-end
+% %% Prepare output
+% if All % both stable and unstable fixed points
+%   rStar = r;
+%   psiStar = psi;
+% else % only stable fixed points
+%   indStab = find(stability);
+%   rStar = r(indStab);
+%   psiStar = psi(indStab);
+%   stability = stability(indStab);
+%   stabType = stabType(indStab);
+% end
 
 % ========================================================
 function drdotdr = getDrdotdr(r, a, b1, b2, e)

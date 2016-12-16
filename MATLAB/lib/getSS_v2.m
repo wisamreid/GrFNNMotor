@@ -1,9 +1,8 @@
 function [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-%  getSS: Calculate steady state amplitudes and phases 
-%         for a given autonomous oscillator
-%         or an oscillator under periodic forcing
+%  getSS: Calculate steady state amplitude and phase 
+%         for a given oscillator under periodic forcing
 % 
 % Author: Wisam Reid
 %  Email: wisam@ccrma.stanford.edu
@@ -158,4 +157,112 @@ end
 
 r_star = r;
 psi_star = psi;
+
+% % ========================================================
+% function drdotdr = slope(r, a, b1, b2, e)
+% drdotdr = a + 3*b1*r.^2 + (5*e*b2*r.^4-3*e^2*b2*r.^6)./((1-e*r.^2).^2);
+
+
+% %% Get Jacobian matrix
+% J11 = alpha + 3*beta1*r.^2 + epsilon*beta2*r.^4.*(5-3*epsilon*r.^2)./(1-epsilon*r.^2).^2;
+% J12 = -F*sin(psi);
+% J21 = F*sin(psi)./r.^2;
+% J22 = -F*cos(psi)./r;
+% delta = J11.*J22 - J12.*J21; % determinant of Jacobian
+% tau = J11 + J22; % trace of Jacobian
+% chDet = tau.^2 - 4*delta; % determinant of characteristic eq
+% 
+% %% Calculate stability type
+% % 4 = stable node, 3 = stable spiral, 2 = unstable node,
+% % 1 = unstable spiral, 0 = saddle point
+% stabType = 2*sign(delta) -1*sign(tau) + .5*sign(chDet) + .5;
+% stabType(find(stabType < 0)) = 0;
+% stability = (stabType >= 3); % 1 = stable, 0 = unstable
+% 
+% %% Prepare output
+% if All % both stable and unstable fixed points
+%   rStar = r;
+%   psiStar = psi;
+% else % only stable fixed points
+%   indStab = find(stability);
+%   rStar = r(indStab);
+%   psiStar = psi(indStab);
+%   stability = stability(indStab);
+%   stabType = stabType(indStab);
+% end
+% 
+% % ========================================================
+% function drdotdr = slope(r, a, b1, b2, e)
+% drdotdr = a + 3*b1*r.^2 + (5*e*b2*r.^4-3*e^2*b2*r.^6)./((1-e*r.^2).^2);
+
+% ========================================================
+% ========================================================
+% ========================================================
+% ========================================================
+
+%% Determine parameter regime
+
+% % First, we need to know which bifurcation parameter regime we 
+% % are operating in
+% regime = getOscParamRegime(alpha, beta1, beta2, epsilon);
+
+%%
+% Next, we can find the boundary between stable nodes and stable spirals by solving:
+%     
+%     discriminant = 0
+%     r_dot = 0 
+%     psi_dot = 0 
+%     
+% simultaneously where T and Delta  are the trace and determinant of the 
+% Jacobian matrix evaluated at a fixed point (see Section 2). 
+% We find that the boundary is at
+
+% %% Prepare output
+% 
+% 
+% indStab = find(stab
+% ility);
+% r_star = r(indStab);
+% psi_star = psi(indStab);
+% 
+% 
+% % stability = stability(indStab);
+% % stabType = stabType(indStab);
+% 
+% % % Return all SS Solutions for 
+% % % both stable and unstable fixed points
+% % r_star = r;
+% % psi_star = psi;
+
+
+%% Now we handle each quadrant correctly
+
+% % % % % first quadrant
+% % % % % do nothing
+% % % % 
+% % % % % second quadrant
+% % % % if psi_star > pi/2 && psi_star < pi
+% % % %     % do nothing
+% % % % end
+% % % % 
+% % % % % third quadrant 
+% % % % if psi_star > pi && psi_star < 3*pi/2
+% % % %     psi_star = psi_star - pi;
+% % % %     r_star = -1*r_star;
+% % % % end
+% % % % 
+% % % % % fourth quadrant 
+% % % % if psi_star > 3*pi/2
+% % % %     psi_star = mod(psi_star + pi, 2*pi);
+% % % %     r_star = -1*r_star;
+% % % % end
+% % % % 
+% % % % % edge cases
+% % % % % if psi_star == 0 || psi_star == pi
+% % % % %    r_star = -1*r_star; 
+% % % % % end
+% % % % 
+% % % % % % print
+% % % % % r_star
+% % % % % psi_star
 
