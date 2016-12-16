@@ -37,7 +37,7 @@ function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
-% Returns:  [plot_obj]
+% Returns:  [plot_obj, FPs]
 %   
 %        plot_obj:  Figure (figure_number) with properties
 %             FPs:  (float) Array of fixed points (r*)
@@ -153,20 +153,28 @@ FPs = r_star;
 % Critical Hopf
 if regime == 1 
     theta = pi;
-    assert(numFPs == 1,'Critical Hopf has more than one FP')
+    if ~F
+        assert(numFPs == 1,'Critical Hopf has more than one FP')
+    end
     z0 = [exp(1i*theta)]; % initial conditions
 % Supercritical Hopf
 elseif regime == 2 % Supercritical Hopf
-    assert(numFPs == 2,'Supercritical Hopf does not have 2 FP')
+    if ~F
+        assert(numFPs == 2,'Supercritical Hopf does not have 2 FP')
+    end
     z0 = [eps,r_star(2)+0.3]; % initial conditions
 % Supercritical DLC
-elseif regime == 3 
-    assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
+elseif regime == 3
+    if ~F
+        assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
+    end
     z0 = [r_star(2)-0.001,r_star(2)+0.001, 0.99999999]; % initial conditions
 % Subcritical DLC
 elseif regime == 4 
-    assert(numFPs == 1,'Subcritical DLC has more than one FP')
-     z0 = [1.0]; % initial conditions
+    if ~F
+        assert(numFPs == 1,'Subcritical DLC has more than one FP')
+    end
+    z0 = [0.99999999]; % initial conditions
 % Unknown
 elseif regime == 0 
     display('The oscillators parameter regime is unknown, plot was not generated')

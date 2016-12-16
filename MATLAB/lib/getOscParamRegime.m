@@ -12,7 +12,7 @@ function [regime, r_local_max, drdt_local_max] = getOscParamRegime(alpha, beta1,
 % 
 % Function Definition:
 % 
-%   findOscParamRegime(alpha, beta1, beta2, epsilon)
+%   getOscParamRegime(alpha, beta1, beta2, epsilon)
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
@@ -25,7 +25,7 @@ function [regime, r_local_max, drdt_local_max] = getOscParamRegime(alpha, beta1,
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
-% Returns:  [regime]
+% Returns:  [regime, r_local_max, drdt_local_max]
 % 
 %          regime: integer (0-4)
 %                   1: critical Hopf
