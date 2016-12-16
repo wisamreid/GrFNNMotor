@@ -15,7 +15,7 @@ clc
 %% Utilities
 
 % test folder location
-test_folder_path = 'tests/Fixed_Points/';
+test_folder_path = 'Fixed_Points/';
 
 % In order to test several classes together 
 % we use the Test Suite Package
@@ -73,9 +73,8 @@ end
 %% NOTES
 display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-display('XX   Keep an Eye on 4B7: Fig 4 vs Fig 5    XX')
-display('XX  Keep an Eye on 4C10: Fig 4 vs Fig 8    XX')
-display('XX  Keep an Eye on 4C14: Fig 4 vs Fig 7    XX')
-display('XX   Keep an Eye on 7A1: Psi v R ordering  XX')
+display('XX    Keep an Eye on 4B7: Fig 4 vs Fig 5   XX')
+display('XX   Keep an Eye on 4C10: Fig 4 vs Fig 8   XX')
+display('XX   Keep an Eye on 4C14: Fig 4 vs Fig 7   XX')
 display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 display('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')

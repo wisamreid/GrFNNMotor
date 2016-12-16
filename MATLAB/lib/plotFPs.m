@@ -1,16 +1,21 @@
-function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
+function [plot_obj, FPs] = plotFPs(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-% plotAmplitudeVectorFeild: 
-%         Plots the amplitude vector feild for a given
+% plotFPs: 
+%         Plots the fixed points for a given
 %         oscillator
 %           
 %   Note: * This function returns the plot as an object, allowing for 
 %           manipulation of the figure outside of the function
 %         * This function does not close the figure allowing for plotting
 %           and parameter analysis over for loops
-%         * This function automatically simulates the oscillator amplitude 
-%           behavior using all necessary initial conditions
+% 
+% Colors:
+%           Orange: Stable Node
+%           Yellow: Stable Spiral
+%            Green: Unstable Node
+%             Cyan: Unstable Spiral
+%          Magenta: Saddle Point
 % 
 % Author: Wisam Reid
 %  Email: wisam@ccrma.stanford.edu
@@ -131,31 +136,26 @@ end
 %   a saddle point = 5 
 %   unknown = 0
 
-[r_star, ~, ~, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, 0);
+[r_star, ~, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, 0);
 
 numFPs = length(r_star);
 FPs = r_star;
 
-%% grab all required initial conditions
+%% sanity check
 
 switch regime
     % Critical Hopf
     case regime == 1 
-        theta = pi;
         assert(numFPs == 1,'Critical Hopf has more than one FP')
-        z0 = [exp(1i*theta)]; % initial conditions
     % Supercritical Hopf
     case regime == 2 % Supercritical Hopf
         assert(numFPs == 1,'Critical Hopf has more than one FP')
-        z0 = [eps,1.0]; % initial conditions
     % Supercritical DLC
     case regime == 3 
         assert(numFPs == 3,'Supercritical DLC does not have 3 FPs')
-        z0 = [r_star(2)-eps,r_star(2)+eps, 1.0]; % initial conditions
     % Subcritical DLC
     case regime == 4 
         assert(numFPs == 1,'Subcritical DLC has more than one FP')
-         z0 = [1.0]; % initial conditions
     % Unknown
     case regime == 0 
         display('The oscillators parameter regime is unknown plot was not generated')
@@ -164,30 +164,32 @@ end
 
 %% Plot 
 
-% parameters for time
-fs = 1000;
-dur = 30; % in seconds
-T = 1/fs;
-time = 0:T:dur;
-
-% % frequency difference between the oscillator and input 
-% % this will be w = 2*pi*f_osc for autonomous osc
-% Omega = 2*pi*(f_osc - f_input);
-
-for ic = z0 % loop through initial conditions
-    
-    dzdt = @(t,z,alpha,beta1,beta2,epsilon,f_osc,f_input)  ...
-        z*(alpha + 1i*2*pi*f_osc + beta1*abs(z)^2 + ...
-        (epsilon*beta2*abs(z)^4)/(1-epsilon*abs(z)^2) + F*exp(1i*2*pi*f_input*t)); 
-
-    % integrate the ode to obtain the amplitude
-    [~,z_out] = ode45(@(t,z) dzdt(t,z,alpha,beta1,beta2,epsilon,f_osc,f_input),time,[ic]);
+for i = numFPs % loop through fixed points
 
     % plot
     plot_obj = figure(figure_number);
-    plot((abs(z_out(1:end-1))),diff(abs(z_out)),'linewidth',2);
-    hold on
-%     figure(2)
-%     polar((angle(z_out)),abs(abs(z_out)))
-%     hold on
+    if stability_type(i) == 1
+        plot(0,FPs(i),'o','MarkerFaceColor', orange,'MarkerSize',10);
+        hold on
+    elseif stability_type(i) == 2
+        plot(0,FPs(i),'o','MarkerFaceColor', 'y','MarkerSize',10);
+        hold on
+    elseif stability_type(i) == 3
+        plot(0,FPs(i),'o','MarkerFaceColor', 'g','MarkerSize',10);
+        hold on
+    elseif stability_type(i) == 4
+        plot(0,FPs(i),'o','MarkerFaceColor', 'c','MarkerSize',10);
+        hold on
+    elseif stability_type(i) == 5
+        plot(0,FPs(i),'o','MarkerFaceColor', 'm','MarkerSize',10);
+        hold on
+    else
+        display('FP could not be identified')
+    end
+end
+
+function [C] = orange()
+    C = [1 .5 0];
+end
+
 end

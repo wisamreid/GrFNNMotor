@@ -52,6 +52,14 @@ switch nargin
         return
 end 
 
+% make sure the input is properly zeroed out for autonomous osc
+if F == 0 || f_input == 0
+    display('Both F and f_input must be zero for autonomous oscillators')
+    display('F and f_input have been set to zero')
+    f_input = 0;
+    F = 0;
+end 
+
 % Check input arguments
 if F < 0
   error('F > 0')
@@ -64,7 +72,7 @@ if beta2 == 0 && epsilon ~= 0
 end
 
 if epsilon == 0 && beta2 ~= 0
-    error('epsilon cannot be zero if beta2 is not zero')
+    beta2 = 0;
 end
 
 %% Displays
@@ -151,7 +159,7 @@ if F
 
     psi = real(psi);
 else
-    psi = [];
+    psi = []; % currently not analyzing psi (no Jacobian)
 end
 
 %% output

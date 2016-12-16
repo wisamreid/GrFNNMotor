@@ -41,6 +41,11 @@ function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alph
 %                   5: a saddle point
 %                   0: could not be identified
 %          regime: (integer) [0-4]
+%                   1: critical Hopf 
+%                   2: supercritical Hopf
+%                   3: supercritical double limit cycle (DLC) 
+%                   4: subcritical DLC
+%                   0: could not be identified
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -103,7 +108,7 @@ stability_type = zeros(length(r_star),1);
 % 
 % We can find the boundary between stable nodes and stable spirals by solving:
 %     
-%     T^2 ? 4*Delta = 0  (determinant of characteristic equation)
+%     T^2 - 4*Delta = 0  (determinant of characteristic equation)
 %     r_dot = 0 
 %     psi_dot = 0  
 % 

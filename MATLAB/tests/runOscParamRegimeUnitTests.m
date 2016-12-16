@@ -12,7 +12,7 @@ clc
 %% Utilities
 
 % test folder location
-test_folder_path = 'tests/Param_Regime/';
+test_folder_path = 'Param_Regime/';
 
 % In order to test several classes together 
 % we use the Test Suite Package
