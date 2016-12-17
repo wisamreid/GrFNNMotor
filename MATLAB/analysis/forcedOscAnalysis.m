@@ -42,7 +42,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for F = sweep
     
-    fig1 = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon,...
+    fig1 = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1 ;
     
@@ -90,7 +90,7 @@ hold off
 % i = 1;
 % for F = sweep
 %     F
-%     fig1 = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon,...
+%     fig1 = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon,...
 %                                     F, f_osc, f_input, plot_number, C(i,:));
 %     i = i + 1 ;
 %     

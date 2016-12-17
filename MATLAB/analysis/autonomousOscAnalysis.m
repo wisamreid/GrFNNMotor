@@ -1,8 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % Autonomous Oscillator Parameter Analysis: 
-%         Plots the amplitude vector feild for ranging 
+%         Plots the amplitude vector field for ranging 
 %         oscillator parameters
+% 
+% Current Total Runtime: ~70 seconds for 9 images in the 
+%                        12-16-2016 research report
 % 
 % Author: Wisam Reid
 %  Email: wisam@ccrma.stanford.edu
@@ -15,6 +18,10 @@ clear
 clc
 
 %% Plots critical hopf sweep alpha
+% Current runtime: is 5.048141 seconds
+
+tic
+display('Plotting: critical hopf sweep alpha');
 
 plot_number = 1;
 
@@ -35,7 +42,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta1 = sweep
     
-    fig1 = plotAmplitudeVectorFeild(alpha, -1*beta1, beta2, epsilon,...
+    fig1 = plotAmplitudeVectorField(alpha, -1*beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1 ;
     
@@ -57,7 +64,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc
+
 %% Plots supercritical hopf sweep alpha hold beta1
+% Current runtime: is 6.843449 seconds
+
+tic
+display('Plotting: supercritical hopf sweep alpha hold beta1');
 
 plot_number = 2;
 
@@ -78,7 +91,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for alpha = sweep
     
-    fig2 = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon,...
+    fig2 = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
     
@@ -104,7 +117,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc
+
 %% Plots supercritical hopf sweep beta1 hold alpha
+% Current runtime: is 7.015507 seconds
+
+tic
+display('Plotting: supercritical hopf sweep beta1 hold alpha');
 
 plot_number = 3;
 
@@ -125,7 +144,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta1 = sweep
     
-    fig3 = plotAmplitudeVectorFeild(alpha, -1*beta1, beta2, epsilon,...
+    fig3 = plotAmplitudeVectorField(alpha, -1*beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
     
@@ -150,9 +169,14 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc
+
 %% Plots supercritical hopf sweep beta1 and alpha
 % Not for the current research report 
 
+% tic
+% display('Plotting: supercritical hopf sweep beta1 and alpha');
+% 
 % plot_number = 4;
 % 
 % % oscillator params
@@ -172,7 +196,7 @@ hold off
 % i = 1;
 % for beta1 = sweep
 %     alpha = 11 - beta1;
-%     fig4 = plotAmplitudeVectorFeild(alpha, -1*beta1, beta2, epsilon,...
+%     fig4 = plotAmplitudeVectorField(alpha, -1*beta1, beta2, epsilon,...
 %                                     F, f_osc, f_input, plot_number, C(i,:));
 %     i = i + 1;
 % end
@@ -195,8 +219,14 @@ hold off
 %         'Location','northeast', 'Interpreter', 'latex');
 % grid on    
 % hold off
+% 
+% toc
 
 %% Plots supercritical DLC sweep alpha
+% Current runtime: is 12.021338 seconds
+
+tic
+display('Plotting: supercritical  DLC sweep alpha');
 
 plot_number = 5;
 
@@ -218,7 +248,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for alpha = sweep
     
-    fig5 = plotAmplitudeVectorFeild(-1*alpha, beta1, beta2, epsilon,...
+    fig5 = plotAmplitudeVectorField(-1*alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
 end
@@ -242,7 +272,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc
+
 %% Plots supercritical DLC sweep beta1 
+% Current runtime: is 11.598616 seconds
+
+tic
+display('Plotting: supercritical  DLC sweep beta1');
 
 plot_number = 6;
 
@@ -263,7 +299,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta1 = sweep
     
-    fig6 = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon,...
+    fig6 = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));                           
     i = i + 1;
     
@@ -288,7 +324,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc 
+
 %% Plots supercritical DLC sweep beta2 
+% Current runtime: is 11.863026 seconds
+
+tic
+display('Plotting: supercritical  DLC sweep beta2');
 
 plot_number = 7;
 
@@ -309,7 +351,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta2 = sweep
     
-    fig5 = plotAmplitudeVectorFeild(alpha, beta1, -1*beta2, epsilon,...
+    fig5 = plotAmplitudeVectorField(alpha, beta1, -1*beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
     
@@ -334,7 +376,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc 
+
 %% Plots subcritical DLC sweep alpha
+% Current runtime: is 3.419080 seconds
+
+tic
+display('Plotting: subcritical  DLC sweep alpha');
 
 plot_number = 8;
 
@@ -355,7 +403,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for alpha = sweep
     
-    fig5 = plotAmplitudeVectorFeild(-1*alpha, beta1, beta2, epsilon,...
+    fig5 = plotAmplitudeVectorField(-1*alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
 end
@@ -379,7 +427,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc 
+
 %% Plots subcritical DLC sweep beta1
+% Current runtime: is 3.561724 seconds
+
+tic
+display('Plotting: subcritical  DLC sweep beta1');
 
 plot_number = 9;
 
@@ -400,7 +454,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta1 = sweep
     
-    fig5 = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon,...
+    fig5 = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
 end
@@ -424,7 +478,13 @@ ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
 
+toc
+
 %% Plots subcritical DLC sweep beta2
+% Current runtime: is 3.706105 seconds
+
+tic
+display('Plotting: subcritical  DLC sweep beta2');
 
 plot_number = 10;
 
@@ -445,7 +505,7 @@ C = distinguishable_colors(numSteps);
 i = 1;
 for beta2 = sweep
     
-    fig5 = plotAmplitudeVectorFeild(alpha, beta1, -1*beta2, epsilon,...
+    fig5 = plotAmplitudeVectorField(alpha, beta1, -1*beta2, epsilon,...
                                     F, f_osc, f_input, plot_number, C(i,:));
     i = i + 1;
 end
@@ -468,3 +528,5 @@ xlabel('$$r$$', 'Interpreter', 'latex')
 ylabel('$$\dot{r}$$', 'Interpreter', 'latex')
 grid on    
 hold off
+
+toc

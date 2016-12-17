@@ -3,7 +3,7 @@
 
 clear all;close all;clc;
 
-animate = 1; % true or falase
+animate = 1; % true or false
 
 % play with the number of pulses (10 won't be enough to learn)
 % play with making alpha more negative so that the learning quality of the
@@ -15,10 +15,10 @@ alpha1 = -2;
 beta11 = 10;
 beta21 = -1;
 epsilon1 = 1;
-f11 = 1.7;
+f11 = 1;
 
 % coupling strength from double-limit cycle to the gamma oscillator
-c = 700;
+c = 1000;
 
 % parameters of the gamma oscillator
 z02 = 0;
@@ -37,9 +37,9 @@ time = 0:T:start_t;
 
 % input parameters
 npulses = 10;
-pulse_amp = 0.205; % in Fujioka et al. 2012 the tempos were 2.5Hz, 1.7Hz, and 1.3Hz
+pulse_amp = 0.2945; % in Fujioka et al. 2012 the tempos were 2.5Hz, 1.7Hz, and 1.3Hz
 % the corresponding pulse amplitudes are: 2.5Hz : 0.153, 1.7Hz : 0.205, 1.3Hz : 0.247
-pul_freq = 1.7;
+pul_freq = 1;
 pul_step = 1/pul_freq; % in seconds
 
 % the output of beta drives a gamma oscillator
@@ -111,28 +111,34 @@ z_all_2 = [z_all_2 z_out(:,1)'];
 time_all = [time_all t_out'];% figure('position', [1, 1, 500, 1000])
 
 
-figure('position', [1, 1, 5000, 1000])
-for i=1:length(time_all)
-    
-    if mod(i,fs/20) == 0
-        subplot(2,2,1:2)
-        plot3(time_all(1:i),real(z_all_2(1:i)),imag(z_all_2(1:i)),'-k')
-        grid on
-        hold on
-        xlabel('Time (s)')
-        ylabel('Real part')
-        zlabel('Imaginary part')
-        subplot(2,2,3:4)
-        plot3(time_all(1:i),real(z_all_1(1:i)),imag(z_all_1(1:i)),'-b')
-        grid on
-        hold on
-        xlabel('Time (s)')
-        ylabel('Real part')
-        zlabel('Imaginary part')
-        pause        
+if animate
+    figure('position', [1, 1, 5000, 1000])
+    for i=1:length(time_all)
+        
+        if mod(i,fs/20) == 0
+            subplot(2,2,1:2)
+            plot3(time_all(1:i),real(z_all_2(1:i)),imag(z_all_2(1:i)),'-k')
+            grid on
+            hold on
+            xlabel('Time (s)')
+            ylabel('Real part')
+            zlabel('Imaginary part')
+            subplot(2,2,3:4)
+            plot3(time_all(1:i),real(z_all_1(1:i)),imag(z_all_1(1:i)),'-b')
+            grid on
+            hold on
+            xlabel('Time (s)')
+            ylabel('Real part')
+            zlabel('Imaginary part')
+            pause(0.05)
+        end
     end
 end
 
-figure(P
-plot(linspace(-fs/2,fs/2,length(z_all_1)),fftshift(abs(fft(z_all_2))))
+figure(2)
+plot(linspace(-(fs/2),(fs/2)-1,length(z_all_1)),fftshift(abs(fft(z_all_2))))
 axis tight
+grid on
+
+% Langner, periodotopy, MEG human paper trying to find, in humans, his
+% previous findings from animal work. References in Fujioka 2003. 
