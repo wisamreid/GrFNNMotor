@@ -1,4 +1,4 @@
-% implementation of the Runge Kutta method
+% beta modulator prototype
 
 clear all;close all;clc;
 

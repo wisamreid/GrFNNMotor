@@ -1,6 +1,8 @@
 % implementation of the 2nd version of the model 
 % this one has an intermedia layer that gets removed in the third verion
 
+tic
+
 clear all;close all;clc;
 
 % parameters of the gamma oscillator
@@ -220,3 +222,5 @@ spectrogram(z_out_2+z_out_3,kaiser(256,5),220,20000,fs,'yaxis')
 title('Spectrum of the System')
 ylim([0 100])
 xlabel('time(s)')
+
+toc
