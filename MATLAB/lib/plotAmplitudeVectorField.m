@@ -1,4 +1,4 @@
-function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number, plot_color)
+function [plot_obj, FPs] = plotAmplitudeVectorField(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number, plot_color)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % WARNING: This function is incomplete, FP characterization 
