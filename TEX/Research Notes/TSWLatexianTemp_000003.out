@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{A\040Brief\040Overview}{}% 1
+\BOOKMARK [1][-]{section.2}{The\040Data}{}% 2
+\BOOKMARK [1][-]{section.3}{A\040Simple\040Baseline\040Conceptual\040Model}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Plots}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Matlab\040Code}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{To\040Do}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Proposed\040Method}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Some\040Philosophical\040Alignment}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Fitting\040Bifurcation\040Parameters\040to\040Data}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Causality\040Analysis}{section.4}% 10
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Granger\040Causality\040Analysis}{subsection.4.3}% 11
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Dynamic\040Causal\040Modeling}{subsection.4.3}% 12
+\BOOKMARK [1][-]{section.5}{Appendix:\040Extra\040Material}{}% 13

@@ -41,11 +41,9 @@ function [r_star, psi_star] = getSS(f_osc, f_input, alpha, beta1, beta2, epsilon
 %                                   "f_input = 0;"
 %                                         "F = 0;"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% To zero out the quintic term, beta2 and epsilon 
-% should both be set to zero: 
-%                                     "beta2 = 0;"
-%                                   "epsilon = 0;"
-% This avoids problems with finding a solution
+% set to zero beta2 and epsilon should both be set to zero:
+%                    "beta2 = 0;"
+%                  "epsilon = 0;"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % To recieve solution warning messages set: 
 %           "print_warnings = 0"

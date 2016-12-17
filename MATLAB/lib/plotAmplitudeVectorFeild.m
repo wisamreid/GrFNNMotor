@@ -1,6 +1,11 @@
 function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon, F, f_osc, f_input, figure_number, plot_color)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
+% WARNING: This function is incomplete, FP characterization 
+%          for forced oscillators still needs to be implimented 
+%          
+%          Some testing has been done on plotting autonomous oscillators
+% 
 % plotAmplitudeVectorFeild: 
 %         Plots the amplitude vector feild for a given
 %         oscillator
@@ -44,20 +49,11 @@ function [plot_obj, FPs] = plotAmplitudeVectorFeild(alpha, beta1, beta2, epsilon
 %  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% Example Calls:  
+% Example Call(s):  
 % 
 % An autonomous critical Hopf oscillator (See Kim & Large 2015 Fig 1):
 % 
-%       fig = plotAmplitudeVectorFeild(0, -100, 0, 0)
-% 
-% A forced supercritical Hopf oscillator (See Kim & Large 2015 Fig 4):
-%       
-%       fig = plotAmplitudeVectorFeild(1, -100, 0, 0, 0.02, 1, 0.5)
-% 
-% A forced supercritical DLC oscillator using plot number 3:
-%   (See Kim & Large 2015 Fig 7)
-%       
-%       fig3 = plotAmplitudeVectorFeild(-1, 4, -1, 1, 0.3, 1, 0.8, 3)
+%       fig = plotAmplitudeVectorFeild(0, -1, 0, 0);
 %  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,7 +77,7 @@ if nargin == 4
     f_input = 0.0;
     F = 0.0;
     figure_number = 1;
-    plot_color = 0;
+    plot_color = [0 0 0];
 end
 
 if nargin == 5 || nargin == 6
@@ -91,11 +87,11 @@ end
 
 if nargin == 7
     figure_number = 1;
-    plot_color = [];
+    plot_color = [0 0 0];
 end
 
 if nargin == 8
-    plot_color = [];
+    plot_color = [0 0 0];
 end
 
 % make sure the input is properly zeroed out for autonomous osc
@@ -153,7 +149,7 @@ FPs = r_star;
 % Critical Hopf
 if regime == 1 
     theta = pi;
-    if ~F
+    if ~F 
         assert(numFPs == 1,'Critical Hopf has more than one FP')
     end
     z0 = [exp(1i*theta)]; % initial conditions
@@ -204,7 +200,7 @@ for ic = z0 % loop through initial conditions
         
         r1 = (abs(z_out(1:end-1)));
         r_dot1 = diff(abs(z_out));
-        
+
         if ~isempty(plot_color)
             % plot
             plot_obj = figure(figure_number);
@@ -241,7 +237,7 @@ for ic = z0 % loop through initial conditions
     
     ic_num = ic_num + 1;
     
-%     figure(2)
+%     figure(100)
 %     polar((angle(z_out)),abs(abs(z_out)))
 %     hold on
 end

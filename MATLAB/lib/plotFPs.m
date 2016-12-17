@@ -41,7 +41,7 @@ function [plot_obj, FPs] = plotFPs(alpha, beta1, beta2, epsilon, F, f_osc, f_inp
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 % 
-% Returns:  [plot_obj]
+% Returns:  [plot_obj, FPs]
 %   
 %        plot_obj:  Figure (figure_number) with properties
 %             FPs:  (float) Array of fixed points (r*)

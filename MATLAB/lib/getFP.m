@@ -47,8 +47,12 @@ function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alph
 %                   4: subcritical DLC
 %                   0: could not be identified
 % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% For an autonomous oscillator F and f_input 
+% should both be set to zero set:
+%                                   "f_input = 0"
+%                                   "F = 0"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% Handle arguments
 
 switch nargin 

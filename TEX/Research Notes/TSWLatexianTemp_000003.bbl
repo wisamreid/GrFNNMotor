@@ -1,0 +1,113 @@
+\begin{thebibliography}{10}
+
+\bibitem{fujioka2009beta}
+Takako Fujioka, Laurel~J Trainor, Edward~W Large, and Bernhard Ross.
+\newblock Beta and gamma rhythms in human auditory cortex during musical beat
+  processing.
+\newblock {\em Annals of the New York Academy of Sciences}, 1169(1):89--92,
+  2009.
+
+\bibitem{jamali2014neuromagnetic}
+Shahab Jamali, Takako Fujioka, and Bernhard Ross.
+\newblock Neuromagnetic beta and gamma oscillations in the somatosensory cortex
+  after music training in healthy older adults and a chronic stroke patient.
+\newblock {\em Clinical Neurophysiology}, 125(6):1213--1222, 2014.
+
+\bibitem{jenkinson2011new}
+Ned Jenkinson and Peter Brown.
+\newblock New insights into the relationship between dopamine, beta
+  oscillations and motor function.
+\newblock {\em Trends in neurosciences}, 34(12):611--618, 2011.
+
+\bibitem{izhikevich2004model}
+Eugene~M Izhikevich.
+\newblock Which model to use for cortical spiking neurons?
+\newblock {\em IEEE transactions on neural networks}, 15(5):1063--1070, 2004.
+
+\bibitem{izhikevich2008large}
+Eugene~M Izhikevich and Gerald~M Edelman.
+\newblock Large-scale model of mammalian thalamocortical systems.
+\newblock {\em Proceedings of the national academy of sciences},
+  105(9):3593--3598, 2008.
+
+\bibitem{large2015neural}
+Edward~W Large, Jorge~A Herrera, and Marc~J Velasco.
+\newblock Neural networks for beat perception in musical rhythm.
+\newblock {\em Frontiers in systems neuroscience}, 9, 2015.
+
+\bibitem{merrison2013interactive}
+Robert Merrison-Hort, Nada Yousif, Felix Njap, Ulrich~G Hofmann, Oleksandr
+  Burylko, and Roman Borisyuk.
+\newblock An interactive channel model of the basal ganglia: bifurcation
+  analysis under healthy and parkinsonian conditions.
+\newblock {\em The Journal of Mathematical Neuroscience}, 3(1):1, 2013.
+
+\bibitem{nevado2011bifurcation}
+Alejo~J Nevado-Holgado, John~R Terry, and Rafal Bogacz.
+\newblock Bifurcation analysis points towards the source of beta neuronal
+  oscillations in parkinson's disease.
+\newblock In {\em 2011 50th IEEE Conference on Decision and Control and
+  European Control Conference}, pages 6492--6497. IEEE, 2011.
+
+\bibitem{pavlides2015computational}
+Alex Pavlides, S~John Hogan, and Rafal Bogacz.
+\newblock Computational models describing possible mechanisms for generation of
+  excessive beta oscillations in parkinson’s disease.
+\newblock {\em PLoS Comput Biol}, 11(12):e1004609, 2015.
+
+\bibitem{tachibana2011subthalamo}
+Yoshihisa Tachibana, Hirokazu Iwamuro, Hitoshi Kita, Masahiko Takada, and
+  Atsushi Nambu.
+\newblock Subthalamo-pallidal interactions underlying parkinsonian neuronal
+  oscillations in the primate basal ganglia.
+\newblock {\em European Journal of Neuroscience}, 34(9):1470--1484, 2011.
+
+\bibitem{kerr2013cortical}
+Cliff~C Kerr, Sacha~J Van~Albada, Samuel~A Neymotin, George~L Chadderdon,
+  PA~Robinson, and William~W Lytton.
+\newblock Cortical information flow in parkinson’s disease: a composite
+  network/field model.
+\newblock 2013.
+
+\bibitem{florin2016parkinson}
+Esther Florin, Johannes Pfeifer, Veerle Visser-Vandewalle, Alfons Schnitzler,
+  and Lars Timmermann.
+\newblock Parkinson subtype-specific granger-causal coupling and coherence
+  frequency in the subthalamic area.
+\newblock {\em Neuroscience}, 332:170--180, 2016.
+
+\bibitem{sheikhattar2016dynamic}
+Alireza Sheikhattar and Behtash Babadi.
+\newblock Dynamic estimation of causal influences in sparsely-interacting
+  neuronal ensembles.
+\newblock In {\em 2016 Annual Conference on Information Science and Systems
+  (CISS)}, pages 551--556. IEEE, 2016.
+
+\bibitem{razi2016connected}
+Adeel Razi and Karl~J Friston.
+\newblock The connected brain: Causality, models, and intrinsic dynamics.
+\newblock {\em IEEE Signal Processing Magazine}, 33(3):14--35, 2016.
+
+\bibitem{zeller2016dynamic}
+Daniel Zeller, Karl~J Friston, and Joseph Classen.
+\newblock Dynamic causal modeling of touch-evoked potentials in the rubber hand
+  illusion.
+\newblock {\em NeuroImage}, 2016.
+
+\bibitem{penny2009dynamic}
+WD~Penny, V~Litvak, L~Fuentemilla, E~Duzel, and K~Friston.
+\newblock Dynamic causal models for phase coupling.
+\newblock {\em Journal of neuroscience methods}, 183(1):19--30, 2009.
+
+\bibitem{bajaj2016bridging}
+Sahil Bajaj, Bhim~M Adhikari, Karl~J Friston, and Mukesh Dhamala.
+\newblock Bridging the gap: Dynamic causal modeling and granger causality
+  analysis of resting state functional magnetic resonance imaging.
+\newblock {\em Brain Connectivity}, 6(8):652--661, 2016.
+
+\bibitem{ding2014analyzing}
+Mingzhou Ding and Chao Wang.
+\newblock Analyzing meg data with granger causality: Promises and pitfalls.
+\newblock In {\em Magnetoencephalography}, pages 309--318. Springer, 2014.
+
+\end{thebibliography}
