@@ -20,13 +20,10 @@ abstract: |
 authors:
 - |
     Wisam Reid
-    Center for Computer Research in Music and Acoustics
     Stanford University
     Stanford, CA 94305
     `wisam@ccrma.stanford.edu`
     Iran Roman
-    Stanford Neuroscience Graduate Program
-    Center for Computer Research in Music and Acoustics
     Stanford University
     Stanford, CA 94305
     `iran@stanford.edu`
