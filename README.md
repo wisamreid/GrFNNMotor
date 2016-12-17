@@ -21,14 +21,16 @@ perspective of computations and stimuli transformations in the motor system.
 
 -----
 
-
-# File Structure
-
-
+## The Code
+   ##### [Fixed Point Analysis and Amplitude Vector Plane Plots] analysis/
+   ##### [Folder] demos/
+   ##### [Folder] images/
+   ##### [Folder] lib/
+   ##### [Folder] tests/
 
 -----
 
-# Development
+## Development
 
 
 # Dependencies
