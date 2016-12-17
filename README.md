@@ -2,16 +2,16 @@
 
 ### authors:
 
-Wisam Reid
-Center for Computer Research in Music and Acoustics
-Stanford University
-wisam@ccrma.stanford.edu
+Wisam Reid<br />
+Center for Computer Research in Music and Acoustics<br />
+Stanford University<br />
+wisam@ccrma.stanford.edu<br />
 
-Iran Roman
-Stanford Neuroscience Graduate Program
-Center for Computer Research in Music and Acoustics
-Stanford University
-iran@stanford.edu
+Iran Roman<br />
+Stanford Neuroscience Graduate Program<br />
+Center for Computer Research in Music and Acoustics<br />
+Stanford University<br />
+iran@stanford.edu<br />
 
 ### abstract: 
 
