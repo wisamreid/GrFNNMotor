@@ -45,11 +45,20 @@ perspective of computations and stimuli transformations in the motor system.
       Current Total Runtime: ~70 seconds for 9 images in the 
       12-16-2016 research report
 
+### Models and Demos
+#### [Folder] models/
+
+      Models and prototypes 
+      
 #### [Folder] demos/
-2. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
+
+      1. Demo for McClelland Lab Meeting
+      2. Bursting Oscillator 3D animation 
+      
 #### [Folder] images/
+
+      Matlab Images 
+      
 #### [Folder] lib/
 #### [Folder] tests/
 
