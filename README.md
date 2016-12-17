@@ -17,6 +17,7 @@ abstract: |
     resynchronization. Additionally, our model provides a dynamical-systems
     perspective of computations and stimuli transformations in the motor
     system.
+---
 authors:
 - |
     Wisam Reid
