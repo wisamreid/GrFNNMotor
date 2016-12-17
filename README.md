@@ -1,5 +1,18 @@
 # An oscillatory neural network model of motor dynamics during continuous periodic movement
 
+### authors:
+
+Wisam Reid 
+Center for Computer Research in Music and Acoustics
+Stanford University
+wisam@ccrma.stanford.edu
+
+Iran Roman
+Stanford Neuroscience Graduate Program
+Center for Computer Research in Music and Acoustics
+Stanford University
+iran@stanford.edu
+
 ### abstract: 
 
 Brain oscillations are of functional relevance to the healthy
