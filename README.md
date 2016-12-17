@@ -67,15 +67,16 @@ perspective of computations and stimuli transformations in the motor system.
 #### [Folder] lib/
 
       type "help name_of_file" in the Matlab terminal for more information 
-            1. getFP __Passes 66 Unit Test__ (tests were made from figures in Kim & Large 2015)
-            2. getSS __Passes the same 66 Unit Test__ in tests/Fixed_Points
-            3. getOscParamRegime __Passes 10 Unit Test__ in tests/Param_Regime
+            1. getFP [Passes 66 Unit Test]
+            2. getSS [Passes the same 66 Unit Test] in tests/Fixed_Points
+            3. getOscParamRegime [Passes 10 Unit Test] in tests/Param_Regime
             4. plotAmplitudeVectorFeild
             5. plotFP
 
 ### Unit Tests
 #### [Folder] tests/
-
+            
+            Tests were made from figures in Kim & Large 2015
             To run tests use  
                   1. runFixedPointUnitTests
                   2. runOscParamRegimeUnitTests
