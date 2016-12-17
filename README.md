@@ -25,19 +25,17 @@ perspective of computations and stimuli transformations in the motor system.
 ### Fixed Point Analysis and Amplitude Vector Plane Plots 
 #### [Folder] analysis/
 
-1. autonomousOscAnalysis.m
-      Autonomous oscillator parameter analysis:
-      
+##### autonomousOscAnalysis.m
+
+      Autonomous oscillator parameter analysis:      
       Plots the amplitude vector feild for ranging oscillator parameters
       Current Total Runtime: ~70 seconds for 9 images in the 
       12-16-2016 research report
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
 
 #### [Folder] demos/
+2. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 #### [Folder] images/
 #### [Folder] lib/
 #### [Folder] tests/
