@@ -19,17 +19,17 @@ abstract: |
     system.
 author:
 - |
+    Wisam Reid\
+    Center for Computer Research in Music and Acoustics\
+    Stanford University\
+    Stanford, CA 94305\
+    `wisam@ccrma.stanford.edu`\
     Iran Roman\
     Stanford Neuroscience Graduate Program\
     Center for Computer Research in Music and Acoustics\
     Stanford University\
     Stanford, CA 94305\
     `iran@stanford.edu`\
-    Wisam Reid\
-    Center for Computer Research in Music and Acoustics\
-    Stanford University\
-    Stanford, CA 94305\
-    `wisam@ccrma.stanford.edu`\
 bibliography:
 - 'ref.bib'
 title: |
@@ -72,13 +72,14 @@ frequencies corresponding to the gamma band (80Hz) improves motor
 function in Parkinson’s patients. This demonstrates the causal
 relationship between brain oscillations and normal brain functioning
 @swann2011deep.
+                                                 
+img[alt=betaERD.png] { width: 200px; }
 
-![ERD of oscillatory activity in the beta band during periodic
+ERD of oscillatory activity in the beta band during periodic
 stimulation at two different periods (390ms and 585ms). Red arrows
 indicate pulses of stimulation. Notice how the rising slope of the
 resynchronizing beta band reaches its original peak at the moment when
-the next stimulus is expected. Modified from
-@fujioka2012internalized<span data-label="fig:ERD"></span>](betaERD.png)
+the next stimulus is expected. Modified from @fujioka2012internalized
 
 Mechanisms of brain oscillations
 --------------------------------
