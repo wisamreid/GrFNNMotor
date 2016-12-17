@@ -151,6 +151,7 @@ grid on
 hold off
 
 %% Plots supercritical hopf sweep beta1 and alpha
+% Not for the current research report 
 
 % plot_number = 4;
 % 

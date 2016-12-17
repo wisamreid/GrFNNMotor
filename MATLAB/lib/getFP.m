@@ -1,8 +1,9 @@
 function [r_star, psi_star, stability_type, regime] = getFP(f_osc, f_input, alpha, beta1, beta2, epsilon, F, display_flag, stable_only)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
-%     getFP: Calculate fixed points (FPs) for a given autonomous oscillator
-%            or an oscillator under periodic forcing
+%     getFP: Calculate fixed points (FPs) for a given 
+%            autonomous oscillator or an oscillator 
+%            under periodic forcing
 % 
 %    Author: Wisam Reid
 %     Email: wisam@ccrma.stanford.edu
