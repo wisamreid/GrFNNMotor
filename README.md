@@ -68,6 +68,7 @@ perspective of computations and stimuli transformations in the motor system.
 
       type "help name_of_file" in the Matlab terminal for more information 
             1. getFP [Passes 66 Unit Tests]
+                  * tests/Fixed_Points            
             2. getSS [Passes the same 66 Unit Tests] 
                   * tests/Fixed_Points
             3. getOscParamRegime [Passes 10 Unit Tests] 
