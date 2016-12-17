@@ -24,6 +24,7 @@ perspective of computations and stimuli transformations in the motor system.
 ## The Code
 ### Fixed Point Analysis and Amplitude Vector Plane Plots 
 #### [Folder] analysis/
+⋅⋅⋅What
 #### [Folder] demos/
 #### [Folder] images/
 #### [Folder] lib/
