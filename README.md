@@ -73,7 +73,9 @@ function in Parkinson’s patients. This demonstrates the causal
 relationship between brain oscillations and normal brain functioning
 @swann2011deep.
                                                  
-img[alt=betaERD.png] { width: 200px; }
+<!--img[alt=betaERD.png] { width: 200px; }-->
+img[alt=../Images/README/sub_super_Critical.png] { width: 200px; }
+
 
 ERD of oscillatory activity in the beta band during periodic
 stimulation at two different periods (390ms and 585ms). Red arrows
