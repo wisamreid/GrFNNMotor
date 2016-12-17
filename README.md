@@ -83,5 +83,6 @@ perspective of computations and stimuli transformations in the motor system.
             To run tests use  
                   1. runFixedPointUnitTests
                   2. runOscParamRegimeUnitTests
-            
+                  
+             * run from inside the tests/ folder          
 -----
