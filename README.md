@@ -38,6 +38,8 @@ perspective of computations and stimuli transformations in the motor system.
 ### Fixed Point Analysis and Amplitude Vector Plane Plots 
 #### [Folder] analysis/
 
+      script in this folder utilize functions in \lib
+
 ##### autonomousOscAnalysis.m
 
       Autonomous oscillator parameter analysis:      
@@ -59,12 +61,22 @@ perspective of computations and stimuli transformations in the motor system.
 
       Matlab Images 
       
+### Functions
+
 #### [Folder] lib/
+
+      type "help name_of_file" in the Matlab terminal for more information 
+            1. getFP **Passes 66 Unit Test** (tests were made from figures in Kim & Large 2015)
+            2. getSS **Passes the same 66 Unit Test** in tests/Fixed_Points
+            3. getOscParamRegime **Passes 10 Unit Test** in tests/Param_Regime
+            4. plotAmplitudeVectorFeild
+            5. plotFP
+
+### Unit Tests
 #### [Folder] tests/
 
+            To run tests use  
+            1. runFixedPointUnitTests
+            2. runOscParamRegimeUnitTests
+            
 -----
-
-## Development
-
-
-# Dependencies
