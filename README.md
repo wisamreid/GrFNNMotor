@@ -1,5 +1,7 @@
 # An oscillatory neural network model of motor dynamics during continuous periodic movement
 
+[See Full Report Here](./Reports/Submission%20For%20Malcolm/Updated%20Research%20Report%201-9-17.pdf)
+
 ### authors:
 
 Wisam Reid<br />
